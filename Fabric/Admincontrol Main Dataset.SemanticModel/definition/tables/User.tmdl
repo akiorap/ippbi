@@ -1,0 +1,431 @@
+table User
+	lineageTag: 984b57fe-c333-4d98-87d9-45d5fd497eb6
+
+	column User_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 91cec373-e469-4c54-b2ad-a3ae7cdcadde
+		summarizeBy: count
+		sourceColumn: User_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Organization_User_Guid
+		dataType: string
+		isHidden
+		lineageTag: 258faa97-f645-44a5-afcd-6cf57badbc12
+		summarizeBy: none
+		sourceColumn: Organization_User_Guid
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Created
+		dataType: dateTime
+		formatString: General Date
+		displayFolder: User Info
+		lineageTag: c522552a-57e2-4604-9916-319733f7c6dc
+		summarizeBy: none
+		sourceColumn: Date_Created
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: User Info
+		lineageTag: 95846750-cedf-472b-b650-11fb6837627f
+		summarizeBy: none
+		sourceColumn: Active
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AllowDocDownload
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 8e463936-4b57-43be-b028-ce8746cc1319
+		summarizeBy: none
+		sourceColumn: AllowDocDownload
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AllowPrint
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: e55ce625-bb6e-4093-a4de-00fa44b2f4e6
+		summarizeBy: none
+		sourceColumn: AllowPrint
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Disclaimer_Accepted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 1fa5e9d2-1af0-47c1-b7ca-7f9075af8e06
+		summarizeBy: none
+		sourceColumn: Disclaimer_Accepted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QAGateKeeper
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 8c476299-7e1f-45f3-a0b5-413aaab1d0ef
+		summarizeBy: none
+		sourceColumn: QAGateKeeper
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QAAllowToReply
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: a74c9b0e-356a-42cc-9fc4-6f151f5fddca
+		summarizeBy: none
+		sourceColumn: QAAllowToReply
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QAAllowToRequest
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 3a38471a-ae51-435a-9c26-e5be87331735
+		summarizeBy: none
+		sourceColumn: QAAllowToRequest
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DocumentViewer
+		dataType: int64
+		formatString: 0
+		displayFolder: Boolean
+		lineageTag: cbb51e10-d3d5-4dc9-a4fb-be69ce2404da
+		summarizeBy: sum
+		sourceColumn: DocumentViewer
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExistsCrm
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 1080e3ab-e9a1-438f-a0a1-cb0bc1cb1297
+		summarizeBy: none
+		sourceColumn: ExistsCrm
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstLoginTimestamp
+		dataType: dateTime
+		formatString: General Date
+		displayFolder: User Info
+		lineageTag: d41bfc05-b664-4e5f-9b08-47eefef86470
+		summarizeBy: none
+		sourceColumn: FirstLoginTimestamp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastLoginDateApp
+		dataType: dateTime
+		formatString: General Date
+		displayFolder: User Info
+		lineageTag: 4668c11a-e325-4777-a149-2812a4b94c13
+		summarizeBy: none
+		sourceColumn: LastLoginDateApp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastLoginDateWeb
+		dataType: dateTime
+		formatString: General Date
+		displayFolder: User Info
+		lineageTag: b80e6a5a-2cad-4f1e-87f5-905108d82df6
+		summarizeBy: none
+		sourceColumn: LastLoginDateWeb
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsTaskManager
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 09924468-024c-4629-b2ba-6d92706ee02f
+		summarizeBy: none
+		sourceColumn: IsTaskManager
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsTaskNotificationEnabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 541f9144-bd0f-40b1-9978-399b69a9e655
+		summarizeBy: none
+		sourceColumn: IsTaskNotificationEnabled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsTaskNotificationsWarningDismissed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 4174a60d-cadc-4406-8683-ec6068eb638f
+		summarizeBy: none
+		sourceColumn: IsTaskNotificationsWarningDismissed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_ID
+		dataType: string
+		lineageTag: 49308ea0-5d4c-42c7-a76a-3f0f03a35258
+		summarizeBy: none
+		sourceColumn: PortalUser_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Days_Since_User_Creation
+		dataType: int64
+		formatString: 0
+		displayFolder: User Info
+		lineageTag: 19e2b59f-80b2-4c13-8c0b-882018c9fe4c
+		summarizeBy: sum
+		sourceColumn: Days_Since_User_Creation
+
+		annotation SummarizationSetBy = Automatic
+
+	column User_Email
+		dataType: string
+		displayFolder: User Info
+		lineageTag: dbfdaff6-cbaf-4fcb-b923-c0d70305335d
+		summarizeBy: none
+		sourceColumn: User_Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mail Domain'
+		dataType: string
+		displayFolder: User Info
+		lineageTag: bf1938b4-5442-4f03-9160-d40602545e15
+		summarizeBy: none
+		sourceColumn: Mail Domain
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mail End Domain'
+		dataType: string
+		displayFolder: User Info
+		lineageTag: aa24fabf-0fc7-4de5-9a08-531d626cfa5a
+		summarizeBy: none
+		sourceColumn: Mail End Domain
+
+		annotation SummarizationSetBy = Automatic
+
+	column User_Name
+		dataType: string
+		displayFolder: User Info
+		lineageTag: 88ab81d9-0f48-4362-a23a-8b92129b36d1
+		summarizeBy: none
+		sourceColumn: User_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User System Role'
+		dataType: string
+		displayFolder: User Info
+		lineageTag: 0965e9de-e94a-4126-8e44-047c6633721b
+		summarizeBy: none
+		sourceColumn: User System Role
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserRole
+		dataType: string
+		displayFolder: User Info
+		lineageTag: 72d341c1-bcd0-4621-9062-d56bc7d9d2cc
+		summarizeBy: none
+		sourceColumn: UserRole
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Seller
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 5462d92d-e98d-4b24-833b-9fd8bbc71618
+		summarizeBy: none
+		sourceColumn: Is_Seller
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_User_Order_Number
+		dataType: int64
+		formatString: 0
+		lineageTag: 1296de47-b1df-4df4-ad4b-5f50ebdd0dfa
+		summarizeBy: none
+		sourceColumn: Portal_User_Order_Number
+
+		annotation SummarizationSetBy = User
+
+	column Is_App_User
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 6dd0dd2d-100d-4494-9fe7-f9f2a6aea7ba
+		summarizeBy: none
+		sourceColumn: Is_App_User
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_Newsletter_Subscription
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Subscriptions
+		lineageTag: 6251585b-807f-4b3b-80c6-074888ccbc59
+		summarizeBy: none
+		sourceColumn: Portal_Newsletter_Subscription
+
+		annotation SummarizationSetBy = Automatic
+
+	column System_Updates_Subscription
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Subscriptions
+		lineageTag: 6500844c-d613-4a57-8992-3f70c56dcec3
+		summarizeBy: none
+		sourceColumn: System_Updates_Subscription
+
+		annotation SummarizationSetBy = Automatic
+
+	column Secure_Messaging_Subscription
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Subscriptions
+		lineageTag: 7b3b00a6-cbde-47a0-ba0a-17cd37bf4427
+		summarizeBy: none
+		sourceColumn: Secure_Messaging_Subscription
+
+		annotation SummarizationSetBy = Automatic
+
+	column User_2FA_Enabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4d52cfef-baf5-4b84-9a6c-abaab76d4d47
+		summarizeBy: none
+		sourceColumn: User_2FA_Enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_2FA_Enabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: f9f7f6fe-d903-47a9-8d69-515d3ee72227
+		summarizeBy: none
+		sourceColumn: Portal_2FA_Enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column TwoFactorAuthentication
+		dataType: string
+		lineageTag: ee3f3116-d5db-426e-aae3-59be3f86ca08
+		summarizeBy: none
+		sourceColumn: TwoFactorAuthentication
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_2FA_Enabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Boolean
+		lineageTag: 29e802da-0718-49d9-b573-2fab78443844
+		summarizeBy: none
+		sourceColumn: Is_2FA_Enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExportUser
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5af4681b-d443-4d60-a004-b83450273daa
+		summarizeBy: none
+		sourceColumn: ExportUser
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrgOwner
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5bab5408-5ea5-4720-9892-c1634e756f1d
+		summarizeBy: none
+		sourceColumn: OrgOwner
+
+		annotation SummarizationSetBy = Automatic
+
+	column Active_PortalUser_Count
+		dataType: int64
+		formatString: 0
+		lineageTag: be5c619e-9ae4-41a3-927f-24859212bdfb
+		summarizeBy: sum
+		sourceColumn: Active_PortalUser_Count
+
+		annotation SummarizationSetBy = Automatic
+
+	partition User-6d127155-3f16-4e52-a05e-b72fef1b2f4f = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Dimension_User_View = Datamarts_Schema{[Name="Reporting_Admct_Dimension_User",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Admct_Dimension_User_View,{{"Mail_Domain", "Mail Domain"}, {"Mail_End_Domain", "Mail End Domain"}, {"Salesforce_User_Role", "UserRole"}, {"System_Role", "User System Role"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

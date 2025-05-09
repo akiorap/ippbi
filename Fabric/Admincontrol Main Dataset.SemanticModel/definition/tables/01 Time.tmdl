@@ -1,0 +1,123 @@
+table '01 Time'
+	lineageTag: cb80b620-59df-4d0c-b177-9315fb02a2ba
+
+	column Time_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: c7fd5806-9570-4117-b101-ccf6c2b7ff10
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hour
+		dataType: string
+		lineageTag: fa48d320-4b22-4b4c-bfad-c7609989e7e8
+		summarizeBy: none
+		sourceColumn: Hour
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hour_of_Day
+		dataType: string
+		lineageTag: 174bc93e-c70e-439f-9374-0ec84d750421
+		summarizeBy: none
+		sourceColumn: Hour_of_Day
+		sortByColumn: Hour
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Minute
+		dataType: string
+		lineageTag: 99f4bbb7-4b50-40ee-87b7-abd8ce106872
+		summarizeBy: none
+		sourceColumn: Minute
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Minute_of_Hour
+		dataType: string
+		lineageTag: 30745bc0-30a1-408f-908d-62f8b412975e
+		summarizeBy: none
+		sourceColumn: Minute_of_Hour
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Second
+		dataType: string
+		lineageTag: ce46c114-3bcf-449b-82ac-149dae37a0cf
+		summarizeBy: none
+		sourceColumn: Second
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Second_of_Minute
+		dataType: string
+		lineageTag: d0597383-76ec-4d14-aa15-807d0b4bd67e
+		summarizeBy: none
+		sourceColumn: Second_of_Minute
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AM_PM
+		dataType: string
+		lineageTag: 789dc981-c58f-4035-9ff9-9a9837ded8f4
+		summarizeBy: none
+		sourceColumn: AM_PM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter_of_Hour
+		dataType: double
+		lineageTag: af168ad9-4874-4f3a-bf92-5c41cf4b7d5d
+		summarizeBy: sum
+		sourceColumn: Quarter_of_Hour
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Sort_Order
+		dataType: int64
+		formatString: 0
+		lineageTag: f45c9f7d-4698-4ef2-9e45-7e7f75ee4bcc
+		summarizeBy: sum
+		sourceColumn: Sort_Order
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '01 Time-b5ea1e6a-31c8-4507-b81a-08be2911bd36' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Time_View = Datamarts_Schema{[Name="Reporting_Dimension_Time",Kind="View"]}[Data]
+				in
+				    Reporting_Dimension_Time_View
+
+	annotation PBI_ResultType = Table
+

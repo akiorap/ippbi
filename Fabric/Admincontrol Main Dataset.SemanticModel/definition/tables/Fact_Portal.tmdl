@@ -1,0 +1,243 @@
+table Fact_Portal
+	isHidden
+	lineageTag: 4d33140e-3918-418b-a557-496a096c10f2
+
+	column Portal_ID
+		dataType: string
+		isHidden
+		lineageTag: 61852bda-c025-48a2-91c6-53819c9c2543
+		summarizeBy: none
+		sourceColumn: Portal_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Days_Since_Last_Login
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ec767399-8bc0-4644-8530-dafd4d338136
+		summarizeBy: sum
+		sourceColumn: Days_Since_Last_Login
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Days_Since_Last_Activity
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a29e5aac-d709-4355-8900-18cf33ca7136
+		summarizeBy: sum
+		sourceColumn: Days_Since_Last_Activity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Boardbook_Enabled
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 514d02ec-8a18-4bec-8023-3027bed1affb
+		summarizeBy: sum
+		sourceColumn: Boardbook_Enabled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meeting_Minutes_Enabled
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e0b0eda0-11dd-4cf5-a501-f79b0d6cc690
+		summarizeBy: sum
+		sourceColumn: Meeting_Minutes_Enabled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Board_Evaluation_Enabled
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 51e14698-bfb2-4f79-85ee-87b60844f424
+		summarizeBy: sum
+		sourceColumn: Board_Evaluation_Enabled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Electronic_Signing_Enabled
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5d7f1138-bc69-4228-a654-3b6dd2f23bcb
+		summarizeBy: sum
+		sourceColumn: Electronic_Signing_Enabled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QA_Module_Enabled
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 946d91e7-5663-40b2-9c35-2872ab330844
+		summarizeBy: sum
+		sourceColumn: QA_Module_Enabled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Enabled_SecureMessage
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 57b5b253-b95c-49fb-b4cd-6e27b84f56b6
+		summarizeBy: sum
+		sourceColumn: Enabled_SecureMessage
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Redaction_Tool_Enabled
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: eb31922f-2d55-49f8-a45a-6e9ace60458e
+		summarizeBy: sum
+		sourceColumn: Is_Redaction_Tool_Enabled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Decisions_Enabled
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ae06645d-91da-4f70-8b6e-5a8cb58379b5
+		summarizeBy: sum
+		sourceColumn: Decisions_Enabled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Voting_Enabled
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 49b15380-8f0d-40e6-9347-27db0d4e46fb
+		summarizeBy: sum
+		sourceColumn: Voting_Enabled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Areas_Of_Use
+		dataType: int64
+		formatString: 0
+		lineageTag: d784af06-3134-4951-93d7-a69b53fdf99d
+		summarizeBy: sum
+		sourceColumn: Areas_Of_Use
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_Age_Days
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ecd7bf4-7892-42b4-84d9-26288330c8a3
+		summarizeBy: sum
+		sourceColumn: Portal_Age_Days
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classification_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6eeb345c-e6a2-4fc9-a3a8-622a97c813b8
+		summarizeBy: none
+		sourceColumn: Classification_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Annual_Plan_Enabled
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f59065d-7b3e-410a-b38b-4b1b764e91d8
+		summarizeBy: sum
+		sourceColumn: Annual_Plan_Enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUM_Features_Secondary
+		dataType: int64
+		formatString: 0
+		lineageTag: 146f888c-fe89-4d97-8025-cec164495389
+		summarizeBy: sum
+		sourceColumn: SUM_Features_Secondary
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUM_Potential_Main
+		dataType: int64
+		formatString: 0
+		lineageTag: 5edd92ac-399a-477a-9584-a1b7055c7f19
+		summarizeBy: sum
+		sourceColumn: SUM_Potential_Main
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_User_Roles
+		dataType: int64
+		formatString: 0
+		lineageTag: b1b0c8e5-2945-4a89-b6cd-8bd98f153e72
+		summarizeBy: sum
+		sourceColumn: Portal_User_Roles
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d021de5-f66b-4283-acf3-4b1563117a3d
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Created_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c145c9d-5391-4a77-a84c-f27a66d8ad96
+		summarizeBy: count
+		sourceColumn: Date_Created_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Portal = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_Portal_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_Portal",Kind="View"]}[Data]
+				in
+				    #"Reporting_Admct_Fact_Portal_View"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

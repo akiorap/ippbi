@@ -1,0 +1,119 @@
+table Fact_MeetingMinutes
+	isHidden
+	lineageTag: 7ef8e273-178c-40c5-a788-6880410c757a
+
+	column MeetingMinutes_ID
+		dataType: string
+		isHidden
+		lineageTag: 16ba1a1b-6673-45b9-8513-249dc0acf8c1
+		summarizeBy: none
+		sourceColumn: MeetingMinutes_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ddb84342-9f64-4c55-8757-b0490d3b14ed
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cb8f0146-9b38-4d0e-8b1b-7b33703969c9
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_ID
+		dataType: string
+		isHidden
+		lineageTag: 29e6f406-99cc-4d48-86cc-e541cf3e31c0
+		summarizeBy: none
+		sourceColumn: PortalUser_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_ID
+		dataType: string
+		isHidden
+		lineageTag: 71719793-1e8b-40af-b3aa-b794e57c9516
+		summarizeBy: none
+		sourceColumn: Portal_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Event_Item_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7f8fd05d-e345-4c3e-8b27-7a64470d79a4
+		summarizeBy: count
+		sourceColumn: Event_Item_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Deleted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7d492f9e-fba9-467e-9d35-41e39910c280
+		summarizeBy: none
+		sourceColumn: Is_Deleted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category_ID
+		dataType: string
+		lineageTag: d16e9aa9-0551-42d7-b31a-9fbe389836a9
+		summarizeBy: none
+		sourceColumn: Category_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7990c605-ea25-4d52-ab31-5acf0b417eca
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_MeetingMinutes-960ba298-dd26-4464-96dc-8c0afd84d97b = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_MeetingMinutes_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_MeetingMinutes",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_MeetingMinutes_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

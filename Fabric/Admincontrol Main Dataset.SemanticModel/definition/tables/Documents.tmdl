@@ -1,0 +1,82 @@
+table Documents
+	lineageTag: ce2bd24f-fca5-4373-b6b1-d72bdc817171
+
+	column SK_Document
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d63ac8ad-d3e6-44fa-aaa8-3d35b0460949
+		summarizeBy: none
+		sourceColumn: SK_Document
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Document_Type_Column
+		dataType: string
+		lineageTag: 1f2ebf2d-a89d-416a-8f0e-84861725dc40
+		summarizeBy: none
+		sourceColumn: Document_Type_Column
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Indexed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e72d111f-5f78-431a-983e-c037e8148e2b
+		summarizeBy: none
+		sourceColumn: Is_Indexed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Redacted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: da78eb32-08e6-4755-a013-255606e901df
+		summarizeBy: none
+		sourceColumn: Is_Redacted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Encrypted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6aaf60be-c19d-409a-a083-cbbf434460d1
+		summarizeBy: none
+		sourceColumn: Is_Encrypted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Xod_Error
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b4282b79-937b-4f7d-8b20-33135906fbfe
+		summarizeBy: none
+		sourceColumn: Xod_Error
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Documents-1fd7c875-1ea7-4882-9143-2248d6632c22 = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Dimension_Documents_View = Datamarts_Schema{[Name="Reporting_Admct_Dimension_Documents",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Dimension_Documents_View
+
+	annotation PBI_ResultType = Table
+

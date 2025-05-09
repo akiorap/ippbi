@@ -1,0 +1,20 @@
+table MonthIndexTable
+	lineageTag: ff51d50f-08d8-4562-8564-2e721641c8c8
+
+	column 'Month Index'
+		formatString: 0
+		lineageTag: a99c23ea-4498-41be-810d-ae7581725544
+		summarizeBy: sum
+		sourceColumn: Fact_ML_Mart_Churn_Prediction_Data[month_index]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MonthIndexTable = calculated
+		mode: import
+		source = ```
+				DISTINCT(Fact_ML_Mart_Churn_Prediction_Data[month_index])
+				
+				```
+
+	annotation PBI_Id = fa756d37738a4513bbc060408ec14117
+

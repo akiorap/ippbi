@@ -1,0 +1,72 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Login_Method","Login","Metrics","01 Date","01 Time","Cloud Location","Salesforce_Account","Portal","User","Dim Category","Documents","Dim_Task","Boardbook","Board_Survey","Board_Survey_Content","Portal Classification","Signing_Status","Support Case Owner","Case_Status","Case_Details","Wootric Response Source","Wootric Responses","Fact_SecureMessages","Fact_QuesionsAndAnswers","Fact_MeetingMinutes","Fact_Item","Doc AccessHistory","Fact_Boardbook","Item_Type","Fact_User","Fact_Signing","Fact_Case","Fact_Portal","Fact_Survey_Answer","Fact_Login","Fact_Documents","Fact_DocAccessHistory_Agg_YearMonth","Fact_RedactionHistory","Fact_BulkDownload","Fact_Tasks","Snapshot_History","Fact_Wootric_Responses","Fact_Folders","Fact_ML_Mart_Churn_Prediction_Data","BigQueryProject"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.140.1454.0 (25.02)+e2197f0c4ba3450e119e1aea750568d97991832a
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop"]
+
+annotation __TEdtr = 1
+
+ref table Login_Method
+ref table Login
+ref table Metrics
+ref table '01 Date'
+ref table '01 Time'
+ref table Fact_SecureMessages
+ref table Fact_QuesionsAndAnswers
+ref table Fact_MeetingMinutes
+ref table Fact_Item
+ref table Fact_Boardbook
+ref table Boardbook
+ref table Item_Type
+ref table Portal
+ref table MetricsTable
+ref table User
+ref table Fact_User
+ref table 'Measure Statistic'
+ref table Documents
+ref table Fact_Signing
+ref table Signing_Status
+ref table Salesforce_Account
+ref table Fact_Case
+ref table Case_Status
+ref table Case_Details
+ref table 'Support Case Owner'
+ref table Board_Survey
+ref table Board_Survey_Content
+ref table Fact_Portal
+ref table Fact_Survey_Answer
+ref table 'Dim Category'
+ref table Fact_Login
+ref table Fact_Documents
+ref table 'Doc AccessHistory'
+ref table Fact_DocAccessHistory_Agg_YearMonth
+ref table Fact_RedactionHistory
+ref table Snapshot_History
+ref table 'CST Report Metrics'
+ref table 'Portal Classification'
+ref table '99 Num Range 5-50'
+ref table '99 BES Price'
+ref table '99 AP Price'
+ref table Fact_Wootric_Responses
+ref table 'Wootric Response Source'
+ref table 'Wootric Responses'
+ref table Fact_Folders
+ref table Fact_ML_Mart_Churn_Prediction_Data
+ref table MonthIndexTable
+ref table 'Cloud Location'
+ref table Fact_BulkDownload
+ref table Fact_Tasks
+ref table Dim_Task
+
+ref cultureInfo en-US
+

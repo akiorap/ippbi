@@ -1,0 +1,1190 @@
+table Metrics
+	lineageTag: 1270e3c4-e81e-46ee-a45c-109f6a414dd3
+
+	measure Login = SUM(Fact_Login[Sum_Logins])
+		formatString: #,0
+		displayFolder: 08 Login
+		lineageTag: 308b8509-5658-40b0-942f-cbd685391af0
+
+		changedProperty = IsHidden
+
+	measure MeetingMinutes = CALCULATE(COUNTROWS('Fact_MeetingMinutes'),'Fact_MeetingMinutes'[Is_Deleted] = FALSE)
+		formatString: #,0
+		displayFolder: 01 Aggregates
+		lineageTag: 73ad8cbd-c22a-421e-af21-2a881107cc57
+
+		changedProperty = IsHidden
+
+	measure BoardBook = CALCULATE(COUNT('Fact_Boardbook'[Boardbook_ID]), Fact_Boardbook[IS_Deleted] = FALSE)
+		formatString: #,0
+		displayFolder: 01 Aggregates
+		lineageTag: cb255282-857f-4726-a075-d825eb8bd76a
+
+		changedProperty = IsHidden
+
+	measure Folders = SUM(Fact_Folders[Folders])
+		formatString: #,0
+		displayFolder: 01 Aggregates
+		lineageTag: 5152ae1a-9341-40e5-8cee-8f3406cfc38c
+
+		changedProperty = IsHidden
+
+	measure Documents = CALCULATE(SUM('Fact_Documents'[Sum_Documents]), Fact_Documents[Storage_Status] = "Active")
+		formatString: #,0
+		displayFolder: 01 Aggregates
+		lineageTag: aa7178c6-c76f-4f43-9bd6-5fe613c85260
+
+		changedProperty = IsHidden
+
+	measure Items = SUM('Fact_Item'[Sum_Items])
+		formatString: #,0
+		displayFolder: 01 Aggregates
+		lineageTag: 0bfd300a-756a-435c-b3ae-47f1adfda54f
+
+		changedProperty = IsHidden
+
+	measure QnA = CALCULATE(COUNTROWS('Fact_QuesionsAndAnswers'),'Fact_QuesionsAndAnswers'[Is_Deleted] = FALSE )
+		formatString: #,0
+		displayFolder: 01 Aggregates
+		lineageTag: c7b2ae1a-ff4e-4aaa-bb15-e23eae3d2b42
+
+		changedProperty = IsHidden
+
+	measure SecureMessages = CALCULATE(COUNTROWS('Fact_SecureMessages'), Fact_SecureMessages[IS_Deleted] = FALSE)
+		formatString: #,0
+		displayFolder: 01 Aggregates
+		lineageTag: ac1b897a-4b73-4a6b-9ddc-a746ebd43bd6
+
+		changedProperty = IsHidden
+
+	measure 'Selected Metric' =
+			
+			VAR SelectedMeasure =
+			    SELECTEDVALUE ( MetricsTable[Metric] )
+			RETURN
+			    SWITCH (
+			        COALESCE(SelectedMeasure, "Count BoardBook"),
+			        "Created BoardBook", [BoardBook],
+			        "Created Documents", [Documents],
+			        "Created Folders", [Folders],
+			        "Count Login", [Login],
+			        "Created MeetingMinutes", [MeetingMinutes],
+			        "Created QnA", [QnA],
+			        "Created SecureMessages", [SecureMessages],
+			        "Created Users", [Users],
+			        "Created Meetings", [Meetings],
+			        "Signed Documents", [Signed Documents],
+			        "Support Cases", [Support Cases],
+			        "Active Storage GB", [Active Storage GB],
+			        "Unique Users Login", [Unique Users Login],
+			        "Completed Signings", [Completed Signings],
+			        "Portal User Roles", [Portal User Roles],
+			        "User Role Count", [User Role Count]
+			    )
+		formatString: #,0
+		displayFolder: 99 Advanced Metrics
+		lineageTag: 71506882-3447-42df-a4e8-ebb7d8cabd08
+
+		changedProperty = IsHidden
+
+	measure 'Max per Portal_ID' =
+			
+			MAXX(
+				KEEPFILTERS(VALUES('Portal'[Portal_ID])),
+				CALCULATE([Selected Metric])
+			)
+		formatString: 0
+		displayFolder: 02 Analytical measures
+		lineageTag: d915e2ad-83e1-48c6-921a-16f35f4c3e9a
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MaxPerCategory"
+				}
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+	measure 'Median Selected Metric per Portal' =
+			
+			CALCULATE(
+			    MEDIANX(
+			        KEEPFILTERS(VALUES('Portal'[Portal_ID])),
+			        [Selected Metric]
+			    ),
+			    FILTER(
+			        ALL('Portal'[Portal_ID]),
+			        NOT ISBLANK([Selected Metric])
+			    )
+			)
+		formatString: 0.00
+		displayFolder: 02 Analytical measures
+		lineageTag: a629dd89-9cab-4d0d-9825-82a90ca79b0b
+
+		changedProperty = IsHidden
+
+	measure Meetings = CALCULATE(SUM('Fact_Item'[Sum_Items]),Item_Type[Item_System_Type] = "E")
+		formatString: #,0
+		displayFolder: 01 Aggregates
+		lineageTag: 2b71ae5e-2c44-4593-9957-a782c5ebe6e3
+
+		changedProperty = IsHidden
+
+	measure Users = IF( NOT( OR ( HASONEFILTER('Dim Category'[H_ID_0]), HASONEFILTER('Dim Category'[H_ID_1]))) , CALCULATE(DISTINCTCOUNT('Fact_User'[User_GUID]),'User'[Active]= TRUE), BLANK())
+		formatString: #,0
+		displayFolder: 09 User
+		lineageTag: 586d0568-739e-4ba8-96fd-be6c41501aed
+
+		changedProperty = IsHidden
+
+	measure 'Standard Deviation Selected Metric per Portal' = ```
+			
+			CALCULATE(
+			    STDEVX.P(
+			        KEEPFILTERS(VALUES('Portal'[Portal_ID])),
+			        [Selected Metric]
+			    ),
+			    FILTER(
+			        ALL('Portal'[Portal_ID]),
+			        NOT ISBLANK([Selected Metric])
+			    )
+			)
+			
+			```
+		formatString: 0.00
+		displayFolder: 02 Analytical measures
+		lineageTag: c7272a8a-c7b0-41bc-ab16-11db2b72739b
+
+		changedProperty = IsHidden
+
+	measure 'Percentile 99.9 Selected Metric per Portal' = ```
+			
+			CALCULATE(
+			    PERCENTILEX.INC(
+			        KEEPFILTERS(VALUES('Portal'[Portal_ID])),
+			        [Selected Metric],
+			        0.999
+			    ),
+			    FILTER(
+			        ALL('Portal'[Portal_ID]),
+			        NOT ISBLANK([Selected Metric])
+			    )
+			)
+			
+			```
+		formatString: 0.00
+		displayFolder: 02 Analytical measures
+		lineageTag: 70344be2-b7e3-4b9a-b482-249ad6f0bcb0
+
+		changedProperty = IsHidden
+
+	measure 'Percentile 99.5 Selected Metric per Portal' = ```
+			
+			CALCULATE(
+			    PERCENTILEX.INC(
+			        KEEPFILTERS(VALUES('Portal'[Portal_ID])),
+			        [Selected Metric],
+			        0.995
+			    ),
+			    FILTER(
+			        ALL('Portal'[Portal_ID]),
+			        NOT ISBLANK([Selected Metric])
+			    )
+			)
+			
+			```
+		formatString: 0.00
+		displayFolder: 02 Analytical measures
+		lineageTag: 89303d23-67d4-43b0-907d-ac69698acec3
+
+		changedProperty = IsHidden
+
+	measure 'Percentile 95 Selected Metric per Portal' = ```
+			
+			CALCULATE(
+			    PERCENTILEX.INC(
+			        KEEPFILTERS(VALUES('Portal'[Portal_ID])),
+			        [Selected Metric],
+			        0.95
+			    ),
+			    FILTER(
+			        ALL('Portal'[Portal_ID]),
+			        NOT ISBLANK([Selected Metric])
+			    )
+			)
+			
+			```
+		formatString: 0.00
+		displayFolder: 02 Analytical measures
+		lineageTag: 91c96612-fe84-489f-b29f-a5d50ddf1ac6
+
+		changedProperty = IsHidden
+
+	measure 'Percentile 90 Selected Metric per Portal' = ```
+			
+			CALCULATE(
+			    PERCENTILEX.INC(
+			        KEEPFILTERS(VALUES('Portal'[Portal_ID])),
+			        [Selected Metric],
+			        0.90
+			    ),
+			    FILTER(
+			        ALL('Portal'[Portal_ID]),
+			        NOT ISBLANK([Selected Metric])
+			    )
+			)
+			
+			```
+		formatString: 0.00
+		displayFolder: 02 Analytical measures
+		lineageTag: 9393efc5-e5d6-4546-8305-88b2d2f760b4
+
+		changedProperty = IsHidden
+
+	measure 'Average Selected Metric per Portal' = ```
+			
+			CALCULATE(
+			    AVERAGEX(
+			        KEEPFILTERS(VALUES('Portal'[Portal_ID])),
+			        [Selected Metric]
+			    ),
+			    FILTER(
+			        ALL('Portal'[Portal_ID]),
+			        NOT ISBLANK([Selected Metric])
+			    )
+			)
+			
+			```
+		formatString: 0.00
+		displayFolder: 02 Analytical measures
+		lineageTag: c536c192-b2de-462c-a36a-5da3633c53c3
+
+		changedProperty = IsHidden
+
+	measure 'Variance Selected Metric per Portal' = ```
+			
+			CALCULATE(
+			    VARX.P(
+			        KEEPFILTERS(VALUES('Portal'[Portal_ID])),
+			        [Selected Metric]
+			    ),
+			    FILTER(
+			        ALL('Portal'[Portal_ID]),
+			        NOT ISBLANK([Selected Metric])
+			    )
+			)
+			
+			```
+		formatString: 0.00
+		displayFolder: 02 Analytical measures
+		lineageTag: 92de2af6-673d-4552-957c-86954efe1f5f
+
+		changedProperty = IsHidden
+
+	measure 'Selected Statistic' = ```
+			
+			VAR SelectedMeasure =
+			    SELECTEDVALUE ( 'Measure Statistic'[Statistic])
+			RETURN
+			    SWITCH (
+			        SelectedMeasure,
+			        "Variance", [Variance Selected Metric per Portal],
+			        "Standard Deviation", [Standard Deviation Selected Metric per Portal],
+			        "Percentile 99.9", [Percentile 99.9 Selected Metric per Portal],
+			        "Percentile 99.5", [Percentile 99.5 Selected Metric per Portal],
+			        "Percentile 95", [Percentile 95 Selected Metric per Portal],
+			        "Percentile 90", [Percentile 90 Selected Metric per Portal],
+			        "Average", [Average Selected Metric per Portal],
+			        "Max per Portal_ID", [Max per Portal_ID],
+			        "Median", [Median Selected Metric per Portal]
+			    )
+			
+			```
+		formatString: #,0
+		displayFolder: 99 Advanced Metrics
+		lineageTag: 6abf555b-d97e-4de7-bd99-1a71e52ccfc4
+
+		changedProperty = IsHidden
+
+	measure 'Sum Pages' = CALCULATE(SUM('Fact_Documents'[Sum_Document_Pages]), Fact_Documents[Storage_Status] <> "Permanent Delete")
+		formatString: #,0
+		displayFolder: 03 File Metadata
+		lineageTag: 53611e9a-d097-40d5-9f92-b7f56c59e4ee
+
+		changedProperty = IsHidden
+
+	measure 'Sum FileSizeKB' = SUM(Fact_Documents[Sum_File_Size_KB])
+		formatString: #,0
+		displayFolder: 03 File Metadata
+		lineageTag: 446e3ec4-290d-49d2-918f-91aae8441b6d
+
+		changedProperty = IsHidden
+
+	measure 'Storage GB' = CALCULATE(DIVIDE([Sum FileSizeKB], 1048576), Fact_Documents[Storage_Status] <> "Permanent Delete")
+		formatString: #,0.00
+		displayFolder: 03 File Metadata
+		lineageTag: 2e601ffa-8b5a-42fe-ac4c-4305be10caf8
+
+		changedProperty = IsHidden
+
+	measure 'Signed Documents' = CALCULATE(DISTINCTCOUNT(Fact_Signing[Document_ID]),Fact_Signing[Is_Signed]= 1, Signing_Status[Request_Status_ID] = 3)
+		formatString: #,0
+		displayFolder: 05 Signing
+		lineageTag: 331d83f2-cbf2-4318-a41b-c1e601e649f0
+
+		changedProperty = IsHidden
+
+	measure 'Signings Requested' =
+			CALCULATE(COUNTROWS(Fact_Signing)
+			, Fact_Signing[Is_Requested]= 1
+			, Signing_Status[Request_Status_ID] = 3
+			, USERELATIONSHIP('01 Date'[Date_ID],Fact_Signing[Date_Requested_ID])
+			, USERELATIONSHIP(User[PortalUser_ID], Fact_Signing[PortalUser_ID_Requested])
+			)
+		formatString: 0
+		displayFolder: 05 Signing
+		lineageTag: a3f336cc-de20-47d4-b048-3b1cfd91f9d4
+
+		changedProperty = IsHidden
+
+	measure 'Completed Signings' = CALCULATE(COUNTROWS(Fact_Signing),Fact_Signing[Is_Signed]= 1, Signing_Status[Request_Status_ID] = 3)
+		formatString: #,0
+		displayFolder: 05 Signing
+		lineageTag: 70f18455-666a-4909-a233-1c568748ed9c
+
+		changedProperty = IsHidden
+
+	measure 'Pending Signatures' = CALCULATE(COUNTROWS(Fact_Signing), Signing_Status[Request_Status_ID] = 2)
+		formatString: 0
+		displayFolder: 05 Signing
+		lineageTag: 097adfc4-6387-4e91-9150-b962ab536412
+
+		changedProperty = IsHidden
+
+	measure Signings = COUNTROWS(Fact_Signing)
+		formatString: #,0
+		displayFolder: 05 Signing
+		lineageTag: bf23c0e8-5596-497a-911b-b67f0433ff09
+
+		changedProperty = IsHidden
+
+	measure 'Documents Pending Sign' = CALCULATE(DISTINCTCOUNT(Fact_Signing[Document_ID]),Fact_Signing[Is_Pending_Document]= 1)
+		formatString: 0
+		displayFolder: 05 Signing
+		lineageTag: 7e26b95b-3804-4bfd-94e7-ac25ff502a7e
+
+		changedProperty = IsHidden
+
+	measure 'Active Portals' = ```
+			
+			IF( NOT( OR ( HASONEFILTER('Dim Category'[H_ID_0]), HASONEFILTER('Dim Category'[H_ID_1]))) , 
+			CALCULATE(DISTINCTCOUNT(Fact_Portal[Portal_ID]), Portal[Active_Portal] = TRUE, Portal[Demo_Portal] = FALSE)
+			, BLANK())
+			```
+		formatString: #,0
+		displayFolder: 10 Portal
+		lineageTag: e1cc209a-e8bc-444f-b566-7439409cd873
+
+		changedProperty = IsHidden
+
+	measure 'Active Storage GB' = CALCULATE(DIVIDE([Sum FileSizeKB], 1048576), Fact_Documents[Storage_Status] = "Active")
+		formatString: #,0.00
+		displayFolder: 03 File Metadata
+		lineageTag: a4599081-c44e-4095-a44d-5d3997c6954c
+
+	measure 'Latest Data update' = MAX(Portal[Date_Snapshot])
+		formatString: General Date
+		displayFolder: 99 Advanced Metrics
+		lineageTag: deb0f060-4999-41cc-901a-158103f8f603
+
+	measure 'BoardBook PP' = ```
+			CALCULATE([BoardBook]
+				                             ,DATESBETWEEN(
+												 '01 Date'[Date],
+												 [Start of Previous Period],
+												 [End of Previous Period]),
+												 ALL('01 Date') 
+			                        )
+			```
+		formatString: 0
+		displayFolder: 01 Aggregates
+		lineageTag: 91ee5ed0-f6d4-45c4-83ac-55ac6a172e13
+
+	measure 'Start of This Period' = FIRSTDATE('01 Date'[Date])
+		formatString: General Date
+		displayFolder: 99 Advanced Metrics
+		lineageTag: 16964a52-f053-4f86-8581-65dedc34db83
+
+	measure 'End of This Period' = LASTDATE('01 Date'[Date])
+		formatString: General Date
+		displayFolder: 99 Advanced Metrics
+		lineageTag: 86d523df-a4e3-442a-9646-99e2cbff1dfd
+
+	measure 'Days in This Period' = DATEDIFF([Start of This Period],[End of This Period],DAY)
+		formatString: 0
+		displayFolder: 99 Advanced Metrics
+		lineageTag: d828e950-3a74-423c-97d5-8045e989ecc7
+
+	measure 'Start of Previous Period' = PREVIOUSDAY(FIRSTDATE(DATEADD('01 Date'[Date],-1*[Days in This Period],DAY)))
+		formatString: General Date
+		displayFolder: 99 Advanced Metrics
+		lineageTag: 3df600a8-5607-4a4c-a0b2-f3f2e2c5a4e8
+
+	measure 'End of Previous Period' = PREVIOUSDAY(LASTDATE(DATEADD('01 Date'[Date],-1*[Days in This Period],DAY)))
+		formatString: General Date
+		displayFolder: 99 Advanced Metrics
+		lineageTag: 7b6563d0-2352-4ce7-b720-12a0fdbc0b9a
+
+	measure 'Days in Previous Period' = DATEDIFF([Start of Previous Period],[End of Previous Period],DAY)
+		formatString: 0
+		displayFolder: 99 Advanced Metrics
+		lineageTag: 11a7f7f7-90c9-4c1e-8533-2d93d7804ae6
+
+	measure 'Boardbook vs PP' = [BoardBook] - [BoardBook PP]
+		formatString: 0
+		displayFolder: 01 Aggregates
+		lineageTag: 2ca966b0-ac68-4a41-a348-c8e2d15458b3
+
+	measure 'Active Portals By Date' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('Portal'[Portal_ID]),
+			    FILTER(
+			        ALL('Portal'),
+			        (
+			            ('Portal'[Date_Closed] >= MAX('01 Date'[Date]) || ISBLANK('Portal'[Date_Closed]))
+			            && 'Portal'[Demo_Portal] = FALSE
+			            && 'Portal'[Date_Created] <> BLANK()
+			        )
+			    )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 99 Advanced Metrics
+		lineageTag: bd0510f4-7a99-4058-b74e-8f42f48a092d
+
+	measure 'Documents PP' = ```
+			CALCULATE([Documents]
+				                             ,DATESBETWEEN(
+												 '01 Date'[Date],
+												 [Start of Previous Period],
+												 [End of Previous Period]),
+												 ALL('01 Date') 
+			                        )
+			```
+		formatString: 0
+		displayFolder: 01 Aggregates
+		lineageTag: 9fa237b6-6310-4c99-b280-b27e6855c5bd
+
+	measure 'Portals with Boardbook' = CALCULATE(DISTINCTCOUNT(Fact_Boardbook[Portal_ID]), Portal[Active_Portal] = TRUE, Portal[Demo_Portal] = FALSE)
+		formatString: #,0
+		displayFolder: 01 Aggregates
+		lineageTag: cc6d5507-bf51-4f47-bda9-9c59a8354dd4
+
+	measure 'Support Cases' = CALCULATE(DISTINCTCOUNT(Fact_Case[Case_ID]), Fact_Case[Is_Deleted] = "false" )
+		formatString: #,0
+		displayFolder: 04 Support
+		lineageTag: 5ebbee81-ab70-4546-a822-2c7ab368a7eb
+
+	measure 'Time to Mailreply' = DIVIDE(SUM(Fact_Case[Time_To_First_Mail_Reply_Seconds]),60,0)
+		formatString: 0.0
+		displayFolder: 04 Support
+		lineageTag: a929b176-22e2-42ae-8eeb-9e0b982e47f2
+
+	measure 'Avg time Mailreply' = CALCULATE(DIVIDE([Time to Mailreply],[Support Cases]), Fact_Case[First_Mail_Reply] <> BLANK())
+		formatString: #,0.00
+		displayFolder: 04 Support
+		lineageTag: 550581ce-aebb-482a-bf36-c5bd8f9f87a6
+
+	measure 'BES Answers' = CALCULATE(DISTINCTCOUNT(Fact_Survey_Answer[Answer_ID]), Fact_Survey_Answer[Survey_Deleted] = 0, Fact_Survey_Answer[Account_Signed_BE_Addendum] = TRUE)
+		formatString: #,0
+		displayFolder: 06 Board Evaluation
+		lineageTag: 2d3769dc-be50-4dad-81ea-ae1670bdca8e
+
+	measure 'Surveys Created' = ```
+			
+			IF( NOT( OR ( HASONEFILTER('Dim Category'[H_ID_0]), HASONEFILTER('Dim Category'[H_ID_1]))) , 
+			CALCULATE(DISTINCTCOUNT(Fact_Survey_Answer[Survey_ID]), USERELATIONSHIP('01 Date'[Date_ID],Fact_Survey_Answer[Date_ID_Survey_Created]))
+			, BLANK())
+			```
+		formatString: #,0
+		displayFolder: 06 Board Evaluation
+		lineageTag: f9eb0dbe-54c4-49ce-a53c-ff95b9595530
+
+	measure 'Surveys Closed' = CALCULATE(DISTINCTCOUNT(Fact_Survey_Answer[Survey_ID]), USERELATIONSHIP('01 Date'[Date_ID],Fact_Survey_Answer[Date_ID_Survey_Closed]))
+		formatString: #,0
+		displayFolder: 06 Board Evaluation
+		lineageTag: 28f81266-6f36-43e7-8154-63fa0281956a
+
+	measure 'Surveys Completed' = CALCULATE([Surveys Closed], Fact_Survey_Answer[Survey_Completed] = 1)
+		formatString: #,0
+		displayFolder: 06 Board Evaluation
+		lineageTag: 7df0bc99-e7e2-43e3-a3a1-7cecac7a91a8
+
+	measure 'Surveys Deleted' = CALCULATE([Surveys Created], Fact_Survey_Answer[Survey_Deleted] = 1)
+		formatString: #,0
+		displayFolder: 06 Board Evaluation
+		lineageTag: a19c81e6-235a-4179-b4dd-9abaf9606dd8
+
+	measure 'Open Surveys' = CALCULATE([Surveys Created], Fact_Survey_Answer[Survey_OpenForResponse] = 1)
+		formatString: #,0
+		displayFolder: 06 Board Evaluation
+		lineageTag: 5d67c505-32a3-47a4-ba48-884fb2d20e98
+
+	measure 'Portals w BES' = CALCULATE([Active Portals],Fact_Portal[Board_Evaluation_Enabled] = 1)
+		formatString: 0
+		displayFolder: 06 Board Evaluation
+		lineageTag: fbaa1f41-8351-4668-8857-cc7f59869af8
+
+	measure 'Portals with BES and no Survey' = IF(AND([Portals w BES] > 0, [Surveys Created] < 1),1,0)
+		formatString: 0
+		displayFolder: 06 Board Evaluation
+		lineageTag: b1240f8d-7151-4a2c-a5f5-dac0e58251bb
+
+	measure 'Surveys wo BES' = IF(AND([Portals w BES] < 1, [Surveys Created] > 0),1,0)
+		formatString: #,0
+		displayFolder: 06 Board Evaluation
+		lineageTag: 2b039396-ccdd-4b9e-9a84-db13e1496177
+
+	measure 'Portals with created Survey' = CALCULATE(DISTINCTCOUNT(Fact_Survey_Answer[Portal_ID]),Fact_Survey_Answer[Date_ID_Survey_Created] <> BLANK())
+		formatString: 0
+		displayFolder: 06 Board Evaluation
+		lineageTag: 03ea839f-a80a-45f5-a56d-9f9584d08cbd
+
+	measure 'Survey Respondends' = CALCULATE(DISTINCTCOUNT(Fact_Survey_Answer[Portal_User_ID]), Fact_Survey_Answer[Survey_Deleted] = 0)
+		formatString: 0
+		displayFolder: 06 Board Evaluation
+		lineageTag: 25572e79-5f83-45c3-b0d2-b403ec19d6f5
+
+	measure 'BES Score' = CALCULATE(AVERAGE(Fact_Survey_Answer[Answer_Score]),Fact_Survey_Answer[Answer_Score] > 0, Fact_Survey_Answer[Survey_Deleted] = 0)
+		formatString: 0.00
+		displayFolder: 06 Board Evaluation
+		lineageTag: 73e59737-d79e-47bb-b611-221fe88fc7e8
+
+	measure AoU = ```
+			
+			IF( NOT( OR ( HASONEFILTER('Dim Category'[H_ID_0]), HASONEFILTER('Dim Category'[H_ID_1]))) , 
+			CALCULATE(SUM(Fact_Portal[Areas_Of_Use]), Portal[Active_Portal] = TRUE, Portal[Demo_Portal] = FALSE)
+			, BLANK())
+			```
+		formatString: #,0
+		displayFolder: 01 Aggregates
+		lineageTag: 92b314c1-16b7-499e-92da-1cd7ced6f717
+
+	measure 'Unique Users Login' = DISTINCTCOUNT('Fact_Login'[User_ID])
+		formatString: #,0
+		displayFolder: 08 Login
+		lineageTag: 145c62a5-5674-4cd0-8e8c-0f0a064cdd67
+
+	measure 'BB Enabled No BBs' = CALCULATE(IF(AND([BoardBook] = 0, AVERAGE('Fact_Portal'[Boardbook_Enabled]) = 1), 1, 0))
+		formatString: 0
+		displayFolder: 98 Conditional Format
+		lineageTag: a5bb105d-0e6d-49f0-abdb-a73bcab113f9
+
+	measure 'MM Enabled No MMs' = CALCULATE(IF(AND([MeetingMinutes] = 0, AVERAGE('Fact_Portal'[Meeting_Minutes_Enabled]) = 1), 1, 0))
+		formatString: 0
+		displayFolder: 98 Conditional Format
+		lineageTag: 5646a86d-6c3a-4db5-a99f-a711c743e7f5
+
+	measure 'ESign Enabled No ESigns' = CALCULATE(IF(AND([Completed Signings] = 0, AVERAGE('Fact_Portal'[Electronic_Signing_Enabled]) = 1), 1, 0))
+		formatString: 0
+		displayFolder: 98 Conditional Format
+		lineageTag: 682bc486-45c0-43df-857d-66653fc2a4fd
+
+	measure 'BES Enabled No BESs' = CALCULATE(IF(AND([Surveys Created] = 0, AVERAGE('Fact_Portal'[Board_Evaluation_Enabled]) = 1), 1, 0))
+		formatString: 0
+		displayFolder: 98 Conditional Format
+		lineageTag: f7173f7c-0d61-4fdc-9cf7-997328923124
+
+	measure 'SM Enabled No SMs' = CALCULATE(IF(AND([SecureMessages] = 0, AVERAGE('Fact_Portal'[Enabled_SecureMessage]) = 1), 1, 0))
+		formatString: 0
+		displayFolder: 98 Conditional Format
+		lineageTag: 4fe0ebd5-a5ca-4611-8d82-70a9a1c485be
+
+	measure 'Documents Accessed' = SUM(Fact_DocAccessHistory_Agg_YearMonth[Count_Distinct_Documents])
+		formatString: #,0
+		displayFolder: 07 DocAccess History
+		lineageTag: a3d2a84d-def3-43e9-855d-0f78c6216cd9
+
+	measure 'DocAccess Count' = SUM(Fact_DocAccessHistory_Agg_YearMonth[Count_AccessHistory_ID])
+		formatString: #,0
+		displayFolder: 07 DocAccess History
+		lineageTag: 4c5ed05f-a2ec-4e10-8004-ae3b9faac06a
+
+	measure 'DocAccess PortalUsers' = SUM(Fact_DocAccessHistory_Agg_YearMonth[Count_Distinct_Portalusers])
+		formatString: #,0
+		displayFolder: 07 DocAccess History
+		lineageTag: e5ac0719-3818-405d-a82d-52860a432a22
+
+	measure 'Access Time Used Minutes' = SUM(Fact_DocAccessHistory_Agg_YearMonth[Time_Used_Minutes])
+		formatString: 0.0
+		displayFolder: 07 DocAccess History
+		lineageTag: a71425c5-cd0c-42c5-bc40-6b5db95ee182
+
+	measure 'Avg Time per Document' = CALCULATE(DIVIDE([Access Time Used Minutes],[Documents Accessed],0),Fact_DocAccessHistory_Agg_YearMonth[Time_Used_Minutes] <> BLANK())
+		formatString: #,0.0
+		displayFolder: 07 DocAccess History
+		lineageTag: 73797ad6-9b3b-4c24-b4dc-04d70010308e
+
+	measure 'Last Production Snapshot' = MAX(Portal[Date_Snapshot])
+		formatString: dd-mmm-yy
+		displayFolder: 99 Advanced Metrics
+		lineageTag: b21626bf-16f8-4c3b-b083-370b183c85d1
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Portal User' = DISTINCTCOUNT('Fact_User'[PortalUser_GUID])
+		formatString: #,0
+		displayFolder: 09 User
+		lineageTag: f583400e-e263-4ec4-a359-8a454504fb39
+
+	measure 'Last User Login' = MAX(Fact_User[Date_Last_Login])
+		formatString: dd-mmm-yy
+		displayFolder: 09 User
+		lineageTag: 438a87c3-5752-445a-8db6-6f2855952bd4
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'User Portals' = DISTINCTCOUNT('Fact_User'[Portal_GUID])
+		formatString: #,0
+		displayFolder: 09 User
+		lineageTag: 4cd16f53-fd69-445a-a41f-9e0e211c5249
+
+	measure Redactions = DISTINCTCOUNT(Fact_RedactionHistory[RedactionHistory_ID])
+		formatString: #,0
+		displayFolder: 11 Redactions
+		lineageTag: 724267fc-0cb3-4dbf-9dcb-a281ef12ef49
+
+	measure 'Redacted Docs' = DISTINCTCOUNT(Fact_RedactionHistory[Document_ID])
+		formatString: #,0
+		displayFolder: 11 Redactions
+		lineageTag: 679c9aaa-cc67-4f23-af3e-7dcacd01f1f3
+
+	measure 'Redaction Users' = DISTINCTCOUNT(Fact_RedactionHistory[Portal_User_ID])
+		formatString: #,0
+		displayFolder: 11 Redactions
+		lineageTag: 2afafcdc-b9ca-49be-83f7-fe2ed6c6a29b
+
+	measure 'Total Active Portals' = ```
+			
+			VAR LatestDateInContext = MAX(Snapshot_History[Date_Snapshot])
+			RETURN
+			CALCULATE(
+			    SUM(Snapshot_History[Active_Portals]),
+			    Snapshot_History[Date_Snapshot] = LatestDateInContext,
+			    Snapshot_History[Snapshot_Type] = "Total"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: 90 Snapshot History\Totals
+		lineageTag: 900384a6-9437-437a-aee4-4cad22babd5a
+
+	measure 'Total Active Users' = ```
+			
+			VAR LatestDateInContext = MAX(Snapshot_History[Date_Snapshot])
+			RETURN
+			CALCULATE(
+			    SUM(Snapshot_History[Unique_Users]),
+			    Snapshot_History[Date_Snapshot] = LatestDateInContext,
+			    Snapshot_History[Snapshot_Type] = "Total"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: 90 Snapshot History\Totals
+		lineageTag: 07f463aa-bcc1-47da-b5ba-a77a5792a71e
+
+	measure 'Total Portal Users' = ```
+			
+			VAR LatestDateInContext = MAX(Snapshot_History[Date_Snapshot])
+			RETURN
+			CALCULATE(
+			    SUM(Snapshot_History[Unique_Portal_Users]),
+			    Snapshot_History[Date_Snapshot] = LatestDateInContext,
+			    Snapshot_History[Snapshot_Type] = "Total"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: 90 Snapshot History\Totals
+		lineageTag: 6dad9e60-083c-48b5-8731-51bc06152ef0
+
+	measure 'Hist Active Portals' = ```
+			
+			VAR LatestDateInContext = MAX(Snapshot_History[Date_Snapshot])
+			RETURN
+			CALCULATE(
+			    SUM(Snapshot_History[Active_Portals]),
+			    Snapshot_History[Date_Snapshot] = LatestDateInContext,
+			    Snapshot_History[Snapshot_Type] <> "Total"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: 90 Snapshot History
+		lineageTag: ad367bc8-1952-4fd6-93f0-9a24b7963026
+
+	measure 'Hist Active Users' = ```
+			
+			VAR LatestDateInContext = MAX(Snapshot_History[Date_Snapshot])
+			RETURN
+			CALCULATE(
+			    SUM(Snapshot_History[Unique_Users]),
+			    Snapshot_History[Date_Snapshot] = LatestDateInContext,
+			    Snapshot_History[Snapshot_Type] <> "Total"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: 90 Snapshot History
+		lineageTag: baff9dd8-e091-40d2-ab0d-6ae0dc550c4f
+
+	measure 'Hist Portal Users' = ```
+			
+			VAR LatestDateInContext = MAX(Snapshot_History[Date_Snapshot])
+			RETURN
+			CALCULATE(
+			    SUM(Snapshot_History[Unique_Portal_Users]),
+			    Snapshot_History[Date_Snapshot] = LatestDateInContext,
+			    Snapshot_History[Snapshot_Type] <> "Total"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: 90 Snapshot History
+		lineageTag: 2c4dbf89-8958-48c6-a245-5aedf2d11a03
+
+	measure 'Hist Portal User per User' = DIVIDE([Hist Portal Users], [Hist Active Users],0)
+		formatString: #,0.000
+		displayFolder: 90 Snapshot History
+		lineageTag: 657b9ec1-9a6e-4971-98d1-40e84aea46fd
+
+	measure 'Total Portal User per User' = DIVIDE([Total Portal Users], [Total Active Users],0)
+		formatString: 0.000
+		displayFolder: 90 Snapshot History\Totals
+		lineageTag: a9e6a90d-fab4-46ca-a8db-33ca71de5ca3
+
+	measure 'Portal Age (Days)' = AVERAGE(Fact_Portal[Portal_Age_Days])
+		formatString: #,0
+		displayFolder: 10 Portal
+		lineageTag: a4885b4b-7ff2-47e6-a328-2674fa2a9c02
+
+	measure 'Portals w Signed Attendum' = CALCULATE(DISTINCTCOUNT(Fact_Survey_Answer[Portal_ID]),Fact_Survey_Answer[Account_Signed_BE_Addendum] = true)
+		formatString: 0
+		displayFolder: 06 Board Evaluation
+		lineageTag: ce04da05-81f6-4a8a-975b-a240d68a2d19
+
+	measure 'Portals w Board Book' = SUM(Fact_Portal[Boardbook_Enabled])
+		formatString: #,0
+		displayFolder: 10 Portal\01 Main Features
+		lineageTag: cd4cb453-2b38-4ff0-ae40-edbf171b92d5
+
+	measure 'Portals w E-Sign' = SUM(Fact_Portal[Electronic_Signing_Enabled])
+		formatString: #,0
+		displayFolder: 10 Portal\01 Main Features
+		lineageTag: 02f9a0e2-ee91-41de-a3b4-e3e451c50b10
+
+	measure 'Portals w Meeting Minutes' = SUM(Fact_Portal[Meeting_Minutes_Enabled])
+		formatString: #,0
+		displayFolder: 10 Portal\01 Main Features
+		lineageTag: c22b787e-2a6c-43c6-8d4a-bdf28a192bb1
+
+	measure 'Portals w SM' = SUM(Fact_Portal[Enabled_SecureMessage])
+		formatString: #,0
+		displayFolder: 10 Portal\01 Main Features
+		lineageTag: f4cc2b22-593c-44dc-886b-1cca24932a11
+
+	measure 'Portals w Annual Plan' = SUM(Fact_Portal[Annual_Plan_Enabled])
+		formatString: #,0
+		displayFolder: 10 Portal\02 Secondary Features
+		lineageTag: 8985c8f7-df5b-46d0-aa26-c4e13686427b
+
+	measure 'Portals w Board ES' = SUM(Fact_Portal[Board_Evaluation_Enabled])
+		formatString: #,0
+		displayFolder: 10 Portal\02 Secondary Features
+		lineageTag: f9da8079-3cba-4ce2-bf66-14caba12a237
+
+	measure 'SUM Main Feature' = SUM(Fact_Portal[Classification_ID])
+		formatString: #,0
+		displayFolder: 10 Portal\01 Main Features
+		lineageTag: f2bd1588-918f-4f58-8731-c9909ed05d31
+
+	measure 'SUM Secondary Feature' = [Portals w Annual Plan] + [Portals w Board ES]
+		formatString: #,0
+		displayFolder: 10 Portal\02 Secondary Features
+		lineageTag: ebb549fb-2b34-497a-ace3-ec29e8af76be
+
+	measure 'Potential Main Feature Revenue' = [SUM Main Feature Potential] * '99 Num Range 5-50'[Num Range 5-50 Value]
+		formatString: #,0
+		displayFolder: 10 Portal\01 Main Features
+		lineageTag: 4087a744-c5a5-4e43-8a18-484a7c31d801
+
+	measure 'SUM Main Feature Potential' = SUM(Fact_Portal[SUM_Potential_Main])
+		formatString: #,0
+		displayFolder: 10 Portal\01 Main Features
+		lineageTag: 33aad4bd-9c7f-485c-8810-0b5ed1b4955c
+
+	measure 'SUM Secondary Feature Potential' = [Potential AP Sales] + [Potential BES Sales]
+		formatString: #,0
+		displayFolder: 10 Portal\02 Secondary Features
+		lineageTag: dcfdb8dc-c01b-4d15-be21-d6bb28948f4c
+
+	measure 'Potential AP Revenue' = [Potential AP Sales] * '99 AP Price'[99 AP Price Value]
+		formatString: #,0
+		displayFolder: 10 Portal\02 Secondary Features
+		lineageTag: 3ca95a5c-9f48-4b9c-8f3c-36b188068585
+
+	measure 'Potential BES Sales' = ([Active Portals] - [Portals w Board ES])
+		formatString: #,0
+		displayFolder: 10 Portal\02 Secondary Features
+		lineageTag: 9bb1c0f6-e6d5-47dc-b962-2b56f922885e
+
+	measure 'Potential AP Sales' = ([Active Portals] - [Portals w Annual Plan])
+		formatString: #,0
+		displayFolder: 10 Portal\02 Secondary Features
+		lineageTag: d2115298-df34-41da-8783-543629972dcb
+
+	measure 'Potential BES Revenue' = [Potential BES Sales] * '99 BES Price'[BES Price Value]
+		formatString: #,0
+		displayFolder: 10 Portal\02 Secondary Features
+		lineageTag: 5acf4ecb-d47e-4694-9878-a0a30ddcace1
+
+	measure Responses = COUNTROWS(Fact_Wootric_Responses)
+		formatString: 0
+		displayFolder: 12 pNPS
+		lineageTag: 0e473f4a-2dd3-4760-b7b4-ca40e4ee0306
+
+	measure 'pNPS Score' = ```
+			(
+			    DIVIDE(
+			        (SUM(Fact_Wootric_Responses[is_promoter])-SUM(Fact_Wootric_Responses[is_detractor])) 
+			        , [Responses] 
+			    )
+			) * 100
+			```
+		formatString: 0.00
+		displayFolder: 12 pNPS
+		lineageTag: f3c17c86-4b0c-4b13-b0f4-0fd433d9a185
+
+	measure Promoters = SUM(Fact_Wootric_Responses[is_promoter])
+		formatString: 0
+		displayFolder: 12 pNPS
+		lineageTag: 3e20f3de-bcbc-4ffc-8ecc-53f925b72886
+
+	measure Detractors = SUM(Fact_Wootric_Responses[is_detractor])
+		formatString: 0
+		displayFolder: 12 pNPS
+		lineageTag: 818de463-dc0d-4659-bc74-cd74d4cccf43
+
+	measure Passives = SUM(Fact_Wootric_Responses[is_passive])
+		formatString: 0
+		displayFolder: 12 pNPS
+		lineageTag: b1d7da11-b861-4ddc-a4e6-dfeb42b66ba5
+
+	measure 'Text Responses' = SUM(Fact_Wootric_Responses[has_text])
+		formatString: 0
+		displayFolder: 12 pNPS
+		lineageTag: 654d1ce0-5aaa-4613-a4b4-6481c39306ac
+
+	measure 'Avg Score' = AVERAGE(Fact_Wootric_Responses[Score])
+		formatString: 0.00
+		displayFolder: 12 pNPS
+		lineageTag: dc642706-5cd9-4315-bdc5-3963e588dcae
+
+	measure 'Portal User Roles' = SUM(Fact_Portal[Portal_User_Roles])
+		formatString: #,0
+		displayFolder: 10 Portal
+		lineageTag: 2a38a072-2563-4b8b-83b2-0718e8ed06b9
+
+	measure 'User Role Count' = SUM(Fact_User[User_Role_Count])
+		formatString: #,0
+		displayFolder: 09 User
+		lineageTag: 1a0ff093-4562-4d61-a6d8-117fff55d4d2
+
+	measure 'Portal Users Login' = DISTINCTCOUNT('Fact_Login'[PortalUser_ID])
+		formatString: #,0
+		displayFolder: 08 Login
+		lineageTag: 946ab092-ebff-4d68-9877-ee5a681c8564
+
+	measure 'App Users' = CALCULATE([Users], Fact_User[Is_App_User] = TRUE)
+		formatString: 0
+		displayFolder: 09 User
+		lineageTag: 55127168-c25e-464e-86a7-57962b923cd0
+
+	measure 'App Users %' = DIVIDE([App Users],[Users],0)
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: 09 User
+		lineageTag: 61f067cb-4b6e-4fa0-aefb-eddb6067e781
+
+	measure 'Avg Documents Accessed' =
+			IF(
+			        ISBLANK([SelectedMonthIndex]),
+			        AVERAGE(Fact_ML_Mart_Churn_Prediction_Data[Sum_DocsAccessed]),
+			        CALCULATE(
+			            AVERAGE(Fact_ML_Mart_Churn_Prediction_Data[Sum_DocsAccessed]),
+			            FILTER(
+			                Fact_ML_Mart_Churn_Prediction_Data,
+			                Fact_ML_Mart_Churn_Prediction_Data[month_index] = [SelectedMonthIndex]
+			            )
+			        )
+			    )
+		formatString: 0
+		displayFolder: 13 Churn Analysis
+		lineageTag: 60fbcc75-72a9-4e80-8247-ed9aa7086e9a
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure SelectedMonthIndex = ```
+			SELECTEDVALUE(MonthIndexTable[Month Index])
+			
+			```
+		formatString: 0
+		displayFolder: 13 Churn Analysis
+		lineageTag: e51da4c0-4404-4ccc-b2de-88e840b698d5
+
+	measure 'Avg Users Access' =
+			IF(
+			        ISBLANK([SelectedMonthIndex]),
+			        AVERAGE(Fact_ML_Mart_Churn_Prediction_Data[Sum_PortalUsers_Docs]),
+			        CALCULATE(
+			            AVERAGE(Fact_ML_Mart_Churn_Prediction_Data[Sum_PortalUsers_Docs]),
+			            FILTER(
+			                Fact_ML_Mart_Churn_Prediction_Data,
+			                Fact_ML_Mart_Churn_Prediction_Data[month_index] = [SelectedMonthIndex]
+			            )
+			        )
+			    )
+		formatString: 0.00
+		displayFolder: 13 Churn Analysis
+		lineageTag: 5a328272-b8a8-4f53-99c2-d863c5367ea7
+
+	measure 'Distinct Accounts' = DISTINCTCOUNT(Portal[Account_ID])
+		formatString: 0
+		displayFolder: 01 Aggregates
+		lineageTag: 57111095-943f-43b3-8b9c-c9fef5b14271
+
+	measure 'Running Total Portal Users' =
+			
+			CALCULATE(
+			    [Portal User],
+			    FILTER(
+			        ALL('01 Date'),
+			        '01 Date'[Date] <= MAX('01 Date'[Date])
+			    ), Fact_User[Active] = TRUE
+			)
+		formatString: 0
+		displayFolder: 09 User
+		lineageTag: 74e3374e-c4e5-4bd3-847b-b162b502c6af
+
+	measure 'Running Total Users' =
+			
+			CALCULATE(
+			    [Users],
+			    FILTER(
+			        ALL('01 Date'),
+			        '01 Date'[Date] <= MAX('01 Date'[Date])
+			    )
+			)
+		formatString: 0
+		displayFolder: 09 User
+		lineageTag: b8e4f8e4-30ea-4f91-a7a0-d1c3f97075a9
+
+	measure 'All Portals' = ```
+			CALCULATE(DISTINCTCOUNT(Fact_Portal[Portal_ID]))
+			
+			```
+		formatString: 0
+		displayFolder: 10 Portal
+		lineageTag: bb97b6e8-d78f-4ba7-b83e-b9b8efce77b8
+
+	measure 'Avg Logins' =
+			IF(
+			        ISBLANK([SelectedMonthIndex]),
+			        AVERAGE(Fact_ML_Mart_Churn_Prediction_Data[Sum_Logins]),
+			        CALCULATE(
+			            AVERAGE(Fact_ML_Mart_Churn_Prediction_Data[Sum_Logins]),
+			            FILTER(
+			                Fact_ML_Mart_Churn_Prediction_Data,
+			                Fact_ML_Mart_Churn_Prediction_Data[month_index] = [SelectedMonthIndex]
+			            )
+			        )
+			    )
+		formatString: 0.00
+		displayFolder: 13 Churn Analysis
+		lineageTag: 6fc1eec6-5723-49a8-ab0d-e550469c1961
+
+	measure 'Archive Size MB' = CALCULATE(DIVIDE(SUM(Fact_BulkDownload[Archive_Size_KB]), 1024))
+		formatString: #,0.00
+		displayFolder: 14 Bulk Download
+		lineageTag: f8ae1032-c9fc-49fc-a4dd-d05c699eefb8
+
+	measure 'Bulk Downloads' = ```
+			CALCULATE(COUNTROWS(Fact_BulkDownload)) 
+			```
+		formatString: #,0
+		displayFolder: 14 Bulk Download
+		lineageTag: f1c132c2-dabd-46fd-84cc-bf8efaa1beb5
+
+	measure 'Package Size MB' = CALCULATE(DIVIDE(SUM(Fact_BulkDownload[Package_Size_KB]), 1024))
+		formatString: #,0.0
+		displayFolder: 14 Bulk Download
+		lineageTag: 8c070db9-c35e-43f6-a684-42d429476d58
+
+	measure 'Package Files' = SUM(Fact_BulkDownload[Package_File_Count])
+		formatString: #,0
+		displayFolder: 14 Bulk Download
+		lineageTag: 59ef2415-f566-4ae6-be19-ef6c25ab55ec
+
+	measure 'MAX Archive Size MB' = CALCULATE(DIVIDE(MAX(Fact_BulkDownload[Archive_Size_KB]), 1024))
+		formatString: #,0.00
+		displayFolder: 14 Bulk Download
+		lineageTag: 2e8c40fe-cdf9-46c8-a5c0-c1bb112a33b3
+
+	measure 'AVG Archive Size MB' = CALCULATE(DIVIDE(AVERAGE(Fact_BulkDownload[Archive_Size_KB]), 1024))
+		formatString: #,0.00
+		displayFolder: 14 Bulk Download
+		lineageTag: 132d6ab5-48bd-4e09-959b-1322cc6d748f
+
+	measure 'Package Subfolders' = SUM(Fact_BulkDownload[Package_Subfolder_Count])
+		formatString: 0
+		displayFolder: 14 Bulk Download
+		lineageTag: 7a06bd4a-3da4-40ba-ac7e-64e1fe2e1ccc
+
+	measure 'AVG Time to Create Archive in Sec' = CALCULATE ( AVERAGE ( Fact_BulkDownload[Create_Archive_Time_Sec] ), Fact_BulkDownload[DownloadPackage_Status_ID] = 4 )
+		formatString: #,0.00
+		displayFolder: 14 Bulk Download
+		lineageTag: 7cd8b0f2-ce4b-4742-9f95-fd168d0ef908
+
+	measure 'Failed Downloads' = ```
+			CALCULATE(COUNTROWS(Fact_BulkDownload), Fact_BulkDownload[DownloadPackage_Status_ID] = 2) 
+			```
+		formatString: 0
+		displayFolder: 14 Bulk Download
+		lineageTag: 0585e431-3154-41b5-a00e-0fc53010eaa3
+
+	measure 'AVG Files in Package' = AVERAGE(Fact_BulkDownload[Package_File_Count])
+		formatString: #,0.00
+		displayFolder: 14 Bulk Download
+		lineageTag: 02626691-8c5e-4ae5-8ddb-f4643301d3be
+
+	measure 'AVG Package Size MB' = CALCULATE(DIVIDE(AVERAGE(Fact_BulkDownload[Package_Size_KB]), 1024))
+		formatString: #,0.00
+		displayFolder: 14 Bulk Download
+		lineageTag: dbee7988-e7aa-47c9-bfb3-8ad19d84292f
+
+	measure 'AVG Package Subfolders' = AVERAGE(Fact_BulkDownload[Package_Subfolder_Count])
+		formatString: #,0.00
+		displayFolder: 14 Bulk Download
+		lineageTag: c4b93b10-615c-4c2f-aa3b-66aae65b0450
+
+	measure '% Failed' = COALESCE(DIVIDE([Failed Downloads], [Bulk Downloads],0),0)
+		formatString: 0%;-0%;0%
+		displayFolder: 14 Bulk Download
+		lineageTag: 1246f8af-71db-4dc8-9ada-4b10b7bdad29
+
+	measure 'Max Bulk Downloads (User & Category)' = ```
+			
+			MAXX(
+			    SUMMARIZE(
+			        ALL('Fact_BulkDownload'),
+			        'Fact_BulkDownload'[SK_Portal_User],
+			        'Fact_BulkDownload'[SK_Category],
+			        "RowCount", CALCULATE(COUNTROWS('Fact_BulkDownload'))
+			    ),
+			    [RowCount]
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 14 Bulk Download
+		lineageTag: c9559a96-cb1f-41b0-9a9a-44d6c2d66a77
+
+	measure 'Count Tasks' = COUNTROWS(Fact_Tasks)
+		formatString: #,0
+		displayFolder: 15 Tasks
+		lineageTag: 44c38bd7-5dba-420f-9329-639a2ef96a49
+
+	measure 'Avg Time to Close Task' = DIVIDE(CALCULATE(AVERAGE(Fact_Tasks[Time_To_Complete_Min]), Fact_Tasks[Task_Status_ID] = 1),60)
+		formatString: 0.00
+		displayFolder: 15 Tasks
+		lineageTag: ed51cd46-6905-4466-bf37-17dbb94abbd8
+
+	measure 'Task Documents' = CALCULATE(SUM(Fact_Tasks[Task_Documents_Count]), Dim_Task[Task_Type] = "Reading")
+		formatString: 0
+		displayFolder: 15 Tasks
+		lineageTag: 3f7a90fc-e2ce-4ff5-b85a-96ece06fa6bc
+
+	measure 'Avg Reading Task Documents' =
+			
+			CALCULATE(
+			    AVERAGE(Fact_Tasks[Task_Documents_Count]),
+			    'Dim_Task'[Task_Type] = "Reading"
+			)
+		formatString: #,0.00
+		displayFolder: 15 Tasks
+		lineageTag: d12b41a8-8fda-45e5-8e15-d98d29f27059
+
+	measure 'Tasks with future uploads' = CALCULATE(COUNTROWS(Fact_Tasks),Fact_Tasks[Include_Future_Documents])
+		formatString: 0
+		displayFolder: 15 Tasks
+		lineageTag: 3f73d910-2942-402d-82e4-6f3da0f8097b
+
+	measure '% Reading Tasks w future uploads' = DIVIDE([Tasks with future uploads],CALCULATE(COUNTROWS(Fact_Tasks),Dim_Task[Task_Type]="Reading"))
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 15 Tasks
+		lineageTag: 3f259202-1c75-491a-bb6d-004f7223671b
+
+	measure 'Hist Active Portal User 2FA' = ```
+			
+			VAR LatestDateInContext = MAX(Snapshot_History[Date_Snapshot])
+			RETURN
+			CALCULATE(
+			    SUM(Snapshot_History[Unique_Users_2FA]),
+			    Snapshot_History[Date_Snapshot] = LatestDateInContext,
+			    Snapshot_History[Snapshot_Type] <> "Total"
+			)
+			
+			```
+		formatString: #,0
+		displayFolder: 90 Snapshot History
+		lineageTag: b6f74318-0003-46f6-a575-928470b1d87a
+
+	measure 'Hist Active Portals 2FA' =
+			
+			VAR LatestDateInContext = MAX(Snapshot_History[Date_Snapshot])
+			RETURN
+			CALCULATE(
+			    SUM(Snapshot_History[Active_Portals_2FA]),
+			    Snapshot_History[Date_Snapshot] = LatestDateInContext,
+			    Snapshot_History[Snapshot_Type] <> "Total"
+			)
+		formatString: #,0
+		displayFolder: 90 Snapshot History
+		lineageTag: 55a88f17-9b11-4c34-985e-3d67b3ae55f1
+
+	measure '% Portal 2FA' = DIVIDE([Hist Active Portals 2FA], [Hist Active Portals])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 90 Snapshot History
+		lineageTag: f1f505d7-d4fb-4145-b71e-bba3292be27e
+
+	measure '% Portal User 2FA' = DIVIDE([Hist Active Portal User 2FA], [Hist Portal Users])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 90 Snapshot History
+		lineageTag: 423eff76-4f22-46aa-ad65-36e50e7b6827
+
+	partition Metrics-da07be24-5a23-444c-b3cf-3189eb7b43c0 = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

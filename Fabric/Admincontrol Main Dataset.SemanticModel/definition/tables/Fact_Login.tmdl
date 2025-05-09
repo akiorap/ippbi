@@ -1,0 +1,118 @@
+table Fact_Login
+	isHidden
+	lineageTag: e56ef70f-6d9d-46c2-a3ee-51496104e2e6
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ffe965e2-1cc5-4cc3-81cd-8c673e822f3c
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b9897bfc-235a-4b09-bada-9f881e2116cc
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Login
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: eabd89af-7679-429f-93d0-893170407ca7
+		summarizeBy: none
+		sourceColumn: SK_Login
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Login_Method
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1590b926-d363-4339-b3a0-532f4ba525aa
+		summarizeBy: none
+		sourceColumn: SK_Login_Method
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column User_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e62f34fe-c418-4132-800b-f1154ae2e6c6
+		summarizeBy: count
+		sourceColumn: User_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_Logins
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7627ff9b-f990-4342-9c1a-32f993e70c69
+		summarizeBy: sum
+		sourceColumn: Sum_Logins
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_ID
+		dataType: string
+		lineageTag: 039016e6-74cc-4d2a-b736-ef5d900a17ad
+		summarizeBy: none
+		sourceColumn: Portal_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_ID
+		dataType: string
+		lineageTag: e5ba0714-d5d6-4481-8a8e-58d2ec75c033
+		summarizeBy: none
+		sourceColumn: PortalUser_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_Id
+		dataType: int64
+		formatString: 0
+		lineageTag: f945a160-56d9-4315-a732-4a056ba86b2b
+		summarizeBy: none
+		sourceColumn: Cloud_Location_Id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Login = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_Login_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_Login",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_Login_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

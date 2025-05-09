@@ -1,0 +1,50 @@
+table MetricsTable
+	lineageTag: eba732d8-f49b-427a-95be-4c4c27f23b47
+
+	column Metric
+		isHidden
+		lineageTag: 097d9f6c-494b-403c-adee-b7ceb35028e7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Metric]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Measure
+		lineageTag: c5418979-0d3b-413f-b5ff-6a2bd70f99bd
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Measure]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MetricsTable-cebde131-4911-442f-81c4-08424ee8b312 = calculated
+		mode: import
+		source = ```
+				
+				    DATATABLE (
+				        "Metric", STRING,
+				        "Measure", STRING,
+				        {
+				            {"Created BoardBook", "Created BoardBook"},
+				            {"Created Documents", "Created Documents"},
+				            {"Created Folders", "Created Folders"},
+				            {"Count Login", "Count Login"},
+				            {"Created MeetingMinutes", "Created MeetingMinutes"},
+				            {"Created QnA", "Created QnA"},
+				            {"Created SecureMessages", "Created SecureMessages"},
+				            {"Created Users", "Created Users"},
+				            {"Created Meetings", "Created Meetings"},
+				            {"Signed Documents", "Signed Documents"},
+				            {"Support Cases", "Support Cases"},
+				            {"Active Storage GB", "Active Storage GB"},
+				            {"Completed Signings", "E-Sign"},
+				            {"Unique Users Login", "Login Unique Users"},
+				            {"Portal User Roles", "Portal User Roles"},
+				            {"User Role Count", "User Role Count"}
+				        }
+				    )
+				```
+
+	annotation PBI_Id = 8cca7f56cd154ebda8c295f36f089a7e
+

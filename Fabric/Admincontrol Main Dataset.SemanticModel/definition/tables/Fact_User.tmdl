@@ -1,0 +1,252 @@
+table Fact_User
+	isHidden
+	lineageTag: 5320de89-c156-4613-876c-0fab82a8ac31
+
+	column Portal_ID
+		dataType: string
+		isHidden
+		lineageTag: b13c58bc-bd16-43a7-a093-154e877b5d29
+		summarizeBy: none
+		sourceColumn: Portal_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b82d3fb3-5183-4fa2-824c-32592e28e3ea
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f37f0ead-d849-4014-83cc-998d0d37c2c7
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column User_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7469ac5a-6273-4d25-8c90-737a030e7246
+		summarizeBy: count
+		sourceColumn: User_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Deleted_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: ad141d38-f55e-4a87-8d69-578d08d8eebb
+		summarizeBy: count
+		sourceColumn: Date_Deleted_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d4a03916-dacf-4adc-81c4-92515584d804
+		summarizeBy: none
+		sourceColumn: Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Portal_User
+		dataType: string
+		lineageTag: e65dd4ae-77bc-49cb-b4cf-c520b2754267
+		summarizeBy: none
+		sourceColumn: SK_Portal_User
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Created
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: de24cca4-cac6-445e-82ae-b019e8500110
+		summarizeBy: none
+		sourceColumn: Date_Created
+
+		annotation SummarizationSetBy = Automatic
+
+	column User_GUID
+		dataType: string
+		lineageTag: 79f5615a-7de1-406f-910e-888e111b596a
+		summarizeBy: none
+		sourceColumn: User_GUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_GUID
+		dataType: string
+		lineageTag: 8f08324d-f528-4c31-8929-ab02d2b24f8d
+		summarizeBy: none
+		sourceColumn: PortalUser_GUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_GUID
+		dataType: string
+		lineageTag: d187cda2-285d-46f1-a8ed-a58c8de40aa2
+		summarizeBy: none
+		sourceColumn: Portal_GUID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: d2e2797f-c192-4510-ae63-918ffa40ea2d
+		summarizeBy: count
+		sourceColumn: PortalUser_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesforce_Account_ID
+		dataType: string
+		lineageTag: 79de4815-155f-4c53-b32c-4fbcd530cba0
+		summarizeBy: none
+		sourceColumn: Salesforce_Account_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExistsCrm
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4b7afaa3-ded3-42cd-bb5c-d16cbbfa66a9
+		summarizeBy: none
+		sourceColumn: ExistsCrm
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastLoginDateApp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2f08d558-e483-4cf7-bc84-ddee5ec7ea2c
+		summarizeBy: none
+		sourceColumn: LastLoginDateApp
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastLoginDateWeb
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9a37d3d7-71f1-4afb-a07d-8e9e8d262c6b
+		summarizeBy: none
+		sourceColumn: LastLoginDateWeb
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Deactivated
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ed411ba8-39eb-48ec-97d1-5b69dbb6e506
+		summarizeBy: none
+		sourceColumn: Date_Deactivated
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_First_Login
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 47352285-90b2-4dbf-a81b-468e17c286c4
+		summarizeBy: none
+		sourceColumn: Date_First_Login
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Last_Login_App
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 33b9bdfc-6927-4db1-aa73-22d70e5d1d96
+		summarizeBy: none
+		sourceColumn: Date_Last_Login_App
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Last_Login_Web
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fee018bf-b3a0-42aa-883d-2aad6aa0a52e
+		summarizeBy: none
+		sourceColumn: Date_Last_Login_Web
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Last_Login
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d51fc541-d19e-4dd6-ace0-b8119789db72
+		summarizeBy: none
+		sourceColumn: Date_Last_Login
+
+		annotation SummarizationSetBy = Automatic
+
+	column User_Role_Count
+		dataType: int64
+		formatString: 0
+		lineageTag: 13379c57-7d18-4523-af06-f10cc2cd0167
+		summarizeBy: sum
+		sourceColumn: User_Role_Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_App_User
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a549d6b9-0ede-4609-8d97-ea2cc38bf20d
+		summarizeBy: none
+		sourceColumn: Is_App_User
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_Id
+		dataType: int64
+		formatString: 0
+		lineageTag: 948dd335-2483-4189-a628-cbe208a67df6
+		summarizeBy: none
+		sourceColumn: Cloud_Location_Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_Users
+		dataType: int64
+		formatString: 0
+		lineageTag: 02da3cae-d5c3-4470-a49a-0031715585b2
+		summarizeBy: sum
+		sourceColumn: Portal_Users
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_User-1839d9e2-1188-455b-a50f-852dde6e39b6 = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_User_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_User",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_User_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

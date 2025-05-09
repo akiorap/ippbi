@@ -1,0 +1,160 @@
+table Fact_Documents
+	isHidden
+	lineageTag: 2f0c0281-319c-4a0b-a9fc-bc59f01ef156
+
+	column SK_Document
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 05b77f91-0577-4ac5-9226-5c3a8604514f
+		summarizeBy: none
+		sourceColumn: SK_Document
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 30d62a48-09e8-40ea-9c78-4cdb241ec525
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c3724d6a-f701-4390-ac78-a546eb1771f6
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_ID
+		dataType: string
+		isHidden
+		lineageTag: 3e2ea902-8718-4a79-a7e8-a3001443ddeb
+		summarizeBy: none
+		sourceColumn: PortalUser_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_ID
+		dataType: string
+		isHidden
+		lineageTag: bf445fa5-548b-4064-88be-24da6403ac8e
+		summarizeBy: none
+		sourceColumn: Portal_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category_ID
+		dataType: string
+		isHidden
+		lineageTag: 55d2acc8-e811-4e8e-9dae-69282e371a31
+		summarizeBy: none
+		sourceColumn: Category_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Storage_Status
+		dataType: string
+		isHidden
+		lineageTag: 39b88000-5782-4db6-8a42-7c2a386bc050
+		summarizeBy: none
+		sourceColumn: Storage_Status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_File_Size_KB
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d89203ac-1592-47f6-95ca-192faa4ecc24
+		summarizeBy: sum
+		sourceColumn: Sum_File_Size_KB
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_Document_Pages
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 032c778e-eda4-418d-9aed-05f1c308371f
+		summarizeBy: sum
+		sourceColumn: Sum_Document_Pages
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_Documents
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6ccdd913-80be-430c-9bce-0e17d179eddf
+		summarizeBy: sum
+		sourceColumn: Sum_Documents
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d0021cd4-2ac8-49fc-8c0f-6ef14f24a831
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area_Of_Use_ID
+		dataType: string
+		isHidden
+		lineageTag: e98ee987-c8bf-4fd5-9efa-d3d308ec5002
+		summarizeBy: none
+		sourceColumn: Area_Of_Use_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Documents = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_Documents_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_Documents",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_Documents_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

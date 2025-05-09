@@ -1,0 +1,324 @@
+table Fact_Wootric_Responses
+	isHidden
+	lineageTag: ad199643-db83-4cbb-9b5a-6dfb06517f40
+
+	column Response_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5d3291d4-5380-4066-8049-996a3bf72ea8
+		summarizeBy: count
+		sourceColumn: Response_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Text
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 41ef2a59-4216-4b25-8963-876a43a8ac0a
+		summarizeBy: sum
+		sourceColumn: SK_Text
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Responses
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 29eced0f-0524-430f-a657-643375949fcd
+		summarizeBy: none
+		sourceColumn: SK_Responses
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Portal_User
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ed58e30b-6427-42fb-96ac-b73ef12e22a1
+		summarizeBy: sum
+		sourceColumn: SK_Portal_User
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Portal
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cead442f-5c03-452d-8024-c7d2fc25f81a
+		summarizeBy: sum
+		sourceColumn: SK_Portal
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Country
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2fed53e7-31c4-4b94-b3b2-ef8a08293669
+		summarizeBy: sum
+		sourceColumn: SK_Country
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Adjusted
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c3065ace-3772-4f57-80ba-1e6877259342
+		summarizeBy: sum
+		sourceColumn: SK_Adjusted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Source
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 389af8d7-e51e-47dd-9c7a-fc7e6f1d1a5f
+		summarizeBy: none
+		sourceColumn: SK_Source
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesforce_PortalUser_Id
+		dataType: string
+		isHidden
+		lineageTag: 09bac61e-e090-4f36-9b07-7e213996ee10
+		summarizeBy: none
+		sourceColumn: Salesforce_PortalUser_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesforce_Portal_ID
+		dataType: string
+		isHidden
+		lineageTag: 7e237ab0-e2e2-4c53-b0b7-330c8b29926e
+		summarizeBy: none
+		sourceColumn: Salesforce_Portal_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesforce_Account_ID
+		dataType: string
+		isHidden
+		lineageTag: 63029b3f-136c-4c10-a7bd-531e760357cd
+		summarizeBy: none
+		sourceColumn: Salesforce_Account_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_User_GUID
+		dataType: string
+		isHidden
+		lineageTag: 3a05070e-3388-4e3b-946c-e29696b64041
+		summarizeBy: none
+		sourceColumn: Portal_User_GUID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_Guid
+		dataType: string
+		isHidden
+		lineageTag: c2e4a0e0-f3db-4be1-bcd4-79f72a5dd849
+		summarizeBy: none
+		sourceColumn: Portal_Guid
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner_Country_FK
+		dataType: string
+		isHidden
+		lineageTag: 67cf318f-7779-44ed-8520-c46ec78a1387
+		summarizeBy: none
+		sourceColumn: Owner_Country_FK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_Country_FK
+		dataType: string
+		isHidden
+		lineageTag: 2df35689-4391-4b2d-98c7-ebe72b92d60a
+		summarizeBy: none
+		sourceColumn: Portal_Country_FK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d06a5f83-4951-4ff0-9927-beb4c7d4ebc4
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a016a50c-372c-4978-9369-c393c674b7d7
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxDate
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 30fa83ac-b04e-494c-8641-8db80ba9f9c5
+		summarizeBy: none
+		sourceColumn: MaxDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Created
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 74dd9c51-66e3-40b4-aca5-ac2b4e6575f3
+		summarizeBy: none
+		sourceColumn: Date_Created
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_Adjusted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 74f51400-cf48-42e3-bc1d-7ee9920fabe9
+		summarizeBy: none
+		sourceColumn: IS_Adjusted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Score
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8e11c2a2-c310-45c7-a600-73679c666b82
+		summarizeBy: sum
+		sourceColumn: Score
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Text
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1a9d3280-ac51-4832-afc3-0bbda9515162
+		summarizeBy: sum
+		sourceColumn: Has_Text
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Detractor
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d23fb23a-ddfe-4818-aa53-6fa257aacf3e
+		summarizeBy: sum
+		sourceColumn: Is_Detractor
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Promoter
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0658cec5-f0a1-4f38-a0ee-68371c3dcd03
+		summarizeBy: sum
+		sourceColumn: Is_Promoter
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Passive
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d25a77ed-b33f-4a71-93cd-207509152e97
+		summarizeBy: sum
+		sourceColumn: Is_Passive
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_Id
+		dataType: int64
+		formatString: 0
+		lineageTag: ada6d1cd-de0a-4676-8205-a17bb6b8b0d2
+		summarizeBy: none
+		sourceColumn: Cloud_Location_Id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Wootric_Responses = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Fact_Wootric_Responses_View = Datamarts_Schema{[Name="Reporting_Fact_Wootric_Responses",Kind="View"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(Reporting_Fact_Wootric_Responses_View, each ([SK_Adjusted] = 0))
+				in
+				    #"Filtered Rows"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

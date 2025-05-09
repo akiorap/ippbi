@@ -1,0 +1,192 @@
+table Fact_Signing
+	isHidden
+	lineageTag: 84b14c78-fcdb-4e65-a6b0-898e85d5598d
+
+	column Date_Signed_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3b09fe1c-68fa-468f-b954-a02f32789eff
+		summarizeBy: none
+		sourceColumn: Date_Signed_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_Signed_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: cfab8eea-4b2c-4817-9ecd-86bc4de26ed7
+		summarizeBy: none
+		sourceColumn: Time_Signed_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Requested_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9edb3eca-6c3d-4ea0-9e79-a41741f6c907
+		summarizeBy: count
+		sourceColumn: Date_Requested_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_Requested_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f73476d5-088e-4d66-940a-f0063e00feba
+		summarizeBy: count
+		sourceColumn: Time_Requested_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_ID
+		dataType: string
+		isHidden
+		lineageTag: f98a6db0-14dc-44b5-b215-d8cbb93525ee
+		summarizeBy: none
+		sourceColumn: Portal_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_ID_Recipient
+		dataType: string
+		isHidden
+		lineageTag: bb4021e6-7f63-4e6a-a12b-3e7260bd4e45
+		summarizeBy: none
+		sourceColumn: PortalUser_ID_Recipient
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_ID_Requested
+		dataType: string
+		isHidden
+		lineageTag: e14bf4fd-9c2d-47c2-869b-da281a1bd252
+		summarizeBy: none
+		sourceColumn: PortalUser_ID_Requested
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Document_ID
+		dataType: string
+		isHidden
+		lineageTag: bf4ab27f-526b-42a2-a382-c8773e937eba
+		summarizeBy: none
+		sourceColumn: Document_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Signed
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b544578c-4102-49a1-b76f-73a193a2eede
+		summarizeBy: sum
+		sourceColumn: Is_Signed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Requested
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e49e9654-49f5-4458-af5d-cf55ba73447d
+		summarizeBy: sum
+		sourceColumn: Is_Requested
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Request_Status_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1581c80c-f985-4428-a605-931893fc2624
+		summarizeBy: none
+		sourceColumn: Request_Status_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Pending_Document
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 764f0d0f-ef1b-45ee-bcbf-4e9cde004909
+		summarizeBy: sum
+		sourceColumn: Is_Pending_Document
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Signed_Document
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3eeca7b5-e074-4e99-b39e-d0783dbf0e4d
+		summarizeBy: sum
+		sourceColumn: Is_Signed_Document
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category_ID
+		dataType: string
+		lineageTag: 501cee27-54e6-4ad1-885e-88bc7a0bf55a
+		summarizeBy: none
+		sourceColumn: Category_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: a2b87cd7-57ea-4e13-92ed-b80d1640c69a
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Signing-606aaae3-b78a-4c6a-a14b-7dddf4bebed1 = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_Signing_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_Signing",Kind="View"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(Reporting_Admct_Fact_Signing_View,null,-1,Replacer.ReplaceValue,{"Category_ID"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"Signing_Request_ID"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
