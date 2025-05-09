@@ -1,0 +1,484 @@
+table Fact_Opportunity
+	isHidden
+	lineageTag: d9145d6d-7b30-4d28-b595-b842ef0dbe99
+
+	column Opportunity_ID
+		dataType: string
+		isHidden
+		lineageTag: 9c39dcbf-e62f-44b7-adb9-08b50102cd8e
+		summarizeBy: none
+		sourceColumn: Opportunity_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Salesforce_Account
+		dataType: string
+		isHidden
+		lineageTag: 7bac2d14-c26b-4413-9f69-c47cb703e140
+		summarizeBy: none
+		sourceColumn: SK_Salesforce_Account
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesRep_ID
+		dataType: string
+		isHidden
+		lineageTag: 17d916fa-fa06-4e56-81a3-77c01dbdd209
+		summarizeBy: none
+		sourceColumn: SalesRep_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID_Created
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 175e4a28-f8b7-43fb-be71-ddac1f7609b3
+		summarizeBy: sum
+		sourceColumn: Date_ID_Created
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID_Close
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 181cbe97-5615-452a-9db7-ed5013457648
+		summarizeBy: none
+		sourceColumn: Date_ID_Close
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesforce_Account_ID
+		dataType: string
+		isHidden
+		lineageTag: 8567ec80-72e8-4fec-b0de-a3f5aaa9a8f2
+		summarizeBy: none
+		sourceColumn: Salesforce_Account_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner_ID
+		dataType: string
+		isHidden
+		lineageTag: c2beba61-d820-4c48-a622-cbeed1ab7f15
+		summarizeBy: none
+		sourceColumn: Owner_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Opportunity_name
+		dataType: string
+		isHidden
+		lineageTag: 83274d79-5e36-48e8-a34d-b8245f560f8c
+		summarizeBy: none
+		sourceColumn: Opportunity_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Opportunity_Type
+		dataType: string
+		isHidden
+		lineageTag: f76f1333-72f0-4569-a8ab-5f0fc15afe58
+		summarizeBy: none
+		sourceColumn: Opportunity_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Created
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 15a49bd5-a4d2-43f3-a2af-a701b71e3fd4
+		summarizeBy: none
+		sourceColumn: Date_Created
+
+		variation Variation
+			isDefault
+			relationship: fa700a7f-a073-42cd-87f7-8187750b5068
+			defaultHierarchy: LocalDateTable_7623af51-ed88-4ce4-8e72-1d13b8b43b0a.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Close
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: f06135e7-b04d-4085-8878-8fc9b69478b8
+		summarizeBy: none
+		sourceColumn: Date_Close
+
+		variation Variation
+			isDefault
+			relationship: bbce6d6d-9e83-49ca-b9b8-a246e29a7ea0
+			defaultHierarchy: LocalDateTable_d907ba5a-3e67-4398-ad75-d6f5924b6138.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage_name
+		dataType: string
+		isHidden
+		lineageTag: 2efbfc54-c00e-41ee-8e6d-d41d192d20d7
+		summarizeBy: none
+		sourceColumn: stage_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency_iso_code
+		dataType: string
+		isHidden
+		lineageTag: 91f62268-3af5-42d9-9246-b20870e8d01c
+		summarizeBy: none
+		sourceColumn: currency_iso_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Business_Type
+		dataType: string
+		isHidden
+		lineageTag: 77fc8538-2c07-4831-a831-83baf7aec312
+		summarizeBy: none
+		sourceColumn: Business_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_Closed
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 825c584b-e6fe-44f6-af0b-60131367bdc4
+		summarizeBy: none
+		sourceColumn: IS_Closed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_Deleted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e6dc4c12-8047-41d8-a316-95df16798c88
+		summarizeBy: none
+		sourceColumn: IS_Deleted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_Won
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8a2cb437-43e8-4f04-bd32-d1f0940b5d20
+		summarizeBy: none
+		sourceColumn: IS_Won
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		isHidden
+		lineageTag: db98b5b2-48a8-4862-92e1-73bd71466080
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Opportunity_Sales_Type
+		dataType: string
+		isHidden
+		lineageTag: 8a10857b-6d32-43d3-984f-60d8e7203543
+		summarizeBy: none
+		sourceColumn: Opportunity_Sales_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount_NOK
+		dataType: double
+		isHidden
+		lineageTag: d4f7d2fc-68bc-4a29-af4e-c0e5c6689e49
+		summarizeBy: sum
+		sourceColumn: Amount_NOK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount_SEK
+		dataType: double
+		isHidden
+		lineageTag: 16a8c475-c129-4da3-ac8b-2d96193bba43
+		summarizeBy: sum
+		sourceColumn: Amount_SEK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount_DKK
+		dataType: double
+		isHidden
+		lineageTag: fa0eda41-5347-4432-8b1d-39439846dabd
+		summarizeBy: sum
+		sourceColumn: Amount_DKK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount_EUR
+		dataType: double
+		isHidden
+		lineageTag: 2459a84a-c26c-490c-8732-5b3391c486ef
+		summarizeBy: sum
+		sourceColumn: Amount_EUR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount_GBP
+		dataType: double
+		isHidden
+		lineageTag: 33f85249-787e-4935-b117-acca6b5e3a7d
+		summarizeBy: sum
+		sourceColumn: Amount_GBP
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Record_Type_Name
+		dataType: string
+		isHidden
+		lineageTag: 62170cb6-e30e-41d5-b0bf-bf0c37e77cd5
+		summarizeBy: none
+		sourceColumn: Record_Type_Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_quoted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bf71a22c-acb5-4c96-b747-ccac5f6aea09
+		summarizeBy: none
+		sourceColumn: is_quoted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quote_Business_Type
+		dataType: string
+		isHidden
+		lineageTag: e1c21ada-56af-4bf4-bbe0-b5b12bbb5f97
+		summarizeBy: none
+		sourceColumn: Quote_Business_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesforce_ZQU_Quote_Id
+		dataType: string
+		isHidden
+		lineageTag: 4009c237-b8a2-40b1-9bdc-4878043024ab
+		summarizeBy: none
+		sourceColumn: Salesforce_ZQU_Quote_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Charge_Type
+		dataType: string
+		isHidden
+		lineageTag: cc18b79c-640d-4514-85b4-a9ce963815e6
+		summarizeBy: none
+		sourceColumn: Charge_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_New_Sub
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f9ff9b3e-a47a-4b5d-b6da-cbff3afbe102
+		summarizeBy: sum
+		sourceColumn: Has_New_Sub
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Aff_Sub
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3cc50cc1-e68d-4055-b448-02c3b922fa10
+		summarizeBy: sum
+		sourceColumn: Has_Aff_Sub
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column New_Subscription
+		dataType: string
+		isHidden
+		lineageTag: 74530efa-ec12-4011-8448-dbd5fb943fce
+		summarizeBy: none
+		sourceColumn: New_Subscription
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Affected_Subscription
+		dataType: string
+		isHidden
+		lineageTag: 5e8142b7-82a7-4192-8bf9-0e9134061f3e
+		summarizeBy: none
+		sourceColumn: Affected_Subscription
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quote_RPC_Amount
+		dataType: double
+		isHidden
+		lineageTag: 87bd40b3-1e0b-4b01-96dd-befabc22f147
+		summarizeBy: sum
+		sourceColumn: Quote_RPC_Amount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quote_Status
+		dataType: string
+		isHidden
+		lineageTag: 251f14c3-8b46-47b8-aa9c-a98219da0257
+		summarizeBy: none
+		sourceColumn: Quote_Status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Business_Type_CO
+		dataType: string
+		isHidden
+		lineageTag: 973fcadb-88c4-4401-9e3e-7e5664b384d5
+		summarizeBy: none
+		sourceColumn: Business_Type_CO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Opportunity_Product_Type
+		dataType: string
+		isHidden
+		lineageTag: 86b0f596-85d2-4141-9d49-790610a3df15
+		summarizeBy: none
+		sourceColumn: Opportunity_Product_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Product_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a96fdaf5-dcc9-405d-948d-2c88632d37e5
+		summarizeBy: sum
+		sourceColumn: SK_Product_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Sales_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5546f2cd-897a-4090-b4c8-4a0e31d3ce70
+		summarizeBy: sum
+		sourceColumn: SK_Sales_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Opportunity = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Fact_Salesforce_Opportunity_Table = Datamarts_Schema{[Name="Fact_Salesforce_Opportunity",Kind="Table"]}[Data]
+				in
+				    Fact_Salesforce_Opportunity_Table
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

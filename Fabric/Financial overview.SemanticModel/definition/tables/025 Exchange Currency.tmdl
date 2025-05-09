@@ -1,0 +1,31 @@
+table '025 Exchange Currency'
+	lineageTag: ca91e99f-ec83-4e4f-a94c-a941898849c8
+
+	column 'FX Currency'
+		dataType: string
+		lineageTag: d7933ee1-c0e9-4aec-99d0-bface5d3ee21
+		summarizeBy: none
+		sourceColumn: FX Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency_Name
+		dataType: string
+		lineageTag: 7c842b54-3636-4350-8bc0-85b591818e46
+		summarizeBy: none
+		sourceColumn: Currency_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '025 Exchange Currency' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("XczLCoAgEIXhV5FZ9xJZ0kKw6LISF2FCEszAmEFvn7Vsef4PjrVgeg0VGOJ0BKGZMDC4ysKk3j5dAX/Q6hfa9d/VMpauMtM3OzmUKTmeMe1ioIxb+mAea1Nk5vKw+jMSiiYzB/Q3OPcA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Currency_Code = _t, Currency_Name = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Currency_Code", type text}, {"Currency_Name", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Currency_Code", "FX Currency"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

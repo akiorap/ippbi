@@ -1,0 +1,98 @@
+table '03 Country'
+	isHidden
+	lineageTag: e4a04b09-2d75-4119-bcc3-5b7bb0fa4158
+
+	column SK_Country
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2ed0afb2-6c91-4901-b7f1-1a794514e51c
+		summarizeBy: none
+		sourceColumn: SK_Country
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Standard Country Name'
+		dataType: string
+		isHidden
+		lineageTag: b4dc3e86-161b-4401-a389-aaeeadc8ae11
+		summarizeBy: none
+		sourceColumn: Standard Country Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country Name'
+		dataType: string
+		isHidden
+		lineageTag: c424c0fc-9de2-4acb-b6d0-46f7ea195788
+		summarizeBy: none
+		sourceColumn: Country Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country Label'
+		dataType: string
+		isHidden
+		lineageTag: d4952a38-5ee7-4e4e-839c-4e9b0dac0081
+		summarizeBy: none
+		sourceColumn: Country Label
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country Group'
+		dataType: string
+		isHidden
+		lineageTag: f0c95753-69d5-4edc-9d2f-7ad06c5aa93b
+		summarizeBy: none
+		sourceColumn: Country Group
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ISO Code'
+		dataType: string
+		isHidden
+		lineageTag: 639da480-e7ca-46dd-96ba-1195300baab6
+		summarizeBy: none
+		sourceColumn: ISO Code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ISO Code 3'
+		dataType: string
+		isHidden
+		lineageTag: e9c42d4c-7bbd-4eac-a124-478f29cc958a
+		summarizeBy: none
+		sourceColumn: ISO Code 3
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '03 Country' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Country_View = Datamarts_Schema{[Name="Reporting_Dimension_Country",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Country_View,{{"Country_Name", "Country Name"}, {"Country_Group", "Country Group"}, {"Country_Label", "Country Label"}, {"iso_code", "ISO Code"}, {"iso_code_3", "ISO Code 3"}, {"Standard_Country_Name", "Standard Country Name"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

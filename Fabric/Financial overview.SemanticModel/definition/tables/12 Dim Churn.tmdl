@@ -1,0 +1,245 @@
+table '12 Dim Churn'
+	lineageTag: cf80bd02-a6f9-4d26-b650-a6eb5507a7b2
+
+	column Churn_ID
+		dataType: string
+		lineageTag: 521ced10-3f86-491f-8b59-e933b47fc98e
+		summarizeBy: none
+		sourceColumn: Churn_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Last_Modified
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 49550f4e-ef44-4608-9c02-fc74fce6fa44
+		summarizeBy: none
+		sourceColumn: Date_Last_Modified
+
+		variation Variation
+			isDefault
+			relationship: 7038d93a-4f05-4e08-9d9b-e80e2ee31d62
+			defaultHierarchy: LocalDateTable_da338c04-72af-41bc-a1f4-bc9b0774e40c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_License_End
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6fcadbdd-75c9-4c3c-9b34-d25bc96e3276
+		summarizeBy: none
+		sourceColumn: Date_License_End
+
+		variation Variation
+			isDefault
+			relationship: 7e347235-4711-4e25-b004-99339421a5f7
+			defaultHierarchy: LocalDateTable_05d0deb6-f5ad-43fd-9baf-75fb5de3cb1d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_License_Start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7af410e0-2c94-4a20-9322-c1c4506a19ac
+		summarizeBy: none
+		sourceColumn: Date_License_Start
+
+		variation Variation
+			isDefault
+			relationship: 80db76c8-e97b-4103-b150-fa8ca0402bf2
+			defaultHierarchy: LocalDateTable_a00d3afc-4f82-4d5d-99e7-f7aec56b8b86.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_Won_Back
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 000b28c8-373e-4502-a378-07ec58f1b5c0
+		summarizeBy: none
+		sourceColumn: Date_Won_Back
+
+		variation Variation
+			isDefault
+			relationship: a0dcb383-8063-400f-ac58-da41b11cec5d
+			defaultHierarchy: LocalDateTable_775ae998-3b20-4e17-b4cf-0bee749308f0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Churn Name'
+		dataType: string
+		lineageTag: f45168a4-5810-4275-9b61-35b8af242582
+		summarizeBy: none
+		sourceColumn: Churn Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Avoidable_Reason
+		dataType: string
+		lineageTag: a97a8c60-0383-42a2-bcd5-c7823bcaf62d
+		summarizeBy: none
+		sourceColumn: Avoidable_Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Avoidable'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4627b239-310a-4abc-a547-505a8121e19c
+		summarizeBy: none
+		sourceColumn: Churn Avoidable
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Reason Additional'
+		dataType: string
+		lineageTag: 3bf5576e-a318-47e0-a234-d80371aeed96
+		summarizeBy: none
+		sourceColumn: Churn Reason Additional
+
+		annotation SummarizationSetBy = Automatic
+
+	column BP_Revenue_Currency
+		dataType: double
+		lineageTag: db93bf13-a65a-4d27-95cc-b38ef59c899b
+		summarizeBy: sum
+		sourceColumn: BP_Revenue_Currency
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Competitor
+		dataType: string
+		lineageTag: 3e733a1f-5a95-4ff3-b394-cef71cbba044
+		summarizeBy: none
+		sourceColumn: Competitor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Contact_Person
+		dataType: string
+		lineageTag: 4414fe46-b842-4aed-b198-0556631fa263
+		summarizeBy: none
+		sourceColumn: Contact_Person
+
+		annotation SummarizationSetBy = Automatic
+
+	column Exit_Interview_Participants
+		dataType: string
+		lineageTag: 1be73536-3f29-43c3-87d8-c483c188bb74
+		summarizeBy: none
+		sourceColumn: Exit_Interview_Participants
+
+		annotation SummarizationSetBy = Automatic
+
+	column Industry
+		dataType: string
+		lineageTag: 5831822b-df99-47b5-8526-2c2150a7c9b2
+		summarizeBy: none
+		sourceColumn: Industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Loss Reason'
+		dataType: string
+		lineageTag: ee03b27d-44d4-4864-892f-86caeb90e44f
+		summarizeBy: none
+		sourceColumn: Loss Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Missing_Features
+		dataType: string
+		lineageTag: 5f6c0ced-b6c0-4c00-9387-60686814212a
+		summarizeBy: none
+		sourceColumn: Missing_Features
+
+		annotation SummarizationSetBy = Automatic
+
+	column Needs_Improvement
+		dataType: string
+		lineageTag: f9f0b3f2-86bd-43f6-8853-c419c1891006
+		summarizeBy: none
+		sourceColumn: Needs_Improvement
+
+		annotation SummarizationSetBy = Automatic
+
+	column Notify_VDR
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 48cfb5d9-9852-456c-93bd-3adce678f648
+		summarizeBy: none
+		sourceColumn: Notify_VDR
+
+		annotation SummarizationSetBy = Automatic
+
+	column Test_Interview
+		dataType: string
+		lineageTag: 2ac2d7e6-8821-4a8c-b764-4e710abd71cc
+		summarizeBy: none
+		sourceColumn: Test_Interview
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turnover
+		dataType: double
+		lineageTag: b4a18dab-45f6-4e7d-9e87-2ee58940e070
+		summarizeBy: sum
+		sourceColumn: Turnover
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unavoidable Reason'
+		dataType: string
+		lineageTag: 63ef7bed-6e4c-4f04-bde7-efd4d4fe10b4
+		summarizeBy: none
+		sourceColumn: Unavoidable Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Winback_Strategy
+		dataType: string
+		lineageTag: 2e87ae93-a9d6-49ab-9f13-9ed747ae0f0f
+		summarizeBy: none
+		sourceColumn: Winback_Strategy
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Currency ISO Code'
+		dataType: string
+		lineageTag: 72adab19-2e55-4123-b714-49e071bbcce8
+		summarizeBy: none
+		sourceColumn: Currency ISO Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Annual_Price
+		dataType: double
+		lineageTag: 3d1eb7f4-7909-4de9-98e2-afae756dc047
+		summarizeBy: sum
+		sourceColumn: Annual_Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition '12 Dim Churn' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Churn_View = Datamarts_Schema{[Name="Reporting_Dimension_Churn",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Churn_View,{{"Churn_Name", "Churn Name"}, {"Churn_Avoidable", "Churn Avoidable"}, {"Churn_Reason_Additional", "Churn Reason Additional"}, {"Currency_ISO_Code", "Currency ISO Code"}, {"Loss_Reason", "Loss Reason"}, {"Unavoidable_Reason", "Unavoidable Reason"}})
+				in
+				    #"Renamed Columns"
+

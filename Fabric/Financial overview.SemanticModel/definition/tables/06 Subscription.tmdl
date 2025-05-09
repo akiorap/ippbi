@@ -1,0 +1,292 @@
+table '06 Subscription'
+	lineageTag: 0a94ae4c-17c6-4e61-a440-6ad4cce2b1f1
+
+	column 'Subscription Name'
+		dataType: string
+		displayFolder: 01 Subscription
+		lineageTag: faeaa4e2-57e8-4ae7-bb7c-b83881c9f6d1
+		summarizeBy: none
+		sourceColumn: Subscription Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subscription ID'
+		dataType: string
+		displayFolder: 01 Subscription
+		lineageTag: a4c0f952-fd45-4c63-b636-0d243b293390
+		summarizeBy: none
+		sourceColumn: Subscription ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Portal Name'
+		dataType: string
+		lineageTag: fe9cea40-a288-4998-bf2e-d8e64b81ed8b
+		summarizeBy: none
+		sourceColumn: Portal Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zuora Account Name'
+		dataType: string
+		lineageTag: 0d181dcc-89d9-4d12-807d-f1821db18f04
+		summarizeBy: none
+		sourceColumn: Zuora Account Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		displayFolder: 01 Subscription
+		lineageTag: 2babef2f-36fb-4497-991c-0f91bf8ccf72
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cloud Location'
+		dataType: string
+		displayFolder: 01 Subscription
+		lineageTag: 0f30179a-0d6e-4933-8c46-7b781b78077f
+		summarizeBy: none
+		sourceColumn: Cloud Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Term Type'
+		dataType: string
+		displayFolder: 02 Term
+		lineageTag: ae8305a2-c562-4277-bfd6-12a55a1c51c3
+		summarizeBy: none
+		sourceColumn: Term Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Auto Renew'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 01 Subscription
+		lineageTag: d04c10a8-9446-4d89-9ab2-edc0f9d7596f
+		summarizeBy: none
+		sourceColumn: Auto Renew
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Renewal Setting'
+		dataType: string
+		displayFolder: 01 Subscription
+		lineageTag: f2920ec3-c3cb-422d-8d41-98ab79b43481
+		summarizeBy: none
+		sourceColumn: Renewal Setting
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Initial Term'
+		dataType: int64
+		formatString: 0
+		displayFolder: 02 Term
+		lineageTag: a896ea56-0345-4235-9ada-bb5d6776480f
+		summarizeBy: sum
+		sourceColumn: Initial Term
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Term'
+		dataType: int64
+		formatString: 0
+		displayFolder: 02 Term
+		lineageTag: 5de62610-7f07-4d09-81f3-416d6325eeda
+		summarizeBy: sum
+		sourceColumn: Current Term
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Term Period Type'
+		dataType: string
+		displayFolder: 02 Term
+		lineageTag: f39d05d1-1386-4b47-b646-47354c298654
+		summarizeBy: none
+		sourceColumn: Current Term Period Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Renewal Term'
+		dataType: int64
+		formatString: 0
+		displayFolder: 02 Term
+		lineageTag: 9382fd45-6b79-4cec-bdfc-a147720a258a
+		summarizeBy: sum
+		sourceColumn: Renewal Term
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Subscription
+		dataType: string
+		isHidden
+		displayFolder: 01 Subscription
+		lineageTag: cf3adee8-617d-4094-9286-8e72ffacb354
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Subscription
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Rep Hist'
+		dataType: string
+		displayFolder: 03.1 Sub Sales Historic
+		lineageTag: fa15a45e-a829-43c2-aa9e-4e01d83e54bf
+		summarizeBy: none
+		sourceColumn: Sales Rep Hist
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Initial Term Peroid Type'
+		dataType: string
+		displayFolder: 02 Term
+		lineageTag: 44345a86-1173-4507-bff4-5343b8a1b9ed
+		summarizeBy: none
+		sourceColumn: Initial Term Peroid Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Renewal Term Period Type'
+		dataType: string
+		displayFolder: 02 Term
+		lineageTag: d66d08e8-7369-4c25-af1f-f49cf7d0da2a
+		summarizeBy: none
+		sourceColumn: Renewal Term Period Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Registered Country Hist'
+		dataType: string
+		displayFolder: 03.1 Sub Sales Historic
+		lineageTag: e1b95b37-2541-4c39-a79e-e7f4b0df4c5c
+		summarizeBy: none
+		sourceColumn: Sales Registered Country Hist
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Rep Department Hist'
+		dataType: string
+		displayFolder: 03.1 Sub Sales Historic
+		lineageTag: a81a04b4-83fc-4241-90f0-67296f866a8e
+		summarizeBy: none
+		sourceColumn: Sales Rep Department Hist
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Channel (Old)'
+		dataType: string
+		displayFolder: 99 Old
+		lineageTag: fd15e755-2822-4a01-a8bc-aa2414904640
+		summarizeBy: none
+		sourceColumn: Sales Channel (Old)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Channel Hist'
+		dataType: string
+		displayFolder: 03.1 Sub Sales Historic
+		lineageTag: f9d8a4a2-4f9c-4152-943a-7f56e09834c2
+		summarizeBy: none
+		sourceColumn: Sales Channel Hist
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Category Hist'
+		dataType: string
+		displayFolder: 03.1 Sub Sales Historic
+		lineageTag: f1ccb57c-3732-430b-a0ab-ee0b53bd198d
+		summarizeBy: none
+		sourceColumn: Sales Category Hist
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee_ID
+		dataType: string
+		displayFolder: 03 Sub Sales
+		lineageTag: a0c41fef-2a58-42d3-984f-6f97cdf48f28
+		summarizeBy: none
+		sourceColumn: Employee_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Rep'
+		dataType: string
+		displayFolder: 03 Sub Sales
+		lineageTag: 207d5f35-5501-4194-910b-fe295b1e4a1b
+		summarizeBy: none
+		sourceColumn: Sales Rep
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		displayFolder: 03 Sub Sales
+		lineageTag: 458e8f4d-b0a6-4b98-b481-69b3dcb7bb37
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Rep Department'
+		dataType: string
+		displayFolder: 03 Sub Sales
+		lineageTag: bc02b53e-eef1-490a-a68b-f8186d213e40
+		summarizeBy: none
+		sourceColumn: Sales Rep Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Initial Sub Start'
+		dataType: dateTime
+		formatString: yy-MMM-yyyy
+		lineageTag: f55a9cb7-4538-474e-a454-51f184dc77bb
+		summarizeBy: none
+		sourceColumn: Initial Sub Start
+
+		variation Variation
+			isDefault
+			relationship: 24a75b5a-fd98-4490-bb97-9175701dbf14
+			defaultHierarchy: LocalDateTable_7c06d806-fbfd-4752-b81e-53f06f20e3c7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column 'Opportunity Advisor Name'
+		dataType: string
+		lineageTag: 4f93a330-a0d3-4e72-98eb-e7921259df15
+		summarizeBy: none
+		sourceColumn: Opportunity Advisor Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parent Zuora Account Name'
+		dataType: string
+		lineageTag: b1c9aa21-20d1-448c-8428-4a92b0579306
+		summarizeBy: none
+		sourceColumn: Parent Zuora Account Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '06 Subscription' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Zuora_Subscription_View = Datamarts_Schema{[Name="Reporting_Dimension_Zuora_Subscription",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Zuora_Subscription_View,{{"Sales_Channel", "Sales Channel (Old)"}, {"Sales_Channel_Calculated", "Sales Channel Hist"}, {"Sales_Rep", "Sales Rep Hist"}, {"Sales_Rep_Department", "Sales Rep Department Hist"}, {"Sales_Registered_Country", "Sales Registered Country Hist"}, {"Portal_Name", "Portal Name"}, {"Sales_Category", "Sales Category Hist"}, {"Renewal_Term_Period_Type", "Renewal Term Period Type"}, {"Initial_Term_Peroid_Type", "Initial Term Peroid Type"}, {"Zuora_Account_Name", "Zuora Account Name"}, {"Zuora_Subscription_Name", "Subscription Name"}, {"Zuora_Subscription_Id", "Subscription ID"}, {"status", "Status"}, {"auto_renew", "Auto Renew"}, {"cloud_location", "Cloud Location"}, {"renewal_setting", "Renewal Setting"}, {"renewal_term", "Renewal Term"}, {"term_type", "Term Type"}, {"initial_term", "Initial Term"}, {"current_term", "Current Term"}, {"current_term_period_type", "Current Term Period Type"}, {"Current_Employee_ID", "Employee_ID"}, {"Current_Sales_Rep_Department", "Sales Rep Department"}, {"Current_Sales_Rep", "Sales Rep"}, {"Current_Sales_Registered_Country", "Country"}, {"Parent_Zuora_Account", "Parent Zuora Account Name"}, {"Advisor_Name", "Opportunity Advisor Name"}, {"First_Subscription_Start", "Initial Sub Start"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,121 @@
+table '05 Credit Item'
+	lineageTag: 50215aa5-c205-42e4-a926-253bfd3dc56c
+
+	column 'CreditMemo ID'
+		dataType: string
+		lineageTag: bc0ba042-499a-479a-9a98-03b5e6afdbd3
+		summarizeBy: none
+		sourceColumn: CreditMemo ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CreditMemo Item ID'
+		dataType: string
+		lineageTag: dc42bf5f-2ad4-47f5-8e05-e29a4676333f
+		summarizeBy: none
+		sourceColumn: CreditMemo Item ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Memo
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cc138acb-b3dd-44ec-b276-215bef822334
+		summarizeBy: none
+		sourceColumn: Date_Memo
+
+		variation Variation
+			isDefault
+			relationship: fc8c1508-7a17-49f1-8ba2-4c454556381d
+			defaultHierarchy: LocalDateTable_76d6dec7-54d5-4d45-afc8-12645ca76309.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Memo Comments'
+		dataType: string
+		lineageTag: 115864f4-32b5-4d6c-840a-5563fb03c42e
+		summarizeBy: none
+		sourceColumn: Memo Comments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Memo Currency'
+		dataType: string
+		lineageTag: 7a31a4d8-0f15-42fc-9fa4-541fdc145cd1
+		summarizeBy: none
+		sourceColumn: Memo Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delivery Status'
+		dataType: string
+		lineageTag: 9335b1fe-979a-4b7f-8c03-7b433af9dc33
+		summarizeBy: none
+		sourceColumn: Delivery Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Memo Number'
+		dataType: string
+		lineageTag: 84c28077-659b-408e-97be-1e5f8793c5d2
+		summarizeBy: none
+		sourceColumn: Memo Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reason Code'
+		dataType: string
+		lineageTag: 48946e29-3d61-48c6-bcb9-cb40913e4bf3
+		summarizeBy: none
+		sourceColumn: Reason Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source ID'
+		dataType: string
+		lineageTag: d1f72b22-bc8b-4ea8-a05c-8d02a71fa979
+		summarizeBy: none
+		sourceColumn: Source ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Type'
+		dataType: string
+		lineageTag: b322eacf-e18d-4c5d-ad21-e895b06e193a
+		summarizeBy: none
+		sourceColumn: Source Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Memo Status'
+		dataType: string
+		lineageTag: 661e367e-7e0b-4b59-b5cb-c12c2f554426
+		summarizeBy: none
+		sourceColumn: Memo Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CreditMemo Item SKU'
+		dataType: string
+		lineageTag: 87e6f61d-06eb-4443-95d8-a6823b638eb9
+		summarizeBy: none
+		sourceColumn: CreditMemo Item SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '05 Credit Item' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Zuora_Credit_Item_View = Datamarts_Schema{[Name="Reporting_Dimension_Zuora_Credit_Item",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Zuora_Credit_Item_View,{{"Credit_Memo_Id", "CreditMemo ID"}, {"CreditMemo_Item_Id", "CreditMemo Item ID"}, {"CreditMemo_Item_SKU", "CreditMemo Item SKU"}, {"Delivery_Status", "Delivery Status"}, {"Memo_Comments", "Memo Comments"}, {"Memo_Currency", "Memo Currency"}, {"Memo_Number", "Memo Number"}, {"Memo_Status", "Memo Status"}, {"Reason_Code", "Reason Code"}, {"Source_Id", "Source ID"}, {"Source_Type", "Source Type"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

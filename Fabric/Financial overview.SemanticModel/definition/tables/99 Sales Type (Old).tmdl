@@ -1,0 +1,42 @@
+table '99 Sales Type (Old)'
+	lineageTag: 1ce8f240-9fe7-416a-be00-a961a44b9564
+
+	column SK_Zuora_Sales_Type
+		dataType: int64
+		formatString: 0
+		lineageTag: 0bce3bf8-85c1-4706-bfb6-e0dc9a1370eb
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Sales_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_Type
+		dataType: string
+		lineageTag: 72e4841e-00e0-4276-b14f-4ad0521fe49c
+		summarizeBy: none
+		sourceColumn: Sales_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Custom_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: dca3846c-1e1c-41a1-8dfb-978deaa932dc
+		summarizeBy: sum
+		sourceColumn: Custom_Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '99 Sales Type (Old)' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Dimension_Zuora_Sales_Type_Table = Datamarts_Schema{[Name="Reporting_Dimension_Zuora_Sales_Type",Kind="Table"]}[Data]
+				in
+				    Dimension_Zuora_Sales_Type_Table
+
+	annotation PBI_ResultType = Table
+

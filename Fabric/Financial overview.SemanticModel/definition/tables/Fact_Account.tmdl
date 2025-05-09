@@ -1,0 +1,240 @@
+table Fact_Account
+	isHidden
+	lineageTag: 40bbc54e-e2bf-41fa-ab15-3d6b4748846e
+
+	column Salesforce_Account_ID
+		dataType: string
+		isHidden
+		lineageTag: 9b568175-7d05-486d-9d6e-2201e922ecb0
+		summarizeBy: none
+		sourceColumn: Salesforce_Account_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Churn_ID
+		dataType: string
+		isHidden
+		lineageTag: 0527739d-a23a-479e-ae4b-bf38cc37a098
+		summarizeBy: none
+		sourceColumn: Churn_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Account_Created
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 7aa27f9d-1d94-42c2-9900-10c24a264595
+		summarizeBy: none
+		sourceColumn: Date_Account_Created
+
+		variation Variation
+			isDefault
+			relationship: bb1d0dc5-9bf4-44d7-a317-cc97b88fc746
+			defaultHierarchy: LocalDateTable_23cfa0fb-582f-4ff2-8ed0-af97a590acce.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Number_Of_Employees
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 49100a9b-9096-4792-a25c-e2fadcd413b5
+		summarizeBy: sum
+		sourceColumn: Number_Of_Employees
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyIsoCode
+		dataType: string
+		isHidden
+		lineageTag: 1bb2bc5a-c840-41c0-8464-f7d8cb1a4236
+		summarizeBy: none
+		sourceColumn: CurrencyIsoCode
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Churn_Registered
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0f632eb7-c306-43a2-9f3d-0a5f1f347a28
+		summarizeBy: none
+		sourceColumn: Churn_Registered
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Deleted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 42f494ef-9cc4-479e-84db-d17c190dba08
+		summarizeBy: none
+		sourceColumn: Is_Deleted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Last_Activity_Date
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 33b3d1c2-6607-4f77-ba77-417f3cb59f56
+		summarizeBy: none
+		sourceColumn: Last_Activity_Date
+
+		variation Variation
+			isDefault
+			relationship: d2ff751b-1364-457d-8828-1d9e3a49e314
+			defaultHierarchy: LocalDateTable_b478aade-f483-4150-a02b-9873e983ba72.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Annual_Revenue
+		dataType: double
+		isHidden
+		lineageTag: c3db6dd1-751b-4520-831e-8521388a1f15
+		summarizeBy: sum
+		sourceColumn: Annual_Revenue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Yearly_Price_Increase
+		dataType: string
+		isHidden
+		lineageTag: 98f4b629-d72a-452c-bdac-e56fa440a9e9
+		summarizeBy: none
+		sourceColumn: Yearly_Price_Increase
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Yearly_Fee
+		dataType: double
+		isHidden
+		lineageTag: fa16878b-f529-4e9c-9de7-f2a978cb1e64
+		summarizeBy: sum
+		sourceColumn: Yearly_Fee
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Yearly_Fee_VDR
+		dataType: double
+		isHidden
+		lineageTag: 1279a967-41a7-4a48-a180-2d6a60d81b90
+		summarizeBy: sum
+		sourceColumn: Yearly_Fee_VDR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date_License_Start
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 59038a96-dd58-4f2a-8fef-b8e3d7f7bdca
+		summarizeBy: none
+		sourceColumn: Date_License_Start
+
+		variation Variation
+			isDefault
+			relationship: d9d71ba9-b2c2-4c28-915d-417153a648ba
+			defaultHierarchy: LocalDateTable_65ce59fa-7fed-4bb2-9a7e-3c6756aaf6aa.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_Price_Adjustment
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 08695aab-af2a-476d-b442-6d166e8580de
+		summarizeBy: none
+		sourceColumn: Date_Price_Adjustment
+
+		variation Variation
+			isDefault
+			relationship: 067b231e-57cf-4bb1-ab77-a50a82a7c736
+			defaultHierarchy: LocalDateTable_c1853e22-e81f-4d12-b664-7c476dd0c0ba.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_ID_Account
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4540040a-0775-4246-a523-6d286aaf060d
+		summarizeBy: none
+		sourceColumn: Date_ID_Account
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID_Churn
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9521a2b0-8d77-47be-8114-2c3f84f95956
+		summarizeBy: sum
+		sourceColumn: Date_ID_Churn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Creditsafe_Company_ID
+		dataType: string
+		lineageTag: 7ab9b3f3-2ce5-4a0b-8c2d-a5fbae9a1773
+		summarizeBy: none
+		sourceColumn: Creditsafe_Company_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Account = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Salesforce_Fact_Account_View = Datamarts_Schema{[Name="Reporting_Salesforce_Fact_Account",Kind="View"]}[Data]
+				in
+				    Reporting_Salesforce_Fact_Account_View
+
+	changedProperty = IsHidden
+

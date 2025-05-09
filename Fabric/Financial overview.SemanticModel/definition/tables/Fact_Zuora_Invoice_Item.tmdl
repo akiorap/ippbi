@@ -1,0 +1,267 @@
+table Fact_Zuora_Invoice_Item
+	isHidden
+	lineageTag: e3174e5c-341c-4e91-95af-aaa824bc2740
+
+	column Invoice_Item_Id
+		dataType: string
+		isHidden
+		lineageTag: 99d0007b-32da-4044-be54-aed4558b7fcf
+		summarizeBy: none
+		sourceColumn: Invoice_Item_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Product
+		dataType: string
+		isHidden
+		lineageTag: cd4ededf-fc64-41bd-8832-cc3017966ebb
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Product
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Account
+		dataType: string
+		isHidden
+		lineageTag: e5ff4e20-0219-40dd-a3f1-2cc472dc2676
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Account
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Charge
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 164ed836-2c82-4ad6-9757-5c13dde5fa2b
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Charge
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 82abd992-faff-444f-b7da-2667dbc52143
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Number
+		dataType: string
+		isHidden
+		lineageTag: 5b9d923f-7874-4018-ba29-949292303ede
+		summarizeBy: none
+		sourceColumn: Invoice_Number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Invoice_Posted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fa9d4031-9ac6-418f-971e-c63807ba6035
+		summarizeBy: none
+		sourceColumn: Is_Invoice_Posted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		isHidden
+		lineageTag: 9aaff8d1-24de-44ae-8ed7-ca313fa1957c
+		summarizeBy: none
+		sourceColumn: Currency
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item_Quantity
+		dataType: double
+		isHidden
+		lineageTag: d5ed49e8-428e-4ca6-a5ae-628aa6ba4f97
+		summarizeBy: sum
+		sourceColumn: Item_Quantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SK_Zuora_Subscription
+		dataType: string
+		isHidden
+		lineageTag: 3c5d0534-f5df-43b2-9e73-034eba326def
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Subscription
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryId
+		dataType: string
+		isHidden
+		lineageTag: d032f79a-486f-4d74-934f-60dec5bfbbcc
+		summarizeBy: none
+		sourceColumn: CountryId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zuora_Amendment_Id
+		dataType: string
+		isHidden
+		lineageTag: 1bb5d0d6-29a6-4572-945a-4e85759880ae
+		summarizeBy: none
+		sourceColumn: Zuora_Amendment_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zuora_RatePlanCharge_Id
+		dataType: string
+		isHidden
+		lineageTag: 699e30ca-5d04-46bd-867f-cfce9af50f23
+		summarizeBy: none
+		sourceColumn: Zuora_RatePlanCharge_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Sales_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 73b4d9d8-858e-4619-980d-d92934d55ff3
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Sales_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_New_Sales_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b715f6e2-1963-418d-b850-7deba3683fe2
+		summarizeBy: none
+		sourceColumn: SK_Zuora_New_Sales_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Invoice_Amount_Tran
+		dataType: double
+		lineageTag: dcc52c36-5b8d-4975-aa8c-92334cc99976
+		summarizeBy: sum
+		sourceColumn: Invoice_Amount_Tran
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Invoice_Amount_NOK
+		dataType: double
+		lineageTag: cf0868ee-9110-471c-a3a3-5cebcb35886c
+		summarizeBy: sum
+		sourceColumn: Invoice_Amount_NOK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Invoice_Amount_SEK
+		dataType: double
+		lineageTag: a84a1542-269c-4b31-95ca-622bab21a520
+		summarizeBy: sum
+		sourceColumn: Invoice_Amount_SEK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Invoice_Amount_DKK
+		dataType: double
+		lineageTag: 6807e8eb-cce1-4c91-b5cd-eb0b9a0be654
+		summarizeBy: sum
+		sourceColumn: Invoice_Amount_DKK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Invoice_Amount_EUR
+		dataType: double
+		lineageTag: 71a96702-39c3-4801-9224-efe94c1e863f
+		summarizeBy: sum
+		sourceColumn: Invoice_Amount_EUR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Invoice_Amount_GBP
+		dataType: double
+		lineageTag: 79e70a30-37c8-46e0-8079-690ea0362c16
+		summarizeBy: sum
+		sourceColumn: Invoice_Amount_GBP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Salesforce_Account_ID
+		dataType: string
+		lineageTag: 8d84da5b-3582-4d13-ad47-d33cc26f68d4
+		summarizeBy: none
+		sourceColumn: Salesforce_Account_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Forecast_Type
+		dataType: string
+		lineageTag: 06115815-c829-475a-91a4-d6e74c080b80
+		summarizeBy: none
+		sourceColumn: Forecast_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Zuora_Invoice_Item = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Fact_Zuora_Invoice_Item_View = Datamarts_Schema{[Name="Reporting_Fact_Zuora_Invoice_Item",Kind="View"]}[Data]
+				in
+				    Reporting_Fact_Zuora_Invoice_Item_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

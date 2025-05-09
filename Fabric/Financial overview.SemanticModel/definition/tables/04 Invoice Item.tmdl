@@ -1,0 +1,155 @@
+table '04 Invoice Item'
+	lineageTag: bdf4ea57-6671-4d4a-a4f0-d603b634488b
+
+	column 'Invoice ID'
+		dataType: string
+		lineageTag: 9209cee9-d0df-4124-8b03-ed801441a15c
+		summarizeBy: none
+		sourceColumn: Invoice ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Item ID'
+		dataType: string
+		lineageTag: 4801dff1-d31c-4ae6-ae9f-22465b892da2
+		summarizeBy: none
+		sourceColumn: Invoice Item ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Subscription ID'
+		dataType: string
+		lineageTag: 5ba36e14-6b74-40a6-b705-a35ec6d14f10
+		summarizeBy: none
+		sourceColumn: Invoice Subscription ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 11e0c19a-ea7b-4a5e-929e-cd1d2c969172
+		summarizeBy: none
+		sourceColumn: Invoice Date
+
+		variation Variation
+			isDefault
+			relationship: 45ec2559-42cd-4661-abb4-deccc65686c0
+			defaultHierarchy: LocalDateTable_83660d82-baf0-49de-88fb-18331845e5c2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Invoice Status'
+		dataType: string
+		lineageTag: 3e0fd721-2472-4c3f-b4f5-051ab29b47b5
+		summarizeBy: none
+		sourceColumn: Invoice Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Currency'
+		dataType: string
+		lineageTag: 2b6928cd-ecb2-48eb-ba5d-806c3164e3b3
+		summarizeBy: none
+		sourceColumn: Invoice Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Comment'
+		dataType: string
+		lineageTag: 9bfbb1d0-13f0-4f19-98c0-02c6b2fa47a9
+		summarizeBy: none
+		sourceColumn: Invoice Comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accounting Code'
+		dataType: string
+		lineageTag: 5819f014-b960-4151-b323-1acb7c44913d
+		summarizeBy: none
+		sourceColumn: Accounting Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Charge Name'
+		dataType: string
+		lineageTag: bbb1d1ce-e8d7-4173-8cf8-2f899d2483bd
+		summarizeBy: none
+		sourceColumn: Charge Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Charge Number'
+		dataType: string
+		lineageTag: d8e2c892-1e07-4f03-a1d3-06540e3a4a91
+		summarizeBy: none
+		sourceColumn: Charge Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice SKU'
+		dataType: string
+		lineageTag: d9dea0d1-0cfd-48dd-8b1a-78e8879116a0
+		summarizeBy: none
+		sourceColumn: Invoice SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Source Item Type'
+		dataType: string
+		lineageTag: 25a2fd66-ad36-409d-9b42-8ebfaf70f1d4
+		summarizeBy: none
+		sourceColumn: Source Item Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax Code'
+		dataType: string
+		lineageTag: 29b886ae-a501-408d-990c-9e7766f5e116
+		summarizeBy: none
+		sourceColumn: Tax Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax Mode'
+		dataType: string
+		lineageTag: 7daba746-8cd8-44a1-b0fd-e01301dd63c8
+		summarizeBy: none
+		sourceColumn: Tax Mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Source'
+		dataType: string
+		lineageTag: f8a048f3-8a51-4dc7-bbeb-8a615d8d6d84
+		summarizeBy: none
+		sourceColumn: Invoice Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Number'
+		dataType: string
+		lineageTag: dae78a2d-beef-4c69-a647-c0f3b9f97026
+		summarizeBy: none
+		sourceColumn: Invoice Number
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '04 Invoice Item' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Zuora_Invoice_Item_View = Datamarts_Schema{[Name="Reporting_Dimension_Zuora_Invoice_Item",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Zuora_Invoice_Item_View,{{"Accounting_Code", "Accounting Code"}, {"Charge_Name", "Charge Name"}, {"Charge_Number", "Charge Number"}, {"Source_Item_Type", "Source Item Type"}, {"Zuora_Invoice_Id", "Invoice ID"}, {"Zuora_Subscription_Id", "Invoice Subscription ID"}, {"tax_mode", "Tax Mode"}, {"Tax_Code", "Tax Code"}, {"Invoice_Status", "Invoice Status"}, {"Invoice_Source", "Invoice Source"}, {"Invoice_SKU", "Invoice SKU"}, {"Invoice_Number", "Invoice Number"}, {"Invoice_Comment", "Invoice Comment"}, {"Invoice_Currency", "Invoice Currency"}, {"Invoice_Date", "Invoice Date"}, {"Invoice_Item_Id", "Invoice Item ID"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

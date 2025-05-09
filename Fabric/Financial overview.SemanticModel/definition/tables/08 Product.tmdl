@@ -1,0 +1,132 @@
+table '08 Product'
+	lineageTag: 2342a3b9-a2f8-4700-ba98-c5dfc5bbf650
+
+	column SK_Zuora_Product
+		dataType: string
+		isHidden
+		lineageTag: aafce27b-3701-425a-b252-458ca1a46d6e
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Product
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zuora Product ID'
+		dataType: string
+		lineageTag: e7dc989c-8f1f-4651-9ab2-589c2c43ccdd
+		summarizeBy: none
+		sourceColumn: Zuora Product ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partner Group'
+		dataType: string
+		lineageTag: dab9e4f6-b31e-4dcf-949b-ea700dedf184
+		summarizeBy: none
+		sourceColumn: Partner Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Size'
+		dataType: string
+		lineageTag: 6da950a9-8577-4b7f-9c82-8e164aa52bdb
+		summarizeBy: none
+		sourceColumn: Product Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Portal Phase'
+		dataType: string
+		lineageTag: d7012383-49e6-4a8f-b244-b8a2e21fe52e
+		summarizeBy: none
+		sourceColumn: Product Portal Phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Type'
+		dataType: string
+		lineageTag: 07a02773-48ad-4919-ad32-f7dd8715cd8c
+		summarizeBy: none
+		sourceColumn: Product Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provision_Product
+		dataType: string
+		lineageTag: f0163002-675a-4a20-943c-525d1a8025d8
+		summarizeBy: none
+		sourceColumn: Provision_Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU
+		dataType: string
+		lineageTag: b434eb8f-92e9-4e9c-9e22-02ec51bfe5fc
+		summarizeBy: none
+		sourceColumn: SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 61455609-dcd3-42bf-8969-908d415eebaa
+		summarizeBy: none
+		sourceColumn: Date_Start
+
+		variation Variation
+			isDefault
+			relationship: 9cebe139-e993-49e8-ba32-ba8f465419f8
+			defaultHierarchy: LocalDateTable_ba0ebd93-61ae-4d2b-8418-9174bbd87974.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_End
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 080d8bc5-9458-4dda-be60-13036a883ad3
+		summarizeBy: none
+		sourceColumn: Date_End
+
+		variation Variation
+			isDefault
+			relationship: a7471161-f719-4f52-bd36-113147f48352
+			defaultHierarchy: LocalDateTable_403d9520-c8f1-4191-bdfc-a32fa55daf3f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Product Category'
+		dataType: string
+		lineageTag: a5895a4f-76c0-4042-a173-a4378f6259de
+		summarizeBy: none
+		sourceColumn: Product Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: aa77af73-4754-4347-bdd2-439120211904
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '08 Product' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Zuora_Product_View = Datamarts_Schema{[Name="Reporting_Dimension_Zuora_Product",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Zuora_Product_View,{{"Product_Name", "Product Name"}, {"Product_Category", "Product Category"}, {"Partner_Group", "Partner Group"}, {"Product_Size", "Product Size"}, {"Product_Type", "Product Type"}, {"Product_Portal_Phase", "Product Portal Phase"}, {"Zuora_Product_Id", "Zuora Product ID"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

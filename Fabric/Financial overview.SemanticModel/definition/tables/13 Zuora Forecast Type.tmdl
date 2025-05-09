@@ -1,0 +1,30 @@
+table '13 Zuora Forecast Type'
+	lineageTag: c11fbad3-8a89-4f2f-b86c-a4693e9a2760
+
+	column Forecast_Type
+		dataType: string
+		lineageTag: a671ae67-368e-4e80-9213-593405d53c02
+		summarizeBy: none
+		sourceColumn: Forecast_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Forecast_Name
+		dataType: string
+		lineageTag: 4d3d0d0c-f683-4eba-b65a-5ea6586bbf29
+		summarizeBy: none
+		sourceColumn: Forecast_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '13 Zuora Forecast Type' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Zuora_Forecast_Type_View = Datamarts_Schema{[Name="Reporting_Dimension_Zuora_Forecast_Type",Kind="View"]}[Data]
+				in
+				    Reporting_Dimension_Zuora_Forecast_Type_View
+

@@ -1,0 +1,66 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["06 Subscription","08 Product","07 Charge","Fact_Zuora_Invoice_Item","Fact_Zuora_Subscription","01 Date","03 Country","02 Transaction Currency","Measure Table","025 Exchange Currency","Fact_Zuora_Credit_Item","05 Credit Item","04 Invoice Item","99 Sales Type (Old)","Fact_Budget","10 Budget Type","Fact_Opportunity","09 Sales Type","11 Revenue","Fact_Zuora_Revenue","12 Dim Churn","Fact_Account","00 SF Account","13 Zuora Forecast Type"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.138.1452.0 (24.11)
+
+annotation PBI_ProTooling = ["CalcGroup"]
+
+ref table '06 Subscription'
+ref table DateTableTemplate_43d2ba35-19b2-4822-892c-a61721741391
+ref table '08 Product'
+ref table LocalDateTable_ba0ebd93-61ae-4d2b-8418-9174bbd87974
+ref table LocalDateTable_403d9520-c8f1-4191-bdfc-a32fa55daf3f
+ref table '07 Charge'
+ref table Fact_Zuora_Invoice_Item
+ref table Fact_Zuora_Subscription
+ref table '01 Date'
+ref table '03 Country'
+ref table '02 Transaction Currency'
+ref table 'Measure Table'
+ref table '025 Exchange Currency'
+ref table Fact_Zuora_Credit_Item
+ref table '05 Credit Item'
+ref table LocalDateTable_76d6dec7-54d5-4d45-afc8-12645ca76309
+ref table '04 Invoice Item'
+ref table LocalDateTable_83660d82-baf0-49de-88fb-18331845e5c2
+ref table '99 Sales Type (Old)'
+ref table Fact_Budget
+ref table '10 Budget Type'
+ref table Fact_Opportunity
+ref table LocalDateTable_7623af51-ed88-4ce4-8e72-1d13b8b43b0a
+ref table LocalDateTable_d907ba5a-3e67-4398-ad75-d6f5924b6138
+ref table '09 Sales Type'
+ref table LocalDateTable_0f198a1c-a6ae-4ee5-b749-5303883213f9
+ref table LocalDateTable_cfd836c5-3910-49b6-aff4-fc4a15beeb64
+ref table '11 Revenue'
+ref table LocalDateTable_fdf375f6-0e26-43ac-8bdd-d85cf24db4c5
+ref table LocalDateTable_89697f7c-d295-4623-b83f-da4941873000
+ref table Fact_Zuora_Revenue
+ref table '12 Dim Churn'
+ref table LocalDateTable_da338c04-72af-41bc-a1f4-bc9b0774e40c
+ref table LocalDateTable_05d0deb6-f5ad-43fd-9baf-75fb5de3cb1d
+ref table LocalDateTable_a00d3afc-4f82-4d5d-99e7-f7aec56b8b86
+ref table LocalDateTable_775ae998-3b20-4e17-b4cf-0bee749308f0
+ref table Fact_Account
+ref table LocalDateTable_23cfa0fb-582f-4ff2-8ed0-af97a590acce
+ref table LocalDateTable_b478aade-f483-4150-a02b-9873e983ba72
+ref table LocalDateTable_65ce59fa-7fed-4bb2-9a7e-3c6756aaf6aa
+ref table LocalDateTable_c1853e22-e81f-4d12-b664-7c476dd0c0ba
+ref table '00 SF Account'
+ref table '13 Zuora Forecast Type'
+ref table LocalDateTable_7c06d806-fbfd-4752-b81e-53f06f20e3c7
+ref table LocalDateTable_ff4b7b27-c26d-4575-b159-ba9a376ef092
+ref table LocalDateTable_6c781d7c-5c71-4ec0-ac2c-6a2ceb466e57
+
+ref cultureInfo en-US
+

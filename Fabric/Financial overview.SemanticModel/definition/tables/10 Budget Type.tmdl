@@ -1,0 +1,37 @@
+table '10 Budget Type'
+	lineageTag: 57126bdc-9735-4f7f-9d6d-b2784d9536fa
+
+	column SK_Budget_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b80204e8-53d8-4829-9f42-c2cb20b44402
+		summarizeBy: none
+		sourceColumn: SK_Budget_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Budget Type'
+		dataType: string
+		lineageTag: 79b4aa12-e164-4009-9786-8baa02724379
+		summarizeBy: none
+		sourceColumn: Budget Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '10 Budget Type' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Budget_Type_View = Datamarts_Schema{[Name="Reporting_Dimension_Budget_Type",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Budget_Type_View,{{"Budget_Type", "Budget Type"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

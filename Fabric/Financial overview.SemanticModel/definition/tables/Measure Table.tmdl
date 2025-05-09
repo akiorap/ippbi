@@ -1,0 +1,479 @@
+table 'Measure Table'
+	lineageTag: 1d9d26a4-458b-499f-9ec1-e7df40183ca8
+
+	measure 'Active Subscriptions' = CALCULATE(DISTINCTCOUNT(Fact_Zuora_Subscription[Zuora_Subscription_Name]), Fact_Zuora_Subscription[Is_Active])
+		formatString: #,0
+		displayFolder: 02 Subscription
+		lineageTag: b68fe477-fbc3-4b12-957e-33dfcd948c11
+
+	measure Invoice_Amount_NOK = CALCULATE(SUM(Fact_Zuora_Invoice_Item[Invoice_Amount_NOK]))
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Invoice
+		lineageTag: 6302e216-6b9c-4909-af75-331bd1098d62
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Invoice_Amount_DKK = CALCULATE(SUM(Fact_Zuora_Invoice_Item[Invoice_Amount_DKK]))
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Invoice
+		lineageTag: fa4bbb23-3632-4933-bf81-0c84ec10726a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Invoice_Amount_SEK = CALCULATE(SUM(Fact_Zuora_Invoice_Item[Invoice_Amount_SEK]))
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Invoice
+		lineageTag: 8f094234-f608-461d-9289-c19733f47bda
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Invoice_Amount_EUR = CALCULATE(SUM(Fact_Zuora_Invoice_Item[Invoice_Amount_EUR]))
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Invoice
+		lineageTag: 56e2304e-0867-43fa-a94d-d02e40781a46
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Invoice_Amount_GBP = CALCULATE(SUM(Fact_Zuora_Invoice_Item[Invoice_Amount_GBP]))
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Invoice
+		lineageTag: 200bc325-b56c-4099-b533-0e1afcb170c1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Invoiced Amount' =
+			
+			SWITCH (
+			    SELECTEDVALUE ( '025 Exchange Currency'[FX Currency] ),
+			    "NOK", [Invoice_Amount_NOK],
+			    "DKK", [Invoice_Amount_DKK],
+			    "SEK", [Invoice_Amount_SEK],
+			    "GBP", [Invoice_Amount_GBP],
+			    "EUR", [Invoice_Amount_EUR],
+			    "TRAN", [Invoice_Amount_TRAN],
+			    [Invoice_Amount_NOK]  -- Default case if none of the above matches
+			)
+		displayFolder: 01 Main Aggregates
+		lineageTag: c878fa91-db1e-408a-a929-8486474b97a8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Credit_Amt_SEK = SUM(Fact_Zuora_Credit_Item[Credit_Amount_SEK])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Credit
+		lineageTag: fa1d2789-2121-4b74-9269-44dd9865b6d9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Credit_Amt_NOK = SUM(Fact_Zuora_Credit_Item[Credit_Amount_NOK])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Credit
+		lineageTag: b029ae7d-4d19-4722-bf5b-2859546a945f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Credit_Amt_DKK = SUM(Fact_Zuora_Credit_Item[Credit_Amount_DKK])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Credit
+		lineageTag: a3941836-05cd-4a5c-8b78-1421d417dbb1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Credit_Amt_EUR = SUM(Fact_Zuora_Credit_Item[Credit_Amount_EUR])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Credit
+		lineageTag: b09827d0-4198-4ddb-a2f9-484734216612
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Credit_Amt_GBP = SUM(Fact_Zuora_Credit_Item[Credit_Amount_GBP])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Credit
+		lineageTag: 2f96b4ca-8ed3-46bf-bd80-6801735b8239
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Credit Amount' =
+			
+			SWITCH (
+			    SELECTEDVALUE ( '025 Exchange Currency'[FX Currency] ),
+			    "NOK", [Credit_Amt_NOK],
+			    "DKK", [Credit_Amt_DKK],
+			    "SEK", [Credit_Amt_SEK],
+			    "GBP", [Credit_Amt_GBP],
+			    "EUR", [Credit_Amt_EUR],
+			    "TRAN", [Credit_Amt_TRAN],
+			    [Credit_Amt_NOK]  -- Default case if none of the above matches
+			)
+		displayFolder: 01 Main Aggregates
+		lineageTag: dd428f91-d352-41df-88e3-7b5a0c30f7ee
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Invoiced = [Invoiced Amount] - [Credit Amount]
+		formatString: #,0
+		displayFolder: 01 Main Aggregates
+		lineageTag: 36087e90-2662-46d2-883a-d026ba594862
+
+	measure Invoice_Amount_TRAN = SUM(Fact_Zuora_Invoice_Item[Invoice_Amount_Tran])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Invoice
+		lineageTag: 937156a0-d0a5-401d-be47-7ae893471f2e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Credit_Amt_TRAN = SUM(Fact_Zuora_Credit_Item[Credit_Amount_Tran])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Credit
+		lineageTag: 91da118c-76b8-481e-85a4-1093fd6c0cf7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Prep Subscriptions' = CALCULATE([Active Subscriptions], Fact_Zuora_Subscription[Is_Preparation])
+		formatString: #,0
+		displayFolder: 02 Subscription
+		lineageTag: 1ab013a3-1e71-4473-bf69-ad1595e9c0c3
+
+	measure 'Canceled Subscription' = CALCULATE( DISTINCTCOUNT(Fact_Zuora_Subscription[Zuora_Subscription_Name]), Fact_Zuora_Subscription[Is_Cancelled], USERELATIONSHIP(Fact_Zuora_Subscription[Date_Canceled_ID],'01 Date'[Date_ID]))
+		formatString: #,0
+		displayFolder: 02 Subscription
+		lineageTag: 74a9e509-584c-4081-97bd-20636b5415b3
+
+	measure 'GoLive Subscriptions' = CALCULATE([Created Subscriptions],Fact_Zuora_Subscription[Started_as_Preparation], USERELATIONSHIP(Fact_Zuora_Subscription[Date_Go_Live_ID], '01 Date'[Date_ID]), Fact_Zuora_Subscription[Date_Go_Live_ID] <> BLANK())
+		formatString: #,0
+		displayFolder: 02 Subscription
+		lineageTag: 710c6747-74a9-4a2d-841c-5fd11481777d
+
+	measure 'Suspended Subscription' = CALCULATE( DISTINCTCOUNT(Fact_Zuora_Subscription[Zuora_Subscription_Name]), Fact_Zuora_Subscription[Is_Suspended], USERELATIONSHIP(Fact_Zuora_Subscription[Date_Suspended_ID],'01 Date'[Date_ID]))
+		formatString: 0
+		displayFolder: 02 Subscription
+		lineageTag: 8c14a108-c900-4a31-aaff-994af80640e9
+
+	measure 'Subscription Avg Lifetime' = CALCULATE(AVERAGE(Fact_Zuora_Subscription[Lifetime_Days]))
+		formatString: #,0
+		displayFolder: 02 Subscription
+		lineageTag: 971f4807-a7d2-4283-ac62-7ab2144e9ec0
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Created Subscriptions' = CALCULATE(DISTINCTCOUNT(Fact_Zuora_Subscription[Zuora_Subscription_Name]))
+		formatString: #,0
+		displayFolder: 02 Subscription
+		lineageTag: 98eb76fc-db85-4610-937b-cec1c3960514
+
+	measure 'Started Subscriptions' = CALCULATE(DISTINCTCOUNT(Fact_Zuora_Subscription[Zuora_Subscription_Name]))
+		formatString: #,0
+		displayFolder: 02 Subscription
+		lineageTag: 0c0a54af-c42e-48bb-b0e6-2547b2e42a44
+
+	measure 'Ended Subscriptions' = CALCULATE(DISTINCTCOUNT(Fact_Zuora_Subscription[Zuora_Subscription_Name]), USERELATIONSHIP('01 Date'[Date_ID],'Fact_Zuora_Subscription'[Date_Subscription_End_ID]), 'Fact_Zuora_Subscription'[Date_Subscription_End_ID] <> BLANK())
+		formatString: #,0
+		displayFolder: 02 Subscription
+		lineageTag: a8e19091-85ed-4237-8797-efd8e2f2fbac
+
+	measure 'Sub with pre-dd' = CALCULATE([Started Subscriptions],'Fact_Zuora_Subscription'[Started_as_Preparation])
+		formatString: #,0
+		displayFolder: 02 Subscription
+		lineageTag: b1f15a50-c17d-4e22-9154-1765c52e2e37
+
+	measure 'Started not Closed Subs' = CALCULATE([Started Subscriptions], Fact_Zuora_Subscription[Is_Cancelled] = false , Fact_Zuora_Subscription[Is_Suspended] = false)
+		formatString: #,0
+		displayFolder: 02 Subscription
+		lineageTag: d212f6f3-72d8-489c-b7c6-3700cc3014c6
+
+	measure 'Sub Avg Lifetime Months' = DIVIDE([Subscription Avg Lifetime], 30,0)
+		displayFolder: 02 Subscription
+		lineageTag: 9dcc1d7c-530f-4ea4-9919-bceee18bd50b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure BudgetAmount_NOK = ```
+			CALCULATE(SUM(Fact_Budget[Amount_NOK])) 
+			```
+		displayFolder: 99 Currency Exchanges\03 Budget
+		lineageTag: ac8f1b71-7607-473a-88d9-a6aa301d2661
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure BudgetAmount_SEK = ```
+			CALCULATE(SUM(Fact_Budget[Amount_SEK])) 
+			```
+		displayFolder: 99 Currency Exchanges\03 Budget
+		lineageTag: abd6b29c-bf4e-4d54-9ae9-d404aa7499f7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure BudgetAmount_DKK = ```
+			CALCULATE(SUM(Fact_Budget[Amount_DKK])) 
+			```
+		displayFolder: 99 Currency Exchanges\03 Budget
+		lineageTag: 3c058c91-2051-4e0c-bdcc-a7cbeba70549
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure BudgetAmount_EUR = ```
+			CALCULATE(SUM(Fact_Budget[Amount_EUR])) 
+			```
+		displayFolder: 99 Currency Exchanges\03 Budget
+		lineageTag: a865580b-61ba-41f1-9c30-4ecce6c56576
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure BudgetAmount_GBP = ```
+			CALCULATE(SUM(Fact_Budget[Amount_GBP])) 
+			```
+		displayFolder: 99 Currency Exchanges\03 Budget
+		lineageTag: f9fa8aab-d706-4f3e-8248-5cffe414449b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Budget Amount' = ```
+			
+			SWITCH (
+			    SELECTEDVALUE ( '025 Exchange Currency'[FX Currency] ),
+			    "NOK", [BudgetAmount_NOK],
+			    "DKK", [BudgetAmount_DKK],
+			    "SEK", [BudgetAmount_SEK],
+			    "GBP", [BudgetAmount_GBP],
+			    "EUR", [BudgetAmount_EUR], 
+			    [BudgetAmount_NOK]  -- Default case if none of the above matches
+			) 
+			```
+		displayFolder: 01 Main Aggregates
+		lineageTag: 9ba3a1e4-a431-4842-8f0e-c6fabf9a2837
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Opportunities = COUNT(Fact_Opportunity[Opportunity_ID])
+		formatString: 0
+		displayFolder: 01 Main Aggregates
+		lineageTag: 7cd26259-0864-4025-b190-c41432833892
+
+	measure Opportunity_Amount_DKK = CALCULATE(SUM(Fact_Opportunity[Amount_DKK]))
+		formatString: 0
+		displayFolder: 99 Currency Exchanges\02 Sales
+		lineageTag: f5aa05af-ac6a-4627-9d97-06b687d4a126
+
+	measure Opportunity_Amount_EUR = CALCULATE(SUM(Fact_Opportunity[Amount_EUR]))
+		displayFolder: 99 Currency Exchanges\02 Sales
+		lineageTag: 9503143f-5e81-41a8-b49e-3d38a84e7890
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Opportunity_Amount_GBP = CALCULATE(SUM(Fact_Opportunity[Amount_GBP]))
+		displayFolder: 99 Currency Exchanges\02 Sales
+		lineageTag: c2886993-440e-4e7e-a566-4761457cb470
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Opportunity_Amount_NOK = CALCULATE(SUM(Fact_Opportunity[Amount_NOK]))
+		displayFolder: 99 Currency Exchanges\02 Sales
+		lineageTag: ba61456b-fb02-4938-905a-a6ec378897f6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Opportunity_Amount_SEK = CALCULATE(SUM(Fact_Opportunity[Amount_SEK]))
+		displayFolder: 99 Currency Exchanges\02 Sales
+		lineageTag: d28abde9-1a32-403f-97f6-d486dbbed9d7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Opportunity_Amount_TRAN = CALCULATE(SUM(Fact_Opportunity[Amount]))
+		displayFolder: 99 Currency Exchanges\02 Sales
+		lineageTag: 45bba49f-f71a-464b-abcf-adc8d27a8e54
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Revenue =
+			
+			SWITCH (
+			    SELECTEDVALUE ( '025 Exchange Currency'[FX Currency] ),
+			    "NOK", [Revenue_Amount_NOK],
+			    "DKK", [Revenue_Amount_DKK],
+			    "SEK", [Revenue_Amount_SEK],
+			    "GBP", [Revenue_Amount_GBP],
+			    "EUR", [Revenue_Amount_EUR],
+			    "TRAN", [Revenue_Amount_Tran],
+			    [Revenue_Amount_NOK]  -- Default case if none of the above matches
+			)
+		formatString: #,0
+		displayFolder: 01 Main Aggregates
+		lineageTag: 25d5f3f1-9a70-42e3-bb9b-71632821929e
+
+	measure Revenue_Amount_DKK = SUM(Fact_Zuora_Revenue[Revenue_Amount_DKK])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Revenue
+		lineageTag: f7fed156-f728-41da-9369-e16c6b352ba3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Revenue_Amount_NOK = CALCULATE(SUM(Fact_Zuora_Revenue[Revenue_Amount_NOK]))
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Revenue
+		lineageTag: 93efbf31-39a7-42f4-b51f-a0bdb7b71042
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Revenue_Amount_SEK = SUM(Fact_Zuora_Revenue[Revenue_Amount_SEK])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Revenue
+		lineageTag: b30ad9fb-4354-40ea-ae57-088644aa0f5f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Revenue_Amount_EUR = SUM(Fact_Zuora_Revenue[Revenue_Amount_EUR])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Revenue
+		lineageTag: 04232f19-0f03-4108-9b84-d13304a780ef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Revenue_Amount_GBP = SUM(Fact_Zuora_Revenue[Revenue_Amount_GBP])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Revenue
+		lineageTag: 0fe39ab8-6ee4-4aed-941d-b12437e967af
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Revenue_Amount_Tran = SUM(Fact_Zuora_Revenue[Revenue_Amount_Tran])
+		displayFolder: 99 Currency Exchanges\01 FX Invoice/Credit\Revenue
+		lineageTag: 09e7cc3e-61df-441f-a9e7-263d1810f5a5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Current Active Subscriptions' = CALCULATE(DISTINCTCOUNT(Fact_Zuora_Subscription[Zuora_Subscription_Name]), Fact_Zuora_Subscription[Current_Status]= "Active")
+		formatString: 0
+		displayFolder: 02 Subscription
+		lineageTag: 452be0f0-6623-4c94-aa7d-364d19f1d74a
+
+	measure 'Count Subscriptions' = DISTINCTCOUNT(Fact_Zuora_Subscription[Zuora_Subscription_Name])
+		formatString: 0
+		displayFolder: 02 Subscription
+		lineageTag: 80d81643-286b-4c76-9862-f67017cd3b7c
+
+	measure 'Count of Non-Zero Revenue Accounts Latest Month' = ```
+			
+			VAR LatestDate = [Latest Month]
+			RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT(Fact_Zuora_Subscription[SK_Zuora_Account]),
+			        FILTER(
+			            'Fact_Zuora_Subscription',
+			            [Revenue] <> 0
+			        ),
+			        'Fact_Zuora_Revenue'[Date_ID_Revenue] = LatestDate,
+			        '11 Revenue'[Accounting Status] = "Closed"
+			    )
+			
+			```
+		formatString: #,0
+		displayFolder: 03 ARPA
+		lineageTag: 03121362-cc3c-47a7-b448-1870852bc0f5
+
+	measure 'Annualized Revenue' = ```
+			
+			VAR MonthlyRevenue = [Latest Month Revenue]
+			RETURN MonthlyRevenue * 12
+			
+			```
+		displayFolder: 03 ARPA
+		lineageTag: 70c827c5-295e-47e1-bbf2-36e1fc2f88b0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Annualized Average Revenue per Account' = ```
+			
+			VAR AnnualRevenue = [Annualized Revenue]
+			VAR NonZeroAccountCount = [Count of Non-Zero Revenue Accounts Latest Month]
+			RETURN 
+			    IF(
+			        NonZeroAccountCount = 0,
+			        BLANK(),
+			        IF(
+			            AnnualRevenue = 0,
+			            BLANK(),
+			            AnnualRevenue / NonZeroAccountCount
+			        )
+			    )
+			
+			```
+		formatString: #,0
+		displayFolder: 03 ARPA
+		lineageTag: 6eedec09-5e90-4440-a971-6470885364cf
+
+	measure 'Latest Month Revenue' = ```
+			
+			VAR LatestDate = CALCULATE(
+			                    MAX('Fact_Zuora_Revenue'[Date_ID_Revenue]),
+			                    '11 Revenue'[Accounting Status] = "Closed",
+			                    ALLSELECTED('Fact_Zuora_Revenue'[Date_ID_Revenue])
+			                )
+			RETURN
+			    CALCULATE(
+			        [Revenue],  
+			        'Fact_Zuora_Revenue'[Date_ID_Revenue] = LatestDate
+			    )
+			
+			```
+		displayFolder: 03 ARPA
+		lineageTag: 4f028e9f-3d84-4960-9e20-8630dd591fb1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Latest Year' = ```
+			
+			CALCULATE(
+			    MAX('01 Date'[Year]),
+			    ALLSELECTED('01 Date'),
+			    '11 Revenue'[Accounting Status] = "Closed"
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 03 ARPA
+		lineageTag: 96a85ea8-68fb-4d1f-857e-cc9a5a69a81a
+
+	measure 'Latest Month' = ```
+			
+			VAR LatestYear = [Latest Year]
+			RETURN
+			    CALCULATE(
+			        MAX(Fact_Zuora_Revenue[Date_ID_Revenue]),
+			        ALLSELECTED('01 Date'),
+			        '01 Date'[Year] = LatestYear,
+			        '11 Revenue'[Accounting Status] = "Closed"
+			    )
+			
+			```
+		formatString: 0
+		displayFolder: 03 ARPA
+		lineageTag: d25ef9ce-b0ac-44cb-9b2a-52325fd13021
+
+	measure 'Current Prep Subscriptions' = CALCULATE([Current Active Subscriptions], Fact_Zuora_Subscription[Is_Preparation])
+		formatString: 0
+		displayFolder: 02 Subscription
+		lineageTag: b692e7c9-0b24-46f0-accb-f9d865a3197b
+
+	measure 'SF Accounts' = DISTINCTCOUNT(Fact_Account[Salesforce_Account_ID])
+		formatString: 0
+		lineageTag: 94f3fe7c-23c6-4c54-96ca-ec4060752373
+
+	measure 'VDR MRR' = CALCULATE(DIVIDE([Revenue],[End of Period Active Subs]), '08 Product'[Product Type] = "VDR")
+		formatString: #,0
+		lineageTag: 1b3ec8d7-52c3-4a2a-93ea-a10693c4f02d
+
+	measure 'End of Period Active Subs' = ```
+			
+			VAR LastDateInContext = 
+			    MAX('01 Date'[Date]) -- Determine the latest date in the filtered context
+			VAR FirstDateInContext = 
+			    MIN('01 Date'[Date]) -- Determine the earliest date in the filtered context
+			RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT(Fact_Zuora_Subscription[Zuora_Subscription_Name]),
+			        REMOVEFILTERS('01 Date'), -- Ignore automatic filtering from the relationship
+			        Fact_Zuora_Subscription[Date_Subscription_Start] <= LastDateInContext, -- Start before or on the last date of the context
+			        Fact_Zuora_Subscription[Date_Subscription_End_Calc] > LastDateInContext, -- End after the last date of the context
+			        Fact_Zuora_Subscription[Date_Subscription_End_Calc] >= FirstDateInContext -- End on or after the first date of the context
+			    )
+			
+			```
+		formatString: 0
+		displayFolder: 02 Subscription
+		lineageTag: 4c08cca0-537e-4ba4-bfaf-5bc98331775c
+
+	partition 'Measure Table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

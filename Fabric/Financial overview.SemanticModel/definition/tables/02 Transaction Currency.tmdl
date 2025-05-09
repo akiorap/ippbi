@@ -1,0 +1,25 @@
+table '02 Transaction Currency'
+	lineageTag: 96a34cc8-c4e0-48ad-bdfd-1fec9fdb856e
+
+	column 'Transaction Currency'
+		dataType: string
+		lineageTag: 11076cf7-c31c-4636-b168-357e4d8036b4
+		summarizeBy: none
+		sourceColumn: Transaction Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '02 Transaction Currency' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Currency_View = Datamarts_Schema{[Name="Reporting_Dimension_Currency",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Currency_View,{{"Currency", "Transaction Currency"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

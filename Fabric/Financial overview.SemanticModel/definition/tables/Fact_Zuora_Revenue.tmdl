@@ -1,0 +1,183 @@
+table Fact_Zuora_Revenue
+	isHidden
+	lineageTag: 52ef9b02-c746-46fc-8090-0a73fd5762a4
+
+	column RevenueScheduleItem_ID
+		dataType: string
+		isHidden
+		lineageTag: 9861dc1b-8a26-4129-b907-548f3b7fd8d6
+		summarizeBy: none
+		sourceColumn: RevenueScheduleItem_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID_Revenue
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9fa996ba-367b-45d4-8747-7f1ed24e1670
+		summarizeBy: none
+		sourceColumn: Date_ID_Revenue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Transaction_Number
+		dataType: string
+		isHidden
+		lineageTag: d80146d0-87b9-46c9-82ed-a19785b363f3
+		summarizeBy: none
+		sourceColumn: Transaction_Number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zuora_Product_ID
+		dataType: string
+		isHidden
+		lineageTag: 8b1bc8ef-c06f-4d6b-ab64-a6d1e80fe368
+		summarizeBy: none
+		sourceColumn: Zuora_Product_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zuora_Subscription_ID
+		dataType: string
+		isHidden
+		lineageTag: b8369f6b-176a-474d-8eb7-f287851cc62c
+		summarizeBy: none
+		sourceColumn: Zuora_Subscription_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revenue_Amount_Tran
+		dataType: double
+		isHidden
+		lineageTag: 7f9d2447-2989-49a1-b855-39106ed4c75a
+		summarizeBy: sum
+		sourceColumn: Revenue_Amount_Tran
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Revenue_Amount_NOK
+		dataType: double
+		isHidden
+		lineageTag: 20e6b0b3-59da-4d4d-a5fb-420ed2919b14
+		summarizeBy: sum
+		sourceColumn: Revenue_Amount_NOK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Revenue_Amount_SEK
+		dataType: double
+		isHidden
+		lineageTag: a84bb8a9-1c54-45c8-9eee-6da7f14a35ef
+		summarizeBy: sum
+		sourceColumn: Revenue_Amount_SEK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Revenue_Amount_DKK
+		dataType: double
+		isHidden
+		lineageTag: ba8fed0e-ab75-4bdb-902c-64196d73187b
+		summarizeBy: sum
+		sourceColumn: Revenue_Amount_DKK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Revenue_Amount_EUR
+		dataType: double
+		isHidden
+		lineageTag: 97da2f61-cd33-4296-b03c-a05dc53a1752
+		summarizeBy: sum
+		sourceColumn: Revenue_Amount_EUR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Revenue_Amount_GBP
+		dataType: double
+		isHidden
+		lineageTag: fe0901b8-6eba-447f-8ced-9e27ba688d27
+		summarizeBy: sum
+		sourceColumn: Revenue_Amount_GBP
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Zuora_Account_ID
+		dataType: string
+		lineageTag: 86bf43c2-b7ba-45b7-aebe-181788c35001
+		summarizeBy: none
+		sourceColumn: Zuora_Account_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesforce_Account_ID
+		dataType: string
+		lineageTag: 79f9c2c4-9c77-4b50-b635-882f6a970152
+		summarizeBy: none
+		sourceColumn: Salesforce_Account_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		lineageTag: 42405e4d-5174-43a5-a333-7774258e0b71
+		summarizeBy: none
+		sourceColumn: Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Forecast_Type
+		dataType: string
+		lineageTag: 08f39c06-1204-4421-a8d1-f35c5bbf08df
+		summarizeBy: none
+		sourceColumn: Forecast_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Zuora_Revenue = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Fact_Zuora_Revenue_View = Datamarts_Schema{[Name="Reporting_Fact_Zuora_Revenue",Kind="View"]}[Data]
+				in
+				    Reporting_Fact_Zuora_Revenue_View
+
+	changedProperty = IsHidden
+

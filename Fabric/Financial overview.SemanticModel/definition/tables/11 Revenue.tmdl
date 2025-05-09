@@ -1,0 +1,90 @@
+table '11 Revenue'
+	lineageTag: c2a7eccd-7a8a-45ea-9fe5-ada0cc4d5197
+
+	column RevenueScheduleItem_ID
+		dataType: string
+		isHidden
+		lineageTag: 9ea0e361-57b2-471c-a1eb-0e8de74becce
+		summarizeBy: none
+		sourceColumn: RevenueScheduleItem_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_AccountingPeriod_Start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 127b9af3-1179-44c2-bc4b-89e69a92af5f
+		summarizeBy: none
+		sourceColumn: Date_AccountingPeriod_Start
+
+		variation Variation
+			isDefault
+			relationship: 56a958f7-b682-4551-9c1a-d23b793884ac
+			defaultHierarchy: LocalDateTable_fdf375f6-0e26-43ac-8bdd-d85cf24db4c5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_AccountingPeriod_End
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 03a83044-105c-4fef-a7d5-43265a0f9052
+		summarizeBy: none
+		sourceColumn: Date_AccountingPeriod_End
+
+		variation Variation
+			isDefault
+			relationship: 8300db2d-167b-40ff-94fb-d5447f692f0b
+			defaultHierarchy: LocalDateTable_89697f7c-d295-4623-b83f-da4941873000.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AccountingPeriod_Name
+		dataType: string
+		lineageTag: f6543d92-b4c6-49dd-b7ff-81e65a3ba915
+		summarizeBy: none
+		sourceColumn: AccountingPeriod_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accounting Status'
+		dataType: string
+		lineageTag: 85337c75-9cbf-4583-bb11-667a9ad40f58
+		summarizeBy: none
+		sourceColumn: Accounting Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transaction Number'
+		dataType: string
+		lineageTag: 98d1c208-7a3d-4527-9e38-58ae8d810b43
+		summarizeBy: none
+		sourceColumn: Transaction Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Revenue Type'
+		dataType: string
+		lineageTag: dc0c55c8-25ce-4805-ba13-d3fd35dba9a9
+		summarizeBy: none
+		sourceColumn: Revenue Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '11 Revenue' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Zuora_Revenue_View = Datamarts_Schema{[Name="Reporting_Dimension_Zuora_Revenue",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Zuora_Revenue_View,{{"AccountingPeriod_Status", "Accounting Status"}, {"Revenue_Type", "Revenue Type"}, {"Transaction_Number", "Transaction Number"}})
+				in
+				    #"Renamed Columns"
+

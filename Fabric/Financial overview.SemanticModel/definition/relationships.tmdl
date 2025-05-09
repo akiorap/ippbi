@@ -1,0 +1,311 @@
+relationship 9cebe139-e993-49e8-ba32-ba8f465419f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '08 Product'.Date_Start
+	toColumn: LocalDateTable_ba0ebd93-61ae-4d2b-8418-9174bbd87974.Date
+
+relationship a7471161-f719-4f52-bd36-113147f48352
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '08 Product'.Date_End
+	toColumn: LocalDateTable_403d9520-c8f1-4191-bdfc-a32fa55daf3f.Date
+
+relationship 956fc48f-fa72-4640-a616-7c13046e017c
+	fromColumn: Fact_Zuora_Invoice_Item.SK_Zuora_Product
+	toColumn: '08 Product'.SK_Zuora_Product
+
+relationship 6652101a-b970-43da-a629-52819c917576
+	fromColumn: Fact_Zuora_Subscription.SK_Zuora_Product
+	toColumn: '08 Product'.SK_Zuora_Product
+
+relationship c80607cd-76bb-434b-8218-b6d54df8de6c
+	fromColumn: Fact_Zuora_Invoice_Item.SK_Zuora_Charge
+	toColumn: '07 Charge'.SK_Zuora_Charge
+
+relationship ef0e381f-7155-4f96-a856-0ddacf5362c7
+	fromColumn: Fact_Zuora_Invoice_Item.Date_ID
+	toColumn: '01 Date'.Date_ID
+
+relationship ce81f8a3-f99a-4e83-bf0f-ce6c4287a6ee
+	isActive: false
+	fromColumn: Fact_Zuora_Subscription.Date_Created_ID
+	toColumn: '01 Date'.Date_ID
+
+relationship 1ae2e032-9074-4c3c-8e17-05709c6abe80
+	isActive: false
+	fromColumn: Fact_Zuora_Subscription.Date_Go_Live_ID
+	toColumn: '01 Date'.Date_ID
+
+relationship fd98d2b6-2fe9-4d2a-a163-900b954f038a
+	isActive: false
+	fromColumn: Fact_Zuora_Subscription.Date_Canceled_ID
+	toColumn: '01 Date'.Date_ID
+
+relationship 9d456d26-73ba-421a-81a0-fcc97df2ac35
+	fromColumn: Fact_Zuora_Subscription.Date_Subscription_Start_ID
+	toColumn: '01 Date'.Date_ID
+
+relationship e2c11b47-b124-4e56-8d64-1c16ca76ec0a
+	isActive: false
+	fromColumn: Fact_Zuora_Subscription.Date_Subscription_End_ID
+	toColumn: '01 Date'.Date_ID
+
+relationship fa6f7ea7-b03a-4090-bac3-8ea746338334
+	fromColumn: Fact_Zuora_Subscription.SK_Country
+	toColumn: '03 Country'.SK_Country
+
+relationship 9e42ece5-1e2d-4a01-b0ab-dd16f29b41e9
+	fromColumn: Fact_Zuora_Invoice_Item.CountryId
+	toColumn: '03 Country'.'ISO Code'
+
+relationship 343db536-0fbc-4eab-9df8-2b0b80b82e57
+	fromColumn: Fact_Zuora_Invoice_Item.SK_Zuora_Subscription
+	toColumn: '06 Subscription'.SK_Zuora_Subscription
+
+relationship 1b237d41-5966-42c5-bc3c-1e314fd7b3da
+	fromColumn: Fact_Zuora_Invoice_Item.Currency
+	toColumn: '02 Transaction Currency'.'Transaction Currency'
+
+relationship 974c7e02-b3ae-4558-9d58-e4284e16d380
+	fromColumn: Fact_Zuora_Credit_Item.SK_Zuora_Product
+	toColumn: '08 Product'.SK_Zuora_Product
+
+relationship 022ed14d-f318-4ae0-b5ea-5b0f69abd9b3
+	fromColumn: Fact_Zuora_Credit_Item.SK_Zuora_Subscription
+	toColumn: '06 Subscription'.SK_Zuora_Subscription
+
+relationship 958fdeb5-ed69-4d72-b899-77a3c634b435
+	fromColumn: Fact_Zuora_Credit_Item.Zuora_RatePlanCharge_Id
+	toColumn: '07 Charge'.SK_Zuora_Charge
+
+relationship f7e94670-3531-464b-9423-ebbba1626472
+	fromColumn: Fact_Zuora_Subscription.Zuora_subscription_id
+	toColumn: '06 Subscription'.'Subscription ID'
+
+relationship fc8c1508-7a17-49f1-8ba2-4c454556381d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '05 Credit Item'.Date_Memo
+	toColumn: LocalDateTable_76d6dec7-54d5-4d45-afc8-12645ca76309.Date
+
+relationship 45ec2559-42cd-4661-abb4-deccc65686c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '04 Invoice Item'.'Invoice Date'
+	toColumn: LocalDateTable_83660d82-baf0-49de-88fb-18331845e5c2.Date
+
+relationship 6d568cb5-6979-4ff2-a31f-f4371d0e92d4
+	fromColumn: Fact_Zuora_Invoice_Item.Invoice_Item_Id
+	toColumn: '04 Invoice Item'.'Invoice Item ID'
+
+relationship 446c4684-753b-455f-8fd8-3a332f99c7fe
+	fromColumn: Fact_Zuora_Credit_Item.CreditMemo_Item_Id
+	toColumn: '05 Credit Item'.'CreditMemo Item ID'
+
+relationship dc95c40b-f0dd-44e8-86b2-ee95941bfc93
+	fromColumn: Fact_Zuora_Credit_Item.Currency
+	toColumn: '02 Transaction Currency'.'Transaction Currency'
+
+relationship 18a95a0b-b152-4488-b440-18038fa56619
+	isActive: false
+	fromColumn: Fact_Zuora_Subscription.Date_Suspended_ID
+	toColumn: '01 Date'.Date_ID
+
+relationship 9f643394-f543-4c2c-b5e5-ae0f96889015
+	fromColumn: Fact_Zuora_Credit_Item.CountryId
+	toColumn: '03 Country'.'ISO Code'
+
+relationship e8496929-c736-45d5-9338-d7fd02c722f3
+	fromColumn: Fact_Zuora_Invoice_Item.SK_Zuora_Sales_Type
+	toColumn: '99 Sales Type (Old)'.SK_Zuora_Sales_Type
+
+relationship 7d546c36-a8cd-40d5-a1a5-dd3976817cd4
+	fromColumn: Fact_Zuora_Credit_Item.SK_Zuora_Sales_Type
+	toColumn: '99 Sales Type (Old)'.SK_Zuora_Sales_Type
+
+relationship ff409f01-740d-404b-9eb3-2914fa3bd2d4
+	fromColumn: Fact_Budget.Date_ID
+	toColumn: '01 Date'.Date_ID
+
+relationship 7b2f8812-b9ec-4f29-a5fe-4b0779e1d875
+	fromColumn: Fact_Budget.SK_Zuora_Sales_Type
+	toColumn: '99 Sales Type (Old)'.SK_Zuora_Sales_Type
+
+relationship d4f982d5-c65d-4bfa-8c00-858aeaf9b9d9
+	fromColumn: Fact_Budget.SK_Country
+	toColumn: '03 Country'.SK_Country
+
+relationship fa700a7f-a073-42cd-87f7-8187750b5068
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Opportunity.Date_Created
+	toColumn: LocalDateTable_7623af51-ed88-4ce4-8e72-1d13b8b43b0a.Date
+
+relationship bbce6d6d-9e83-49ca-b9b8-a246e29a7ea0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Opportunity.Date_Close
+	toColumn: LocalDateTable_d907ba5a-3e67-4398-ad75-d6f5924b6138.Date
+
+relationship 9a06305d-0318-4165-800a-8cde1abd3a3f
+	fromColumn: Fact_Opportunity.Date_ID_Close
+	toColumn: '01 Date'.Date_ID
+
+relationship 484673c5-a0f9-404e-aa5c-2dcd6f862e12
+	fromColumn: Fact_Budget.SK_Budget_Type
+	toColumn: '10 Budget Type'.SK_Budget_Type
+
+relationship 4320bc8f-d7b7-4a30-b893-d8fb3431561c
+	fromColumn: Fact_Zuora_Invoice_Item.SK_Zuora_New_Sales_Type
+	toColumn: '09 Sales Type'.SK_Zuora_Sales_Type
+
+relationship f81db9c4-cee7-c119-1b34-1ef89a7e04a0
+	fromColumn: Fact_Zuora_Credit_Item.SK_New_Zuora_Sales_Type
+	toColumn: '09 Sales Type'.SK_Zuora_Sales_Type
+
+relationship b13d25c7-0a08-4291-a9f2-be3d2ef5a196
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '01 Date'.Date
+	toColumn: LocalDateTable_0f198a1c-a6ae-4ee5-b749-5303883213f9.Date
+
+relationship f9863dcb-8c44-4119-b711-7fc3f408d0aa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Zuora_Credit_Item.Date_Memo
+	toColumn: LocalDateTable_cfd836c5-3910-49b6-aff4-fc4a15beeb64.Date
+
+relationship 56a958f7-b682-4551-9c1a-d23b793884ac
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '11 Revenue'.Date_AccountingPeriod_Start
+	toColumn: LocalDateTable_fdf375f6-0e26-43ac-8bdd-d85cf24db4c5.Date
+
+relationship 8300db2d-167b-40ff-94fb-d5447f692f0b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '11 Revenue'.Date_AccountingPeriod_End
+	toColumn: LocalDateTable_89697f7c-d295-4623-b83f-da4941873000.Date
+
+relationship AutoDetected_51c7c5da-df36-4481-8e34-f1e9c2837278
+	fromColumn: Fact_Zuora_Revenue.Zuora_Product_ID
+	toColumn: '08 Product'.'Zuora Product ID'
+
+relationship AutoDetected_95a5e874-5fb5-45a8-9189-ea21f82952a0
+	fromColumn: Fact_Zuora_Revenue.Zuora_Subscription_ID
+	toColumn: '06 Subscription'.'Subscription ID'
+
+relationship AutoDetected_53bec281-d7b6-4391-aa6e-faddb5c721f3
+	fromColumn: Fact_Zuora_Revenue.RevenueScheduleItem_ID
+	toColumn: '11 Revenue'.RevenueScheduleItem_ID
+
+relationship 5b59bc0b-3545-4b30-84ac-50b7cdf191ed
+	fromColumn: Fact_Zuora_Revenue.Date_ID_Revenue
+	toColumn: '01 Date'.Date_ID
+
+relationship c82f8533-a062-4272-acd0-a6a9dde15fbd
+	fromColumn: Fact_Zuora_Credit_Item.Date_ID_Memo
+	toColumn: '01 Date'.Date_ID
+
+relationship 7038d93a-4f05-4e08-9d9b-e80e2ee31d62
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '12 Dim Churn'.Date_Last_Modified
+	toColumn: LocalDateTable_da338c04-72af-41bc-a1f4-bc9b0774e40c.Date
+
+relationship 7e347235-4711-4e25-b004-99339421a5f7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '12 Dim Churn'.Date_License_End
+	toColumn: LocalDateTable_05d0deb6-f5ad-43fd-9baf-75fb5de3cb1d.Date
+
+relationship 80db76c8-e97b-4103-b150-fa8ca0402bf2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '12 Dim Churn'.Date_License_Start
+	toColumn: LocalDateTable_a00d3afc-4f82-4d5d-99e7-f7aec56b8b86.Date
+
+relationship a0dcb383-8063-400f-ac58-da41b11cec5d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '12 Dim Churn'.Date_Won_Back
+	toColumn: LocalDateTable_775ae998-3b20-4e17-b4cf-0bee749308f0.Date
+
+relationship bb1d0dc5-9bf4-44d7-a317-cc97b88fc746
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Account.Date_Account_Created
+	toColumn: LocalDateTable_23cfa0fb-582f-4ff2-8ed0-af97a590acce.Date
+
+relationship d2ff751b-1364-457d-8828-1d9e3a49e314
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Account.Last_Activity_Date
+	toColumn: LocalDateTable_b478aade-f483-4150-a02b-9873e983ba72.Date
+
+relationship d9d71ba9-b2c2-4c28-915d-417153a648ba
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Account.Date_License_Start
+	toColumn: LocalDateTable_65ce59fa-7fed-4bb2-9a7e-3c6756aaf6aa.Date
+
+relationship 067b231e-57cf-4bb1-ab77-a50a82a7c736
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Account.Date_Price_Adjustment
+	toColumn: LocalDateTable_c1853e22-e81f-4d12-b664-7c476dd0c0ba.Date
+
+relationship AutoDetected_2fc06ad8-2c02-474b-9cc6-f9d25c05b457
+	fromColumn: Fact_Account.Churn_ID
+	toColumn: '12 Dim Churn'.Churn_ID
+
+relationship eeaf4f9e-4c7f-7fd9-afcd-0c236400a5f6
+	fromColumn: Fact_Account.Date_ID_Account
+	toColumn: '01 Date'.Date_ID
+
+relationship 21352424-8d78-f213-003e-524b7b295024
+	isActive: false
+	fromColumn: Fact_Account.Date_ID_Churn
+	toColumn: '01 Date'.Date_ID
+
+relationship 49f85b78-bbc4-b625-ebb7-a9e7824be102
+	fromColumn: Fact_Account.Salesforce_Account_ID
+	toColumn: '00 SF Account'.'SF Account_ID'
+
+relationship 921d2286-bef0-12a4-f8ad-b3233c921359
+	fromColumn: Fact_Zuora_Revenue.Salesforce_Account_ID
+	toColumn: '00 SF Account'.'SF Account_ID'
+
+relationship 4924d03d-133d-dad1-04af-228e6c109c8c
+	fromColumn: Fact_Zuora_Subscription.Salesforce_Account_ID
+	toColumn: '00 SF Account'.'SF Account_ID'
+
+relationship f1ac2c72-fe81-7750-7318-e33c4b4a663e
+	fromColumn: Fact_Zuora_Credit_Item.Salesforce_Account_ID
+	toColumn: '00 SF Account'.'SF Account_ID'
+
+relationship 90920ab1-2fe3-ed2b-179e-2a5a498906a0
+	fromColumn: Fact_Zuora_Invoice_Item.Salesforce_Account_ID
+	toColumn: '00 SF Account'.'SF Account_ID'
+
+relationship b6ff42cf-884c-60f7-2d60-c73e57acf608
+	fromColumn: Fact_Opportunity.currency_iso_code
+	toColumn: '02 Transaction Currency'.'Transaction Currency'
+
+relationship 7206215b-d89b-3ca9-7b93-31924347703e
+	fromColumn: Fact_Opportunity.Salesforce_Account_ID
+	toColumn: '00 SF Account'.'SF Account_ID'
+
+relationship 44f48472-c7c9-030d-f02d-2baa30cee048
+	fromColumn: Fact_Budget.SK_Zuora_Sales_Type
+	toColumn: '09 Sales Type'.SK_Zuora_Sales_Type
+
+relationship AutoDetected_d911ea70-5b4f-4610-96ed-3ab3fb752579
+	fromColumn: Fact_Zuora_Invoice_Item.Forecast_Type
+	toColumn: '13 Zuora Forecast Type'.Forecast_Type
+
+relationship AutoDetected_7940c124-9b71-4af2-961b-af328bdf422e
+	fromColumn: Fact_Zuora_Revenue.Forecast_Type
+	toColumn: '13 Zuora Forecast Type'.Forecast_Type
+
+relationship 24a75b5a-fd98-4490-bb97-9175701dbf14
+	joinOnDateBehavior: datePartOnly
+	fromColumn: '06 Subscription'.'Initial Sub Start'
+	toColumn: LocalDateTable_7c06d806-fbfd-4752-b81e-53f06f20e3c7.Date
+
+relationship d2169498-e12f-6f9a-3bef-51aad100adb7
+	fromColumn: Fact_Zuora_Revenue.Currency
+	toColumn: '02 Transaction Currency'.'Transaction Currency'
+
+relationship ec267e77-c54e-42f1-8185-c5ddc7a6f3e9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Zuora_Subscription.Date_Subscription_Start
+	toColumn: LocalDateTable_ff4b7b27-c26d-4575-b159-ba9a376ef092.Date
+
+relationship 233a74f0-55d7-429e-9ed9-03ffbf180b6b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Zuora_Subscription.Date_Subscription_End_Calc
+	toColumn: LocalDateTable_6c781d7c-5c71-4ec0-ac2c-6a2ceb466e57.Date
+

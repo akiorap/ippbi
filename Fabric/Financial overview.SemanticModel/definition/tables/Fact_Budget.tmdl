@@ -1,0 +1,180 @@
+table Fact_Budget
+	isHidden
+	lineageTag: 6260cbac-e286-4ccc-ad4d-017661b6f754
+
+	column Budget_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f56cfcda-ae53-486d-b7a0-ccd290167b59
+		summarizeBy: count
+		sourceColumn: Budget_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8513b429-2605-45b5-bc5f-ff96e1d23d4f
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Country
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 33b68072-e615-4d9f-892c-1d56898a2a87
+		summarizeBy: none
+		sourceColumn: SK_Country
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Sales_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d4173c9a-e628-45e0-8cd3-1a88785305e6
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Sales_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Product_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f24aaa96-96ff-488e-955e-acde2cfffdac
+		summarizeBy: sum
+		sourceColumn: SK_Product_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount_NOK
+		dataType: double
+		isHidden
+		lineageTag: baab2e7e-1d43-4015-a23c-aa2e706db023
+		summarizeBy: sum
+		sourceColumn: Amount_NOK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount_SEK
+		dataType: double
+		isHidden
+		lineageTag: a5b6ddf2-5369-4e0d-90f6-d75a94fc30a9
+		summarizeBy: sum
+		sourceColumn: Amount_SEK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount_DKK
+		dataType: double
+		isHidden
+		lineageTag: 24040694-9e53-4a8e-86a8-438080cac937
+		summarizeBy: sum
+		sourceColumn: Amount_DKK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount_EUR
+		dataType: double
+		isHidden
+		lineageTag: 0d773faf-030d-43d1-921e-6a74614f56e4
+		summarizeBy: sum
+		sourceColumn: Amount_EUR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount_GBP
+		dataType: double
+		isHidden
+		lineageTag: 9043d73f-a1b9-48ea-bfc3-614221478e59
+		summarizeBy: sum
+		sourceColumn: Amount_GBP
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SK_Budget_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 543cd9f4-e98b-42f8-aab4-e87dd8f6da00
+		summarizeBy: none
+		sourceColumn: SK_Budget_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Revenue
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a2b5ee67-ff56-4f07-9fa8-420ef4c67fd2
+		summarizeBy: none
+		sourceColumn: Is_Revenue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Sales
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8517e75d-8e67-4bc9-8841-3a18eb8b7884
+		summarizeBy: none
+		sourceColumn: Is_Sales
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Budget = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Fact_Budget_View = Datamarts_Schema{[Name="Reporting_Fact_Budget",Kind="View"]}[Data]
+				in
+				    Reporting_Fact_Budget_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

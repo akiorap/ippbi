@@ -1,0 +1,481 @@
+table '00 SF Account'
+	lineageTag: 86401a41-e377-4da7-815b-4911cca27614
+
+	column SK_Account
+		dataType: string
+		isHidden
+		lineageTag: 64442a18-50f0-47c4-9c70-4e52a73ef24d
+		summarizeBy: none
+		sourceColumn: SK_Account
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SF Account_ID'
+		dataType: string
+		displayFolder: 01 Account Info
+		lineageTag: e6ec95d0-2bb7-4c73-9031-6ba1d84a61cd
+		summarizeBy: none
+		sourceColumn: SF Account_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SF Account Name'
+		dataType: string
+		displayFolder: 01 Account Info
+		lineageTag: 0ee5bb54-69f4-45cc-bf02-412e4918d20e
+		summarizeBy: none
+		sourceColumn: SF Account Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SF Account Type'
+		dataType: string
+		displayFolder: 01 Account Info
+		lineageTag: 845354f2-eba6-4367-82c9-60a51352e138
+		summarizeBy: none
+		sourceColumn: SF Account Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Salesforce Industry'
+		dataType: string
+		displayFolder: 01 Account Info
+		lineageTag: 7713dcd6-0737-4367-83d9-669c7372df2f
+		summarizeBy: none
+		sourceColumn: Salesforce Industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number Of Employees'
+		dataType: int64
+		formatString: 0
+		displayFolder: 01 Account Info
+		lineageTag: d2fe7934-8157-421f-9c5a-17dd4d069f66
+		summarizeBy: sum
+		sourceColumn: Number Of Employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column Board_Book_Enabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 01 Account Info\Features
+		lineageTag: bfe05e69-667f-4dac-a6da-e3fdcf26d816
+		summarizeBy: none
+		sourceColumn: Board_Book_Enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'E Sign Enabled'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 01 Account Info\Features
+		lineageTag: 38f9a2c8-79e5-46c1-8a1a-5a58836ff7d6
+		summarizeBy: none
+		sourceColumn: E Sign Enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meeting_Minutes_Enabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 01 Account Info\Features
+		lineageTag: e5c444ec-e5d5-42af-b928-b611c3e73384
+		summarizeBy: none
+		sourceColumn: Meeting_Minutes_Enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column Secure_Messaging_Enabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 01 Account Info\Features
+		lineageTag: d58f5113-0e5d-4655-9c0f-5a2782ed5dae
+		summarizeBy: none
+		sourceColumn: Secure_Messaging_Enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Currency Code'
+		dataType: string
+		displayFolder: 01 Account Info
+		lineageTag: 98baa905-af8d-44e2-bb93-8d77a1ca1dbe
+		summarizeBy: none
+		sourceColumn: Currency Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Registered'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 01 Account Info
+		lineageTag: 6d474802-9ee9-4c78-ba22-ee0f15df28a9
+		summarizeBy: none
+		sourceColumn: Churn Registered
+
+		annotation SummarizationSetBy = Automatic
+
+	column Billing_City
+		dataType: string
+		displayFolder: 10 Billing
+		lineageTag: 2aac27d7-2224-458a-9860-286f631db879
+		summarizeBy: none
+		sourceColumn: Billing_City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Billing Country'
+		dataType: string
+		displayFolder: 10 Billing
+		lineageTag: 8a109831-f45b-49f4-84eb-88ad1dda56cd
+		summarizeBy: none
+		sourceColumn: Billing Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Billing_Postal_Code
+		dataType: string
+		displayFolder: 10 Billing
+		lineageTag: ccd825bc-1a44-40d1-a993-ef80a177cc04
+		summarizeBy: none
+		sourceColumn: Billing_Postal_Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Deleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 01 Account Info
+		lineageTag: 5a0ab395-79aa-424c-9834-b4a628736114
+		summarizeBy: none
+		sourceColumn: Is_Deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Strategic Customer'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 01 Account Info
+		lineageTag: 46c80495-b50d-4c1f-82ae-a30d80118057
+		summarizeBy: none
+		sourceColumn: Strategic Customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Strategic VDR Customer'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 01 Account Info
+		lineageTag: 34e4eb62-b63b-4d84-abce-a6c562afc704
+		summarizeBy: none
+		sourceColumn: Strategic VDR Customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_Category
+		dataType: string
+		displayFolder: 01 Account Info
+		lineageTag: ea622838-c5b4-4e3d-a47f-4c34107bfaa7
+		summarizeBy: none
+		sourceColumn: Customer_Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vainu_Industry
+		dataType: string
+		displayFolder: 02 Industry
+		lineageTag: 2061d917-13ec-4326-bb19-d4ff757a0bb1
+		summarizeBy: none
+		sourceColumn: Vainu_Industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vaiu_Nace
+		dataType: string
+		displayFolder: 02 Industry
+		lineageTag: 45af9cbb-4143-46ad-a86c-86684fb41f09
+		summarizeBy: none
+		sourceColumn: Vaiu_Nace
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner_Name
+		dataType: string
+		displayFolder: 04 Account Owner
+		lineageTag: 4bc4f071-22ed-430f-9f3e-b50596bf30ec
+		summarizeBy: none
+		sourceColumn: Owner_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner_Country
+		dataType: string
+		displayFolder: 04 Account Owner
+		lineageTag: 92eae45c-e138-411c-8b13-71b888881d72
+		summarizeBy: none
+		sourceColumn: Owner_Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner_Country_Code
+		dataType: string
+		displayFolder: 04 Account Owner
+		lineageTag: 8b7dabe9-3b13-4afc-891f-d78e530863d6
+		summarizeBy: none
+		sourceColumn: Owner_Country_Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner_Department
+		dataType: string
+		displayFolder: 04 Account Owner
+		lineageTag: cfa21c9f-0c38-4e44-bf6b-b0b37bfc714a
+		summarizeBy: none
+		sourceColumn: Owner_Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column Owner_IS_Active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 04 Account Owner
+		lineageTag: 4b4df52a-72b7-4775-b583-7591663269d0
+		summarizeBy: none
+		sourceColumn: Owner_IS_Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column VDR_Owner_Name
+		dataType: string
+		displayFolder: 06 VDR
+		lineageTag: 0679e805-47d9-49a8-bb19-6195732c01e6
+		summarizeBy: none
+		sourceColumn: VDR_Owner_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column VDR_Owner_Country
+		dataType: string
+		displayFolder: 06 VDR
+		lineageTag: 5be91ee5-2caf-4266-8237-92d2b436953d
+		summarizeBy: none
+		sourceColumn: VDR_Owner_Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column VDR_Owner_Country_Code
+		dataType: string
+		displayFolder: 06 VDR
+		lineageTag: 1b505a76-4561-4c06-9e86-5dab25edd6ec
+		summarizeBy: none
+		sourceColumn: VDR_Owner_Country_Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column VDR_Owner_Department
+		dataType: string
+		displayFolder: 06 VDR
+		lineageTag: 27d6e3c0-c24d-4e79-9697-06a53e7c2124
+		summarizeBy: none
+		sourceColumn: VDR_Owner_Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column VDR_Owner_IS_Active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 06 VDR
+		lineageTag: be8ee3b5-af76-405f-a1f1-702bf4e368ea
+		summarizeBy: none
+		sourceColumn: VDR_Owner_IS_Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column Combined_Owner_Name
+		dataType: string
+		displayFolder: 05  Combined Info
+		lineageTag: d7ae98eb-823a-4fca-a85f-f42808a42672
+		summarizeBy: none
+		sourceColumn: Combined_Owner_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Combined_Country
+		dataType: string
+		displayFolder: 05  Combined Info
+		lineageTag: 6bb8e258-cd00-45ad-b06f-135ea20feaba
+		summarizeBy: none
+		sourceColumn: Combined_Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Combined_Country_Code
+		dataType: string
+		displayFolder: 05  Combined Info
+		lineageTag: 80243fb5-4ba4-45f2-b7d6-6d4bfac2642c
+		summarizeBy: none
+		sourceColumn: Combined_Country_Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Combined_User_Department
+		dataType: string
+		displayFolder: 05  Combined Info
+		lineageTag: bef6bafc-cec7-4677-9585-49e9408dacbe
+		summarizeBy: none
+		sourceColumn: Combined_User_Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column Combined_IS_Active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: 05  Combined Info
+		lineageTag: 5e575d7b-b45a-4305-b743-2f7ebd7159dd
+		summarizeBy: none
+		sourceColumn: Combined_IS_Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column level
+		dataType: int64
+		formatString: 0
+		displayFolder: 99 Hierarchy Levels
+		lineageTag: 58c72aa1-ae3b-4390-a172-4b603d64e7d3
+		summarizeBy: sum
+		sourceColumn: level
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account_Name_0
+		dataType: string
+		displayFolder: 99 Hierarchy Levels
+		lineageTag: 07d5e0b2-2c7a-4a04-b751-9aa496ed7cf9
+		summarizeBy: none
+		sourceColumn: Account_Name_0
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account_Name_1
+		dataType: string
+		displayFolder: 99 Hierarchy Levels
+		lineageTag: 94ce027c-5cd4-45f8-acec-939176bf160e
+		summarizeBy: none
+		sourceColumn: Account_Name_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account_Name_2
+		dataType: string
+		displayFolder: 99 Hierarchy Levels
+		lineageTag: 8cb1815d-d60b-4b4e-bb22-c4383547f983
+		summarizeBy: none
+		sourceColumn: Account_Name_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account_Name_3
+		dataType: string
+		displayFolder: 99 Hierarchy Levels
+		lineageTag: d1e71b32-c0f9-4f98-8974-b022515bbca8
+		summarizeBy: none
+		sourceColumn: Account_Name_3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account_Name_4
+		dataType: string
+		displayFolder: 99 Hierarchy Levels
+		lineageTag: ee6ccda6-610f-4c0f-a6c2-7b4f1d075cad
+		summarizeBy: none
+		sourceColumn: Account_Name_4
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account_Name_5
+		dataType: string
+		displayFolder: 99 Hierarchy Levels
+		lineageTag: 6b684d92-8105-41e8-97b3-7fafa1790d27
+		summarizeBy: none
+		sourceColumn: Account_Name_5
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SF Parent Account Name'
+		dataType: string
+		displayFolder: 01 Account Info
+		lineageTag: 5af8bc5b-0fab-47b6-81fc-59eb44593d7d
+		summarizeBy: none
+		sourceColumn: SF Parent Account Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cleaned_Organization_Number
+		dataType: string
+		lineageTag: 1306ab33-0b49-47f5-adde-098bf5a5cde2
+		summarizeBy: none
+		sourceColumn: Cleaned_Organization_Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Yearly_Fee
+		dataType: string
+		lineageTag: dbfab0da-5a18-4d64-b504-782ec4554675
+		summarizeBy: none
+		sourceColumn: Has_Yearly_Fee
+
+		annotation SummarizationSetBy = Automatic
+
+	column Yearly_Fee
+		dataType: double
+		lineageTag: 24df8a89-2392-4939-93c7-4911ef3e733d
+		summarizeBy: sum
+		sourceColumn: Yearly_Fee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	hierarchy 'SF Account Hierarchy'
+		lineageTag: 4decb0a3-1ca0-4db3-9b2f-98b33c79be98
+
+		level 'Acc lvl 0'
+			lineageTag: b6f8b583-9e7e-44a8-a391-00e21b5901eb
+			column: Account_Name_0
+
+		level 'Acc lvl 1'
+			lineageTag: 2854f7b7-87a9-4243-8ac7-77624d10bd7c
+			column: Account_Name_1
+
+		level 'Acc lvl 2'
+			lineageTag: 11f5b852-2092-45e5-b0a6-eb9247fbea0f
+			column: Account_Name_2
+
+		level 'Acc lvl 3'
+			lineageTag: c3535f07-5902-4ed5-9840-8c7d968f9215
+			column: Account_Name_3
+
+		level 'Acc lvl 4'
+			lineageTag: ea9d2513-7b4f-4d33-914a-567e88123eae
+			column: Account_Name_4
+
+		level 'Acc lvl 5'
+			lineageTag: 5667409d-7e58-4605-a7d7-f798c6f4339f
+			column: Account_Name_5
+
+	partition '00 SF Account' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Generic_Account_View = Datamarts_Schema{[Name="Reporting_Dimension_Generic_Account",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Generic_Account_View,{{"Account_Type", "SF Account Type"}, {"E_Sign_Enabled", "E Sign Enabled"}, {"Salesforce_Industry", "Salesforce Industry"}, {"Number_Of_Employees", "Number Of Employees"}, {"Strategic_VDR_Customer", "Strategic VDR Customer"}, {"Strategic_Customer", "Strategic Customer"}, {"Account_Name", "SF Account Name"}, {"Account_ID", "SF Account_ID"}, {"Churn_Registered", "Churn Registered"}, {"CurrencyIsoCode", "Currency Code"}, {"Billing_Country", "Billing Country"}, {"Parent_Account_Name", "SF Parent Account Name"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

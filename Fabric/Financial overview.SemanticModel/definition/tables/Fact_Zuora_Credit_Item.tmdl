@@ -1,0 +1,247 @@
+table Fact_Zuora_Credit_Item
+	isHidden
+	lineageTag: ab86dec1-d39b-44d1-bc36-bad443011688
+
+	column CreditMemo_Item_Id
+		dataType: string
+		isHidden
+		lineageTag: e36a2bdf-7065-4b97-bc6a-e1c26ca2fc80
+		summarizeBy: none
+		sourceColumn: CreditMemo_Item_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Subscription
+		dataType: string
+		isHidden
+		lineageTag: c6fe8ecb-f227-4ad0-85dd-aec75189bba0
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Subscription
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Product
+		dataType: string
+		isHidden
+		lineageTag: cb3190d0-c864-4a9c-8861-32f6063e2997
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Product
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Account
+		dataType: string
+		isHidden
+		lineageTag: e426a11d-8926-43e3-9828-869a46418249
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Account
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zuora_Amendment_Id
+		dataType: string
+		isHidden
+		lineageTag: 06e040e6-421e-4031-a526-bd095af25bf7
+		summarizeBy: none
+		sourceColumn: Zuora_Amendment_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zuora_RatePlanCharge_Id
+		dataType: string
+		isHidden
+		lineageTag: b914bb27-f523-4315-b569-a131ca649eed
+		summarizeBy: none
+		sourceColumn: Zuora_RatePlanCharge_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zuora_Invoice_Id
+		dataType: string
+		isHidden
+		lineageTag: 7e9fede4-69e8-4907-b047-c75a27fcdd65
+		summarizeBy: none
+		sourceColumn: Zuora_Invoice_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency
+		dataType: string
+		isHidden
+		lineageTag: 7abc0d7a-2b36-44f2-891a-00baf87d5433
+		summarizeBy: none
+		sourceColumn: Currency
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryId
+		dataType: string
+		isHidden
+		lineageTag: 2100666b-2cf2-42d9-bf1b-7ba2ead3ec3d
+		summarizeBy: none
+		sourceColumn: CountryId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Sales_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: aa069055-725a-4d7d-8821-1e10d641f3cc
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Sales_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_CreditMemo_Posted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c7bad33c-530e-45d5-b714-709a51472099
+		summarizeBy: none
+		sourceColumn: Is_CreditMemo_Posted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_New_Zuora_Sales_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d0095a42-94d6-4ccd-b10d-5752b99d169b
+		summarizeBy: none
+		sourceColumn: SK_New_Zuora_Sales_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Memo
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 119ea359-848b-4295-a755-35f9726ba24e
+		summarizeBy: none
+		sourceColumn: Date_Memo
+
+		variation Variation
+			isDefault
+			relationship: f9863dcb-8c44-4119-b711-7fc3f408d0aa
+			defaultHierarchy: LocalDateTable_cfd836c5-3910-49b6-aff4-fc4a15beeb64.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_ID_Memo
+		dataType: int64
+		formatString: 0
+		lineageTag: f882d00f-082f-496e-b51d-2cdd6ff0017c
+		summarizeBy: none
+		sourceColumn: Date_ID_Memo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Credit_Amount_NOK
+		dataType: double
+		lineageTag: 7b124383-40a0-4d9e-8f5f-9a66cb73cd02
+		summarizeBy: sum
+		sourceColumn: Credit_Amount_NOK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Credit_Amount_SEK
+		dataType: double
+		lineageTag: 4d8917c7-fa00-4589-8d9d-13c360a732b3
+		summarizeBy: sum
+		sourceColumn: Credit_Amount_SEK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Credit_Amount_DKK
+		dataType: double
+		lineageTag: 41f6dc09-a284-4d50-a152-21fda9e72935
+		summarizeBy: sum
+		sourceColumn: Credit_Amount_DKK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Credit_Amount_EUR
+		dataType: double
+		lineageTag: 007dca9c-eca4-44e1-a913-b47223745515
+		summarizeBy: sum
+		sourceColumn: Credit_Amount_EUR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Credit_Amount_GBP
+		dataType: double
+		lineageTag: 47d3739e-95a5-4a51-b2bc-7f90517abd21
+		summarizeBy: sum
+		sourceColumn: Credit_Amount_GBP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Credit_Amount_Tran
+		dataType: double
+		lineageTag: 39e5ff68-6b65-418d-8286-e27b29ab38fa
+		summarizeBy: sum
+		sourceColumn: Credit_Amount_Tran
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Salesforce_Account_ID
+		dataType: string
+		lineageTag: de47a1e3-817f-45d2-8def-7b2a539da8cc
+		summarizeBy: none
+		sourceColumn: Salesforce_Account_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Zuora_Credit_Item = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Fact_Zuora_Credit_Item_View = Datamarts_Schema{[Name="Reporting_Fact_Zuora_Credit_Item",Kind="View"]}[Data]
+				in
+				    Reporting_Fact_Zuora_Credit_Item_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

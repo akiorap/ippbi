@@ -1,0 +1,337 @@
+table Fact_Zuora_Subscription
+	isHidden
+	lineageTag: 015c7e74-af13-40ce-bec0-32c74763c93a
+
+	column Zuora_Subscription_Name
+		dataType: string
+		isHidden
+		lineageTag: 2b611f04-8234-4017-9f3b-a39c96c2115c
+		summarizeBy: none
+		sourceColumn: Zuora_Subscription_Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zuora_subscription_id
+		dataType: string
+		isHidden
+		lineageTag: 05f832a2-0d97-42c3-8030-d387801975b4
+		summarizeBy: none
+		sourceColumn: Zuora_subscription_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Account
+		dataType: string
+		isHidden
+		lineageTag: 49ac9647-1852-4cf5-aa83-74c0eaf0d91f
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Account
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Created_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4f519f9c-0977-4992-8308-cfcedc15ad71
+		summarizeBy: count
+		sourceColumn: Date_Created_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Subscription_Start_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 61e8e9a4-6d3b-4024-916a-1c5079cf147e
+		summarizeBy: none
+		sourceColumn: Date_Subscription_Start_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Subscription_End_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 105694c4-8edc-45d9-a8bf-95505053ce56
+		summarizeBy: count
+		sourceColumn: Date_Subscription_End_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Go_Live_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 17cee0cb-b242-4863-8e00-78309cfbf3ed
+		summarizeBy: count
+		sourceColumn: Date_Go_Live_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Canceled_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f8f01457-7096-491c-b43b-75af17b16d1d
+		summarizeBy: count
+		sourceColumn: Date_Canceled_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Country
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f00721b0-4a03-4c58-96ad-8b9e82a5d43b
+		summarizeBy: none
+		sourceColumn: SK_Country
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesRep_User_Id
+		dataType: string
+		isHidden
+		lineageTag: 141a6ebe-d4c6-46a7-b6b3-9a4af774dd5a
+		summarizeBy: none
+		sourceColumn: SalesRep_User_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Product
+		dataType: string
+		isHidden
+		lineageTag: d655b31c-6614-413b-a75d-4e4063b83826
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Product
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		isHidden
+		lineageTag: 7dc38549-95cd-4e9e-8561-d9c12691d1da
+		summarizeBy: none
+		sourceColumn: status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		isHidden
+		lineageTag: e7aa9e0e-f723-4a68-9d29-0179d8bedc32
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lifetime_Days
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 050f06aa-7639-4e86-b41c-f2f91f50a9f9
+		summarizeBy: sum
+		sourceColumn: Lifetime_Days
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Preparation_Days
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f8c51d72-2e62-4be7-ae10-973ada588b44
+		summarizeBy: sum
+		sourceColumn: Preparation_Days
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Cancelled
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dd0b6e02-1973-4aa5-bbe2-84cbc54cab07
+		summarizeBy: none
+		sourceColumn: Is_Cancelled
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Active
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 844400ce-6076-4f1a-99d9-f4f37f2f3e50
+		summarizeBy: none
+		sourceColumn: Is_Active
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Suspended
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 90c6a341-2a43-4338-9eb0-853e7cc984b9
+		summarizeBy: none
+		sourceColumn: Is_Suspended
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Zuora_Subscription
+		dataType: string
+		isHidden
+		lineageTag: d9ff703d-b7a9-4a4e-9ab2-f828a1c9f0fe
+		summarizeBy: none
+		sourceColumn: SK_Zuora_Subscription
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Started_as_Preparation
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4122ac31-4e62-472f-bbc5-29910d5600ec
+		summarizeBy: none
+		sourceColumn: Started_as_Preparation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Preparation
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 048ac35c-6f57-4ab0-b0c2-4549fe20fdf6
+		summarizeBy: none
+		sourceColumn: Is_Preparation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Suspended_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 90da88a3-aa07-4b36-923a-24ebd7e9aa50
+		summarizeBy: count
+		sourceColumn: Date_Suspended_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Started_With_Free_Month
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3951b4cc-8794-43bd-afca-2d698dfea14d
+		summarizeBy: none
+		sourceColumn: Started_With_Free_Month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Current_Status
+		dataType: string
+		lineageTag: 237cacd8-01c7-437d-bbaa-99367b4fd2b5
+		summarizeBy: none
+		sourceColumn: Current_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesforce_Account_ID
+		dataType: string
+		lineageTag: a0d14f49-9017-4cde-b859-4e2bf61a3962
+		summarizeBy: none
+		sourceColumn: Salesforce_Account_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Subscription_Start
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 8d118f06-297c-4260-b241-de57cfd1c02e
+		summarizeBy: none
+		sourceColumn: Date_Subscription_Start
+
+		variation Variation
+			isDefault
+			relationship: ec267e77-c54e-42f1-8185-c5ddc7a6f3e9
+			defaultHierarchy: LocalDateTable_ff4b7b27-c26d-4575-b159-ba9a376ef092.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_Subscription_End_Calc
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 5fb8840c-1475-408a-b0bd-f007dd37b0c0
+		summarizeBy: none
+		sourceColumn: Date_Subscription_End_Calc
+
+		variation Variation
+			isDefault
+			relationship: 233a74f0-55d7-429e-9ed9-03ffbf180b6b
+			defaultHierarchy: LocalDateTable_6c781d7c-5c71-4ec0-ac2c-6a2ceb466e57.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Fact_Zuora_Subscription = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name="admincontrolip-production-eu"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Fact_Zuora_Subscription_View = Datamarts_Schema{[Name="Reporting_Fact_Zuora_Subscription",Kind="View"]}[Data]
+				in
+				    Reporting_Fact_Zuora_Subscription_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
