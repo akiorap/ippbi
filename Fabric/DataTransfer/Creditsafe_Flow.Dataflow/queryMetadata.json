@@ -1,0 +1,20 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "Creditsafe_Flow",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Table4": {
+      "queryId": "4a4950eb-853e-4ee7-bffb-ba13cf89cd28",
+      "queryName": "Table4"
+    }
+  },
+  "connections": [
+    {
+      "path": "https://admincontrol2000-my.sharepoint.com/personal/sturla_steine_admincontrol_com/",
+      "kind": "Web",
+      "connectionId": "{\"ClusterId\":\"e92e9a82-0d31-41ec-a9e7-fdfea7007dfb\",\"DatasourceId\":\"0b2b3367-4c32-449d-b5d0-3d1847c5e382\"}"
+    }
+  ]
+}

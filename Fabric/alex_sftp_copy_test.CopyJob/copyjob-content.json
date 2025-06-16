@@ -1,0 +1,56 @@
+{
+  "properties": {
+    "jobMode": "Batch",
+    "source": {
+      "type": "Binary",
+      "connectionSettings": {
+        "type": "Sftp",
+        "externalReferences": {
+          "connection": "5bef6eca-1565-4e9f-bfac-54e35854c27a"
+        }
+      }
+    },
+    "destination": {
+      "type": "Binary",
+      "connectionSettings": {
+        "type": "GoogleCloudStorage",
+        "externalReferences": {
+          "connection": "099ef415-74cb-4410-b670-2f30614e6719"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00"
+    }
+  },
+  "activities": [
+    {
+      "id": "b13791a1-6980-465e-96bd-636cb89caa01",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "location": {
+              "type": "SftpLocation",
+              "folderPath": "/pub/example"
+            }
+          },
+          "storeSettings": {
+            "recursive": true
+          }
+        },
+        "destination": {
+          "datasetSettings": {
+            "location": {
+              "type": "GoogleCloudStorageLocation",
+              "bucketName": "alex-test-kvint"
+            }
+          },
+          "storeSettings": {
+            "copyBehavior": "PreserveHierarchy"
+          }
+        },
+        "enableStaging": false
+      }
+    }
+  ]
+}

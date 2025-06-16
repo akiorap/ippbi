@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Creditsafe Pipeline"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e8539787-1230-ac33-4a8b-eb774a301647"
+  }
+}

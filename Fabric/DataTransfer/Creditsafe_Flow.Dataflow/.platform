@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "Creditsafe_Flow"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e8c6c96d-aba4-b67c-4d68-ea4e854c1df5"
+  }
+}

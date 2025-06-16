@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "CopyJob",
+    "displayName": "alex_sftp_copy_test"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "12cf960c-e5d7-bc76-4ab9-eb3c933ee769"
+  }
+}

@@ -1,8 +1,0 @@
-/// Production / Development BigQuery projects.
-expression BigQueryProject = "admincontrolip-production-eu" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
-	lineageTag: 3d7d1f92-f280-4bd5-8714-b697701305bd
-
-	annotation PBI_NavigationStepName = Navigation
-
-	annotation PBI_ResultType = Text
-

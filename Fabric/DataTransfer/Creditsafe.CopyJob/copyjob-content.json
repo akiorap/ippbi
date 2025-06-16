@@ -1,0 +1,84 @@
+{
+  "properties": {
+    "jobMode": "Batch",
+    "source": {
+      "type": "DelimitedText",
+      "connectionSettings": {
+        "type": "GoogleCloudStorage",
+        "externalReferences": {
+          "connection": "bcc76727-3d77-4a16-b1ed-5fe728c510b0"
+        }
+      }
+    },
+    "destination": {
+      "type": "DelimitedText",
+      "connectionSettings": {
+        "type": "GoogleCloudStorage",
+        "externalReferences": {
+          "connection": "bcc76727-3d77-4a16-b1ed-5fe728c510b0"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00"
+    }
+  },
+  "activities": [
+    {
+      "id": "2a46cfc6-25eb-4be7-8e4a-c6da3ba8a8de",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "location": {
+              "type": "GoogleCloudStorageLocation",
+              "fileName": "NO_CS01V2_QUARTERLY_05042025.dsv.gz",
+              "bucketName": "creditsafe-fabric-testing"
+            },
+            "columnDelimiter": "|*|",
+            "rowDelimiter": "\n",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\"",
+            "compressionCodec": "gzip",
+            "compressionLevel": "Optimal"
+          },
+          "storeSettings": {
+            "recursive": true,
+            "enablePartitionDiscovery": false
+          },
+          "formatSettings": {}
+        },
+        "destination": {
+          "datasetSettings": {
+            "location": {
+              "type": "GoogleCloudStorageLocation",
+              "fileName": "testing_creditsafe_copy_job",
+              "bucketName": "creditsafe-fabric-testing"
+            },
+            "columnDelimiter": "|",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+          },
+          "storeSettings": {
+            "copyBehavior": "FlattenHierarchy"
+          },
+          "formatSettings": {
+            "fileExtension": ".txt",
+            "quoteAllText": true
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    }
+  ]
+}

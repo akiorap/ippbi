@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "CopyJob",
+    "displayName": "Creditsafe"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9a0232c3-855f-94e2-48d8-062c995b6886"
+  }
+}
