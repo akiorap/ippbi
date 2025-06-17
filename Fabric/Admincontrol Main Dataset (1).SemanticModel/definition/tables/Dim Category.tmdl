@@ -1,0 +1,61 @@
+table 'Dim Category'
+	lineageTag: c9137a82-3690-445d-a483-e2e6f4cb0f5e
+
+	column Category_ID
+		dataType: string
+		lineageTag: 7b4b9eec-c148-4453-b1d1-cde9867600e3
+		summarizeBy: none
+		sourceColumn: Category_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category_Parent_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 179e4df5-2f8f-4fe6-bdf6-5556761d5389
+		summarizeBy: count
+		sourceColumn: Category_Parent_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column level
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ea42445-69c5-46df-a91c-50905ccbf49f
+		summarizeBy: sum
+		sourceColumn: level
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area_of_Use_Name
+		dataType: string
+		lineageTag: 4af77eca-12a2-4ccf-b965-4dae944e2c29
+		summarizeBy: none
+		sourceColumn: Area_of_Use_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_AOU
+		dataType: int64
+		formatString: 0
+		lineageTag: 4eaa1acf-f2dc-4f86-9a9a-cc9ff3344c5a
+		summarizeBy: sum
+		sourceColumn: Is_AOU
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Category' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Dimension_Category_View = Datamarts_Schema{[Name="Reporting_Admct_Dimension_Category",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Dimension_Category_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

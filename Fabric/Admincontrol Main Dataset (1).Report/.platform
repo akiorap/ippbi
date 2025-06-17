@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Admincontrol Main Dataset (1)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "655b253c-71b1-bed8-4e0e-b9c5684fe727"
+  }
+}

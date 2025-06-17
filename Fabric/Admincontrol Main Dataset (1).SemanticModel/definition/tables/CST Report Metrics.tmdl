@@ -1,0 +1,65 @@
+table 'CST Report Metrics'
+	lineageTag: 757b9561-9961-4372-857e-c6742ec8233a
+
+	column 'CST Report Metrics'
+		lineageTag: dbe0915a-5bc8-4f06-b336-34f4e5442608
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'CST Report Metrics Order'
+
+		relatedColumnDetails
+			groupByColumn: 'CST Report Metrics Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CST Report Metrics Fields'
+		isHidden
+		lineageTag: ed14667c-77d8-464b-b932-c09f68f86f45
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'CST Report Metrics Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CST Report Metrics Order'
+		isHidden
+		formatString: 0
+		lineageTag: 491a6bde-4cfc-4d22-8c56-f87efdc2da79
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'CST Report Metrics' = calculated
+		mode: import
+		source =
+				{
+				    ("Portals w BES", NAMEOF('Metrics'[Portals w BES]), 0),
+				    ("Surveys Completed", NAMEOF('Metrics'[Surveys Completed]), 1),
+				    ("Areas of Use", NAMEOF('Metrics'[AoU]), 2),
+				    ("Created BoardBook", NAMEOF('Metrics'[BoardBook]), 3),
+				    ("Created Documents", NAMEOF('Metrics'[Documents]), 4),
+				    ("Created Folders", NAMEOF('Metrics'[Folders]), 5),
+				    ("Created Meetings", NAMEOF('Metrics'[Meetings]), 6),
+				    ("Created QnA", NAMEOF('Metrics'[QnA]), 7),
+				    ("Created SecureMessages", NAMEOF('Metrics'[SecureMessages]), 8),
+				    ("Active Storage GB", NAMEOF('Metrics'[Active Storage GB]), 9),
+				    ("Support Cases", NAMEOF('Metrics'[Support Cases]), 11),
+				    ("Signed Documents", NAMEOF('Metrics'[Signed Documents]), 12),
+				    ("Documents Access Count", NAMEOF('Metrics'[DocAccess Count]), 13),
+				    ("Unique Users Login", NAMEOF('Metrics'[Unique Users Login]), 14),
+				    ("Created Portal User", NAMEOF('Metrics'[Portal User]), 15),
+				    ("Created Users", NAMEOF('Metrics'[Users]), 16),
+				    ("E-Signs", NAMEOF('Metrics'[Completed Signings]), 22),
+				    ("App User", NAMEOF('Metrics'[App Users]), 23),
+				    ("App User %", NAMEOF('Metrics'[App Users %]), 24)
+				}
+
+	annotation PBI_Id = cca580feca6b498f8270fe10fc6ac522
+

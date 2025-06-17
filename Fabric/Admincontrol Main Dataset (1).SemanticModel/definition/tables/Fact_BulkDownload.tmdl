@@ -1,0 +1,196 @@
+table Fact_BulkDownload
+	isHidden
+	lineageTag: bba91a35-ce15-47c0-8d5a-ef8f28e08c3c
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c4a112eb-32eb-4850-bbd2-ae17c5c1d60c
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 46ebdad8-6661-4a10-920c-3a6528347371
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Admct_Download_Package
+		dataType: string
+		isHidden
+		lineageTag: 6fa8407d-d237-4e73-b4f1-0fa4596e731b
+		summarizeBy: none
+		sourceColumn: SK_Admct_Download_Package
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8d696d53-c1e0-4e60-9527-84c8f337e002
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DownloadPackage_Status_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6a4b3305-cfdc-4856-9c53-ce02e54fa6af
+		summarizeBy: count
+		sourceColumn: DownloadPackage_Status_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DownloadPackage_Display_Status_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2197e515-ba79-465a-9e54-6f9b7a10e9ee
+		summarizeBy: count
+		sourceColumn: DownloadPackage_Display_Status_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Admct_Portal
+		dataType: string
+		isHidden
+		lineageTag: 8d63dfdb-6b3b-464a-b89c-7a5351413973
+		summarizeBy: none
+		sourceColumn: SK_Admct_Portal
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Category
+		dataType: string
+		isHidden
+		lineageTag: 20275e7a-cb09-4f9f-b4e0-f70a3347e0bb
+		summarizeBy: none
+		sourceColumn: SK_Category
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Portal_User
+		dataType: string
+		isHidden
+		lineageTag: 3ad0e23c-c796-43c2-9997-22bfb6c68959
+		summarizeBy: none
+		sourceColumn: SK_Portal_User
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Package_File_Count
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 31792ab9-8602-4e43-8687-9c836abfd74e
+		summarizeBy: sum
+		sourceColumn: Package_File_Count
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Package_Subfolder_Count
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 546ed653-bbab-4157-b92a-450f2070eaf1
+		summarizeBy: sum
+		sourceColumn: Package_Subfolder_Count
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Package_Size_KB
+		dataType: double
+		isHidden
+		lineageTag: 6b60a36d-5d20-49e0-88f2-5dff8b8ba86d
+		summarizeBy: sum
+		sourceColumn: Package_Size_KB
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Archive_Size_KB
+		dataType: double
+		isHidden
+		lineageTag: d4316414-f609-4d1e-91ec-fb8306aba0e5
+		summarizeBy: sum
+		sourceColumn: Archive_Size_KB
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Create_Archive_Time_Sec
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 38e14742-1fdd-4b2b-97e2-3a432b317758
+		summarizeBy: sum
+		sourceColumn: Create_Archive_Time_Sec
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_BulkDownload
+		dataType: int64
+		formatString: 0
+		lineageTag: 7c112d34-194e-4f42-9fab-ec805391aa20
+		summarizeBy: none
+		sourceColumn: SK_BulkDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_BulkDownload = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-eu" = Source{[Name=#"BigQueryProject"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_DownloadPackage_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_DownloadPackage",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_DownloadPackage_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

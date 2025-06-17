@@ -1,0 +1,26 @@
+table '99 AP Price'
+	lineageTag: 3778091f-5bdc-4be3-94b8-6e36346da422
+
+	measure '99 AP Price Value' = SELECTEDVALUE('99 AP Price'[99 AP Price])
+		formatString: 0
+		lineageTag: ffa74f54-69f0-459c-8485-1a80cf44dacb
+
+	column '99 AP Price'
+		formatString: 0
+		lineageTag: 1173bbce-83d6-4c88-88ed-b25e3c486276
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition '99 AP Price' = calculated
+		mode: import
+		source = GENERATESERIES(2000, 40000, 200)
+
+	annotation PBI_Id = 5aa569058762491194abe9b6d714ba65
+

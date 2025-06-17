@@ -1,0 +1,127 @@
+table Fact_SecureMessages
+	isHidden
+	lineageTag: ffe5b2b1-82fa-4137-8897-bd08af919797
+
+	column Conversation_ID
+		dataType: string
+		isHidden
+		lineageTag: 0015e369-2dd9-4e5f-aa22-c95758c3073f
+		summarizeBy: none
+		sourceColumn: Conversation_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_ID
+		dataType: string
+		isHidden
+		lineageTag: 51fc7398-7415-411d-bf3c-d4ad60e35260
+		summarizeBy: none
+		sourceColumn: PortalUser_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 05ad1a26-b380-497a-ad9f-2e41174aabe5
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6898bb79-2f3b-4665-87a1-d862afd4ca78
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Deleted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b93404d3-108c-4420-a5e6-c3e6db770855
+		summarizeBy: none
+		sourceColumn: Is_Deleted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_ID
+		dataType: string
+		isHidden
+		lineageTag: 7463a234-4e19-443c-b50a-228a4fff5d01
+		summarizeBy: none
+		sourceColumn: Portal_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Created
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 9a28d3ee-ecc7-4766-a898-26808b7d0f3a
+		summarizeBy: none
+		sourceColumn: Date_Created
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category_ID
+		dataType: string
+		lineageTag: 4f3fe6af-d9fa-4b0d-87b5-fdf2835c40d0
+		summarizeBy: none
+		sourceColumn: Category_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Area_Of_Use
+		dataType: string
+		lineageTag: c4e9e71b-7bb8-4d8c-9a35-0954ba542f3e
+		summarizeBy: none
+		sourceColumn: SK_Area_Of_Use
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: d998a563-d080-42ce-b024-88d42d6b8de1
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_SecureMessages-e7bcce11-3b84-4b03-ba46-9fc30bb9a4af = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_SecureMessages_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_SecureMessages",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_SecureMessages_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

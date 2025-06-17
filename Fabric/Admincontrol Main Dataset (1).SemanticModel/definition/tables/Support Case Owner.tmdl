@@ -1,0 +1,89 @@
+table 'Support Case Owner'
+	lineageTag: eba667c5-790f-4106-8ba0-3caa4f472b49
+
+	column User_ID
+		dataType: string
+		isHidden
+		lineageTag: 1ffb8471-80c7-400d-b98c-3e9b3c6e5cab
+		summarizeBy: none
+		sourceColumn: User_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee_ID
+		dataType: string
+		lineageTag: 352b1079-a1d5-46f5-a766-1de11a01c48b
+		summarizeBy: none
+		sourceColumn: Employee_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case Owner Name'
+		dataType: string
+		lineageTag: 3b520ae8-3175-4c86-ae56-7a0bfe74501f
+		summarizeBy: none
+		sourceColumn: Case Owner Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Created
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: c95bf05b-6df0-4b24-b323-0f8d82f310a1
+		summarizeBy: none
+		sourceColumn: Date_Created
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 4683dc45-07b3-43ad-a57b-2989953a5ee0
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country_code
+		dataType: string
+		lineageTag: 8b529233-ba86-495c-b3ef-2b5469058696
+		summarizeBy: none
+		sourceColumn: Country_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column User_Department
+		dataType: string
+		lineageTag: c3bfea36-9256-4f1d-9b1f-e7bbf2a5a0f6
+		summarizeBy: none
+		sourceColumn: User_Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_Active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 93225e4e-6459-42fb-a822-50a54d9bbea4
+		summarizeBy: none
+		sourceColumn: IS_Active
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Support Case Owner' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Support_Dimension_User_View = Datamarts_Schema{[Name="Reporting_Support_Dimension_User",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Support_Dimension_User_View,{{"User_Name", "Case Owner Name"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

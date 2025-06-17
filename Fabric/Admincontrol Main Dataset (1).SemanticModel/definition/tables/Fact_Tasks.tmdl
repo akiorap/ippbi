@@ -1,0 +1,234 @@
+table Fact_Tasks
+	isHidden
+	lineageTag: 5e7fdffa-3a1d-4cea-8eaa-29c2c3a67b43
+
+	column Date_Snapshot
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: dc71e231-0926-48ed-9694-3913623fbdc3
+		summarizeBy: none
+		sourceColumn: Date_Snapshot
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_Completed
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 1f36b136-a7ba-49dc-961b-4a848d73746d
+		summarizeBy: none
+		sourceColumn: Date_Completed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a2e7e6ca-3dda-4f3e-bd4e-ced643442a57
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateHour_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c3cf6d81-3585-4522-802d-505965dd65a1
+		summarizeBy: count
+		sourceColumn: DateHour_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 71bd7094-ac89-4a88-91eb-b315be2bf639
+		summarizeBy: count
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Task
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4d0f653f-e465-4dd4-ac08-e19f1278e2e6
+		summarizeBy: none
+		sourceColumn: SK_Task
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Admct_Task
+		dataType: string
+		isHidden
+		lineageTag: 830449ec-9ab1-4789-aadc-9618da16c7a8
+		summarizeBy: none
+		sourceColumn: SK_Admct_Task
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d987d534-faa1-4197-b51f-42076d856b8b
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Task_Status_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fdcfd715-d60d-412d-94b1-644c8e82bf34
+		summarizeBy: count
+		sourceColumn: Task_Status_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Category
+		dataType: string
+		isHidden
+		lineageTag: 6f609a19-538f-404d-a543-e6e4e7e8d646
+		summarizeBy: none
+		sourceColumn: SK_Category
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Admct_Portal
+		dataType: string
+		isHidden
+		lineageTag: 3fdfb4e7-7a56-4de0-90c7-0d0a0b667d99
+		summarizeBy: none
+		sourceColumn: SK_Admct_Portal
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Role_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 81207ce7-2992-4e36-b27d-ea23007a7255
+		summarizeBy: count
+		sourceColumn: Role_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Assigner_Portal_User
+		dataType: string
+		isHidden
+		lineageTag: 52f089e0-6f84-4f08-87e4-e0ae038a3bd4
+		summarizeBy: none
+		sourceColumn: SK_Assigner_Portal_User
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Assignee_PortalUser_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3ec3aa08-f7a1-40c7-87ab-15fea4d25d8f
+		summarizeBy: count
+		sourceColumn: Assignee_PortalUser_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Completed_Portal_User
+		dataType: string
+		isHidden
+		lineageTag: d102eae4-c31a-4780-b974-9dcef3136667
+		summarizeBy: none
+		sourceColumn: SK_Completed_Portal_User
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Include_Future_Documents
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f3deb8a1-e1ad-47a8-908b-ac62843a0efa
+		summarizeBy: none
+		sourceColumn: Include_Future_Documents
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_To_Complete_Min
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4c9e65f4-82a6-43e4-8b68-418e65e376ee
+		summarizeBy: sum
+		sourceColumn: Time_To_Complete_Min
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Task_Documents_Count
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 42d4a91e-949c-4faf-b89a-d9d68e1e99ed
+		summarizeBy: sum
+		sourceColumn: Task_Documents_Count
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Tasks = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-eu" = Source{[Name=#"BigQueryProject"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_Tasks_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_Tasks",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_Tasks_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

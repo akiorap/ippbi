@@ -1,0 +1,79 @@
+table MeetingMinutes
+	lineageTag: ec35eb52-16d5-40af-8680-834eeb591a25
+
+	column SK_Admct_MeetingMinutes
+		dataType: int64
+		formatString: 0
+		lineageTag: 1863b825-f84b-4f8d-9d94-f1ae89343d68
+		summarizeBy: none
+		sourceColumn: SK_Admct_MeetingMinutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column State_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: e1cd5891-691b-4ba6-9e5d-141562a0f0ce
+		summarizeBy: none
+		sourceColumn: State_Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: f122e8e6-41cd-44c5-84f2-0c404c116ac1
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Approval_Method_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: d192c32b-5683-43ed-ad04-0ac43ffc4c25
+		summarizeBy: none
+		sourceColumn: Approval_Method_Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Approval_Method
+		dataType: string
+		lineageTag: c6be4b02-950d-4494-b508-56f47f753343
+		summarizeBy: none
+		sourceColumn: Approval_Method
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Shared
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 795f491b-d9fd-452b-b0e2-fd7f42b8b268
+		summarizeBy: none
+		sourceColumn: Is_Shared
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Attachments
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5ccd6146-e5c3-4600-89fc-8f04cebb96b5
+		summarizeBy: none
+		sourceColumn: Has_Attachments
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MeetingMinutes = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=#"BigQueryProject"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_MeetingMinutes_View = Datamarts_Schema{[Name="Reporting_Dimension_MeetingMinutes",Kind="View"]}[Data]
+				in
+				    Reporting_Dimension_MeetingMinutes_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

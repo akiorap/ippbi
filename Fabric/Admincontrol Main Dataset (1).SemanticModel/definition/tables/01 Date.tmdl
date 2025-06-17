@@ -1,0 +1,365 @@
+table '01 Date'
+	lineageTag: e1d6ed67-c36d-4c65-b45c-f4c2746184c1
+	dataCategory: Time
+
+	column Date_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: f2ef7cf1-0ff8-4654-9b06-ee83ced5055d
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 5e38b77b-3f23-4ed7-a496-f5ba932bd56d
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: 933f94c8-577b-4622-964a-898d738203f8
+		summarizeBy: sum
+		sourceColumn: Day
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ff4ee6c-e573-4d88-93da-850d5fb45b3e
+		summarizeBy: sum
+		sourceColumn: Day_Sort
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 4901e357-3adf-403c-b5aa-b500d4d16581
+		summarizeBy: sum
+		sourceColumn: Month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: a8b8c348-2b72-4e62-acb4-dae85aba0587
+		summarizeBy: sum
+		sourceColumn: Month_Sort
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: ff707cae-8c1c-445d-a348-b461347d5e6a
+		summarizeBy: sum
+		sourceColumn: Quarter
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: 8df4c56b-3fb1-4ee9-b21e-f44bf7b374fb
+		summarizeBy: sum
+		sourceColumn: Quarter_Sort
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter_Number
+		dataType: int64
+		formatString: 0
+		lineageTag: 9ed67780-fdd8-4aa5-af81-659113203f7b
+		summarizeBy: sum
+		sourceColumn: Quarter_Number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 883d89e7-d330-479d-910f-7d073e6935f4
+		summarizeBy: sum
+		sourceColumn: Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day_of_Week
+		dataType: string
+		lineageTag: ae94c5b0-b9de-4f85-bdfb-9cb994ab46ce
+		summarizeBy: none
+		sourceColumn: Day_of_Week
+		sortByColumn: Weekday_Sort
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week Abbr'
+		dataType: string
+		lineageTag: 5dfda43e-c06a-43e2-8aa6-63bb29c6f324
+		summarizeBy: none
+		sourceColumn: Day of Week Abbr
+		sortByColumn: Weekday_Sort
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week_of_Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 310f5089-df15-4f29-9465-6aab1e21892a
+		summarizeBy: sum
+		sourceColumn: Week_of_Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day_of_Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 57c4034a-6fcc-4019-bdc5-de1635c6cbee
+		summarizeBy: sum
+		sourceColumn: Day_of_Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8d2c2a2d-c8c8-49a1-93c2-9ecaa2840c7d
+		summarizeBy: none
+		sourceColumn: Is_Weekend
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Leap_Year
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 147e8dda-0696-4ef8-a12d-5647dfb462db
+		summarizeBy: none
+		sourceColumn: Is_Leap_Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Half_of_Year
+		dataType: string
+		lineageTag: 6a3a7a7e-2d33-4e37-88a9-6ba731cca75d
+		summarizeBy: none
+		sourceColumn: Half_of_Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Name
+		dataType: string
+		lineageTag: bd486795-7d8a-4cec-8c51-acb7ab8a532f
+		summarizeBy: none
+		sourceColumn: Month_Name
+		sortByColumn: Month_Sort
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Name_Abbr
+		dataType: string
+		lineageTag: c9d2b1ee-2571-4514-904b-7d6d963f7758
+		summarizeBy: none
+		sourceColumn: Month_Name_Abbr
+		sortByColumn: Month
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter_Name
+		dataType: string
+		lineageTag: 1ec8e7ef-3b32-48cd-8f42-dafae1f27864
+		summarizeBy: none
+		sourceColumn: Quarter_Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Decade
+		dataType: int64
+		formatString: 0
+		lineageTag: 0edd2bbd-ca3e-41cc-937e-f61a160caa77
+		summarizeBy: sum
+		sourceColumn: Decade
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day_of_Week_in_Month
+		dataType: int64
+		formatString: 0
+		lineageTag: eae94828-738f-43b4-9e1a-630582db12d1
+		summarizeBy: sum
+		sourceColumn: Day_of_Week_in_Month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_End_of_Month
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6838dc9a-998e-4661-9463-4099870b9b66
+		summarizeBy: none
+		sourceColumn: Is_End_of_Month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Beginning_of_Month
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6b220adc-9ae7-4b2d-95ac-fff09cba317f
+		summarizeBy: none
+		sourceColumn: Is_Beginning_of_Month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: cdaee615-3b44-4719-8c80-0a7ac3fcda0e
+		summarizeBy: sum
+		sourceColumn: Weekday_Sort
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Beginning_of_Year
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9e86b8b9-1186-4610-9c30-58e0b1f8daa3
+		summarizeBy: none
+		sourceColumn: Is_Beginning_of_Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_End_of_Year
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 702e243d-a791-4f47-9d70-5606a3befc23
+		summarizeBy: none
+		sourceColumn: Is_End_of_Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day_of_Month
+		dataType: int64
+		formatString: 0
+		lineageTag: fd8c9ba7-df91-4e9c-9cec-364faf60fa08
+		summarizeBy: sum
+		sourceColumn: Day_of_Month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Days_In_Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 55dcde27-88da-4c6f-bd77-e52ec1bb59be
+		summarizeBy: sum
+		sourceColumn: Days_In_Month
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Date Hierarchy'
+		lineageTag: 89c46f8b-bf08-4a47-bcfa-fc17d9d4b2ae
+
+		level Year
+			lineageTag: bf0b97b8-d177-4611-b57c-ec231e47f34f
+			column: Year
+
+		level Quarter
+			lineageTag: 3f97d41f-feee-4bdc-a0ff-a7a5a36789cf
+			column: Quarter
+
+		level Month
+			lineageTag: c4da383b-bb10-4d41-9cbf-cd64c520830c
+			column: Month_Name_Abbr
+
+		level Day
+			lineageTag: a8a0b818-9fd4-4666-befb-7c0574e7063e
+			column: Day
+
+	partition '01 Date-3cc7d596-0f6e-48e5-9092-6b9a2d3a8e54' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Date_View = Datamarts_Schema{[Name="Reporting_Dimension_Date",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(Reporting_Dimension_Date_View,{{"Day_of_Week_Abbr", "Day of Week Abbr"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

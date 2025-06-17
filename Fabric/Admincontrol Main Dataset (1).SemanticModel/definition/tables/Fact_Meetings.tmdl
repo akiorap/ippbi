@@ -1,0 +1,205 @@
+table Fact_Meetings
+	isHidden
+	lineageTag: 10252d70-8b87-472b-8b7f-60a843b95a11
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 58ba1e65-57f5-4a52-b4e1-05945025ed35
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 17311800-256c-4c0d-aed6-68a9e0ef8dc5
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 48784bd9-df51-4419-8462-9d4d70695103
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meeting_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: fc6af21a-4e93-4953-87a4-c651b298c945
+		summarizeBy: count
+		sourceColumn: Meeting_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Meeting
+		dataType: string
+		lineageTag: 287d09a7-4b51-4798-8f50-d1d4bd269194
+		summarizeBy: none
+		sourceColumn: SK_Meeting
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Admct_Meeting
+		dataType: int64
+		formatString: 0
+		lineageTag: efc38563-f190-4a91-8683-6d634ecdf39c
+		summarizeBy: sum
+		sourceColumn: SK_Admct_Meeting
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Admct_Portal
+		dataType: string
+		lineageTag: af35023c-f095-481c-b9c4-4775711d47e5
+		summarizeBy: none
+		sourceColumn: SK_Admct_Portal
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Portal_User
+		dataType: string
+		lineageTag: 93f3d4e0-cb5b-4507-b9ca-88146ac84728
+		summarizeBy: none
+		sourceColumn: SK_Portal_User
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Category
+		dataType: string
+		lineageTag: b3d0ee3b-39db-4852-ad1b-46b66bb52bd9
+		summarizeBy: none
+		sourceColumn: SK_Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meeting_Date_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ba88446-6ed1-4dfc-9ca7-ad6e6dc9657e
+		summarizeBy: count
+		sourceColumn: Meeting_Date_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_Item
+		dataType: string
+		lineageTag: 91e92648-aaa7-4a31-a882-28c6844f8018
+		summarizeBy: none
+		sourceColumn: Time_Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item_Duration
+		dataType: int64
+		formatString: 0
+		lineageTag: c4768146-7d87-4715-8236-d3896e642f0d
+		summarizeBy: sum
+		sourceColumn: Item_Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item_Event_Status
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a9f7c0b-d10f-4190-8117-1852457f6705
+		summarizeBy: sum
+		sourceColumn: Item_Event_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_BB
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d5808502-5ea8-45fc-892b-7c00f5b65d5e
+		summarizeBy: none
+		sourceColumn: Has_BB
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_MM
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2159053e-48fa-4632-bf0e-a57a7eb8739f
+		summarizeBy: none
+		sourceColumn: Has_MM
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Attached_Documents
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9fe5f79d-9aa8-4fe7-a514-50ed879d407a
+		summarizeBy: none
+		sourceColumn: Has_Attached_Documents
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attached_Documents
+		dataType: int64
+		formatString: 0
+		lineageTag: 20438732-373c-42a0-8305-90a3034375c9
+		summarizeBy: sum
+		sourceColumn: Attached_Documents
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meeting_Sessions
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ff71389-10c8-46a1-899e-989e6e5b883f
+		summarizeBy: sum
+		sourceColumn: Meeting_Sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column Session_First_Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 22829db8-5fed-44da-8d76-537c6f7dfe47
+		summarizeBy: none
+		sourceColumn: Session_First_Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Session_Final_Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 22dfc77c-1240-47f4-bc42-4d03e43d3d0f
+		summarizeBy: none
+		sourceColumn: Session_Final_Date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Meetings-5a2ccfef-a9ed-49ed-96bd-5a7ea167b0af = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=#"BigQueryProject"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_Meetings_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_Meetings",Kind="View"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(Reporting_Admct_Fact_Meetings_View,{"DateHour_ID"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = IsHidden
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

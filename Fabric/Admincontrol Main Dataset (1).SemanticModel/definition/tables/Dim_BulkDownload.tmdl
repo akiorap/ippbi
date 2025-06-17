@@ -1,0 +1,44 @@
+table Dim_BulkDownload
+	lineageTag: 399188cf-65a8-451e-9181-921430d33df3
+
+	column SK_BulkDownload
+		dataType: int64
+		formatString: 0
+		lineageTag: 18f9987a-c1bb-4ab7-b342-2ad8dc9ed493
+		summarizeBy: none
+		sourceColumn: SK_BulkDownload
+
+		annotation SummarizationSetBy = Automatic
+
+	column Includes_Subfolders
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dac28730-3831-4712-87b7-d2840a565d33
+		summarizeBy: none
+		sourceColumn: Includes_Subfolders
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status_Text
+		dataType: string
+		lineageTag: 3b993f1e-b26e-4d45-ad39-317d15cf9240
+		summarizeBy: none
+		sourceColumn: Status_Text
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_BulkDownload = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=#"BigQueryProject"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_BulkDownload_View = Datamarts_Schema{[Name="Reporting_Dimension_BulkDownload",Kind="View"]}[Data]
+				in
+				    Reporting_Dimension_BulkDownload_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

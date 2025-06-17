@@ -1,0 +1,147 @@
+table Fact_QuesionsAndAnswers
+	isHidden
+	lineageTag: 6d92d0ee-41f6-41ad-ac54-a8b074786928
+
+	column QuestionAndAnswer_ID
+		dataType: string
+		isHidden
+		lineageTag: ea7fc654-1804-4f17-8655-d211d2a06573
+		summarizeBy: none
+		sourceColumn: QuestionAndAnswer_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1ce70261-11a2-4d05-be8e-fecc98cb27cc
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d2dec4ce-f701-4bdf-998a-b14403068272
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_ID
+		dataType: string
+		isHidden
+		lineageTag: 15409868-4067-436f-88d8-e7b1f8ebdc36
+		summarizeBy: none
+		sourceColumn: Portal_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Folder_ID
+		dataType: string
+		isHidden
+		lineageTag: d4aa3073-bec4-4557-9ea3-8109678c0f9f
+		summarizeBy: none
+		sourceColumn: Folder_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_ID
+		dataType: string
+		isHidden
+		lineageTag: b6229ab0-0022-4986-b54f-75eff87ee9dc
+		summarizeBy: none
+		sourceColumn: PortalUser_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Content_Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 02f1f095-8e8a-4e9c-83f8-6e9f89f2fec4
+		summarizeBy: sum
+		sourceColumn: Content_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Deleted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d230e71a-3fe8-4d7b-91e3-277d5a794a85
+		summarizeBy: none
+		sourceColumn: Is_Deleted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category_ID
+		dataType: string
+		lineageTag: b6379775-70ad-4752-8007-7285a0733541
+		summarizeBy: none
+		sourceColumn: Category_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_QnA
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f127a22-a2b3-4ef6-8b3f-7890f22415ef
+		summarizeBy: none
+		sourceColumn: SK_QnA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 44476575-1275-4922-8ad4-30569adf022e
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Area_Of_Use
+		dataType: string
+		lineageTag: 74fd5d19-f8ae-4bbc-ba8d-bfe03c3d36a9
+		summarizeBy: none
+		sourceColumn: SK_Area_Of_Use
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_QuesionsAndAnswers-012d4cdf-0763-4f01-9e49-f3347d3116d8 = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_QuesionsAndAnswers_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_QuestionsAndAnswers",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_QuesionsAndAnswers_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

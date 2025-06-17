@@ -1,0 +1,215 @@
+table Case_Status
+	isHidden
+	lineageTag: 6ced8b37-d7b4-42ab-8dc5-683d2ea35c76
+
+	column SK_Case_Status
+		dataType: string
+		isHidden
+		lineageTag: b279cb57-ab4f-4cb9-ade4-cf60fe970b2f
+		summarizeBy: none
+		sourceColumn: SK_Case_Status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Valid_From
+		dataType: string
+		isHidden
+		lineageTag: f5baca1d-f87c-450b-82cd-fa4d072993fe
+		summarizeBy: none
+		sourceColumn: Valid_From
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Valid_To
+		dataType: string
+		isHidden
+		lineageTag: 544e0a5d-f3db-4ebe-be74-b3a55dfd4baa
+		summarizeBy: none
+		sourceColumn: Valid_To
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Updated_At
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d6e33e9f-0f90-4fe9-b913-038384fd374e
+		summarizeBy: sum
+		sourceColumn: Updated_At
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Case_Status_Id
+		dataType: string
+		isHidden
+		lineageTag: 51c53508-1d0d-458d-ad00-4e31fd65dede
+		summarizeBy: none
+		sourceColumn: Case_Status_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Api_Name
+		dataType: string
+		isHidden
+		lineageTag: 9809608b-6a9b-4980-ac23-4a522dc2e1a0
+		summarizeBy: none
+		sourceColumn: Api_Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Case_Status_Name
+		dataType: string
+		isHidden
+		lineageTag: 1129fcb7-0085-4586-a1bd-a66fed06e76f
+		summarizeBy: none
+		sourceColumn: Case_Status_Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Created_By_Id
+		dataType: string
+		isHidden
+		lineageTag: 78415992-a218-4fb3-8ec1-4bf087cb066d
+		summarizeBy: none
+		sourceColumn: Created_By_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Created_Date
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 9e46d848-ce31-4a9d-b8df-8bac706a492c
+		summarizeBy: none
+		sourceColumn: Created_Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sort_Order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2bd59e25-c216-42ec-8df3-b32e19c43e77
+		summarizeBy: sum
+		sourceColumn: Sort_Order
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Closed
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f3fa2a52-0f6c-4683-91a1-1113e3400220
+		summarizeBy: none
+		sourceColumn: Is_Closed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Default
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e504ae12-170f-421f-9f82-fd221c946d1a
+		summarizeBy: none
+		sourceColumn: Is_Default
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Last_Modified_By_Id
+		dataType: string
+		isHidden
+		lineageTag: 2f1611f2-b499-48ac-9297-2b38ddcd35a8
+		summarizeBy: none
+		sourceColumn: Last_Modified_By_Id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Last_Modified_Date
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 40c07ce2-7cfe-4f74-9440-600dc481e2d3
+		summarizeBy: none
+		sourceColumn: Last_Modified_Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column System_Modstamp
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 0f817a90-e218-4185-bb34-cad36cb3c1b9
+		summarizeBy: none
+		sourceColumn: System_Modstamp
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fivetran_Deleted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4175cc3e-c8f1-4f20-8c92-e5b4cf972b89
+		summarizeBy: none
+		sourceColumn: Fivetran_Deleted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fivetran_Synced
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 1f83bc49-658b-4f53-8696-7d16bcae6cdf
+		summarizeBy: none
+		sourceColumn: Fivetran_Synced
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Case_Status = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Case_Status_View = Datamarts_Schema{[Name="Reporting_Dimension_Case_Status",Kind="View"]}[Data]
+				in
+				    Reporting_Dimension_Case_Status_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

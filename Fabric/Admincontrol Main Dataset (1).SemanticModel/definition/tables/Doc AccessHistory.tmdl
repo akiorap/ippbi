@@ -1,0 +1,51 @@
+table 'Doc AccessHistory'
+	lineageTag: 4102a900-9b44-43a3-a1ab-38716b05cae7
+
+	column SK_DocAccessHistory
+		dataType: int64
+		formatString: 0
+		lineageTag: 08b70713-264d-49e3-a858-c8962a8874d8
+		summarizeBy: none
+		sourceColumn: SK_DocAccessHistory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Access_Source_Name
+		dataType: string
+		lineageTag: aa4c2131-e730-4a2d-85c6-e104a2c289a0
+		summarizeBy: none
+		sourceColumn: Access_Source_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Access_Type_Name
+		dataType: string
+		lineageTag: 85676001-e1a8-48e6-ac59-928035785c0f
+		summarizeBy: none
+		sourceColumn: Access_Type_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Access_Sub_Type_Name
+		dataType: string
+		lineageTag: cd9b58ae-e410-4694-a843-8986c7075cae
+		summarizeBy: none
+		sourceColumn: Access_Sub_Type_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Doc AccessHistory' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Dimension_DocAccessHistory_View = Datamarts_Schema{[Name="Reporting_Admct_Dimension_DocAccessHistory",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Dimension_DocAccessHistory_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

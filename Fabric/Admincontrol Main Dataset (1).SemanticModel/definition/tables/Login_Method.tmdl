@@ -1,0 +1,39 @@
+table Login_Method
+	lineageTag: 94131234-8727-4029-adc2-ab772007ca01
+
+	column SK_Login_Method
+		dataType: int64
+		formatString: 0
+		lineageTag: c220131e-4ea9-4d50-8400-b78028984e8b
+		summarizeBy: none
+		sourceColumn: SK_Login_Method
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Login_Method
+		dataType: string
+		lineageTag: be7b0ede-7193-42ce-8898-52c22a7f10dc
+		summarizeBy: none
+		sourceColumn: Login_Method
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Login_Method-43f7d2ff-9c04-4d7b-93ca-2a4bc1eca90c = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Dimension_Login_Method_View = Datamarts_Schema{[Name="Reporting_Admct_Dimension_Login_Method",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Dimension_Login_Method_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

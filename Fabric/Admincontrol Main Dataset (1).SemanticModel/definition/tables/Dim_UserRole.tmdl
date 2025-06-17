@@ -1,0 +1,51 @@
+table Dim_UserRole
+	lineageTag: 2d7035fc-466e-4d61-9fe5-4b0156aadd42
+
+	column SK_Role
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d351a17-c82c-4b7b-8d13-47a0b9daaf4e
+		summarizeBy: none
+		sourceColumn: SK_Role
+
+		annotation SummarizationSetBy = Automatic
+
+	column Organization_Level_Name
+		dataType: string
+		lineageTag: dfa9aa32-e341-4da6-93df-6c5e405c1a78
+		summarizeBy: none
+		sourceColumn: Organization_Level_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tablet_Access
+		dataType: string
+		lineageTag: 8ff0a7c5-d4f5-498b-b3ec-4df2ec3d067d
+		summarizeBy: none
+		sourceColumn: Tablet_Access
+
+		annotation SummarizationSetBy = Automatic
+
+	column Visible
+		dataType: string
+		lineageTag: b9d18170-89c5-4128-971e-04fd4d7cd9ec
+		summarizeBy: none
+		sourceColumn: Visible
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_UserRole = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=#"BigQueryProject"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Dimension_UserRole_View = Datamarts_Schema{[Name="Reporting_Admct_Dimension_UserRole",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Dimension_UserRole_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

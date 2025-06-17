@@ -1,0 +1,105 @@
+table Dim_Meeting
+	lineageTag: 9590b76a-955e-42c8-b64e-5b89a49a6eea
+
+	column SK_Admct_Meeting
+		dataType: int64
+		formatString: 0
+		lineageTag: 7fafdf73-8edc-43f9-b064-3fa021bc23a9
+		summarizeBy: none
+		sourceColumn: SK_Admct_Meeting
+
+		annotation SummarizationSetBy = Automatic
+
+	column External_Link_Type_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d4a396f-8ac7-4286-9071-c0d31eeda6a9
+		summarizeBy: none
+		sourceColumn: External_Link_Type_Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column External_Link_Type
+		dataType: string
+		lineageTag: 52d86b09-1f42-484b-bae6-e3089ffd4b24
+		summarizeBy: none
+		sourceColumn: External_Link_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meeting_Status_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: b53de39c-09fa-47c0-9bf8-66adadda5ea4
+		summarizeBy: none
+		sourceColumn: Meeting_Status_Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meeting_Status_Text
+		dataType: string
+		lineageTag: 78f90b47-127b-4596-ac75-3e8c424ffe4b
+		summarizeBy: none
+		sourceColumn: Meeting_Status_Text
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_BB
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dc804e70-806a-4cb1-b40c-a3794053db43
+		summarizeBy: none
+		sourceColumn: Has_BB
+
+		annotation SummarizationSetBy = Automatic
+
+	column Boardbook_Meeting
+		dataType: string
+		lineageTag: 09e13163-b4f7-4de5-8d0c-c0437b1821fd
+		summarizeBy: none
+		sourceColumn: Boardbook_Meeting
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_MM
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e59b53a9-5ba9-4002-9fe6-c6be0d3b4f4e
+		summarizeBy: none
+		sourceColumn: Has_MM
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Attached_Documents
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 87a87283-6d1b-4011-803d-40cb25296085
+		summarizeBy: none
+		sourceColumn: Has_Attached_Documents
+
+		annotation SummarizationSetBy = Automatic
+
+	column Spans_In_Days
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 46e8d5e0-9280-4e36-bf61-3535250dbf34
+		summarizeBy: none
+		sourceColumn: Spans_In_Days
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Meeting = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=#"BigQueryProject"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Dimension_Meeting_View = Datamarts_Schema{[Name="Reporting_Admct_Dimension_Meeting",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Dimension_Meeting_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

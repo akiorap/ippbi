@@ -1,0 +1,115 @@
+table Dim_QnA
+	lineageTag: 465aeeea-8452-4557-8d4d-e40fbc319387
+
+	column SK_QnA
+		dataType: int64
+		formatString: 0
+		lineageTag: 776de645-bf13-4e11-9479-09e29558d407
+		summarizeBy: none
+		sourceColumn: SK_QnA
+
+		annotation SummarizationSetBy = Automatic
+
+	column QnA_Type
+		dataType: string
+		lineageTag: 9e2ba597-36f8-4c91-8b38-bdd4649b827c
+		summarizeBy: none
+		sourceColumn: QnA_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column QnA_Type_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: 45024233-9373-4ee7-9f86-1d7e4fa5781c
+		summarizeBy: none
+		sourceColumn: QnA_Type_Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Content_Type
+		dataType: int64
+		formatString: 0
+		lineageTag: 067ffde8-dce6-4cdf-b346-3f6fd7b8265e
+		summarizeBy: none
+		sourceColumn: Content_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column QA_Status
+		dataType: int64
+		formatString: 0
+		lineageTag: a3a162f0-d858-4c9e-8f0d-e94543a6be55
+		summarizeBy: none
+		sourceColumn: QA_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column QA_Status_Text
+		dataType: string
+		lineageTag: 7d8df96c-88ab-4a45-a978-6f5cb3d0d296
+		summarizeBy: none
+		sourceColumn: QA_Status_Text
+
+		annotation SummarizationSetBy = Automatic
+
+	column Published
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 70556bf0-4f6d-4cac-a168-88350417d7ed
+		summarizeBy: none
+		sourceColumn: Published
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Attachments
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 88afce34-c6de-41b0-9fac-3435faa7afcf
+		summarizeBy: none
+		sourceColumn: Has_Attachments
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Main_Question
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 34f898c5-78b4-416e-b384-732d3c4840d6
+		summarizeBy: none
+		sourceColumn: Is_Main_Question
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Followup_Question
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0dee3834-a0b4-4df5-a3d4-1e459a4debee
+		summarizeBy: none
+		sourceColumn: Is_Followup_Question
+
+		annotation SummarizationSetBy = Automatic
+
+	column Is_Deleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 666d0392-fc0e-431f-b6b8-0993f4e70308
+		summarizeBy: none
+		sourceColumn: Is_Deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_QnA = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=#"BigQueryProject"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Dimension_QuestionsAndAnswers_View = Datamarts_Schema{[Name="Reporting_Admct_Dimension_QuestionsAndAnswers",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Dimension_QuestionsAndAnswers_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

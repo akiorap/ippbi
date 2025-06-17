@@ -1,0 +1,345 @@
+table Fact_Survey_Answer
+	isHidden
+	lineageTag: 5f52773a-3222-4655-8e28-7b26ac6974e1
+
+	column Date_Snapshot
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 4faf17ab-c0c7-4876-a940-aed5fff91855
+		summarizeBy: none
+		sourceColumn: Date_Snapshot
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Answer_ID
+		dataType: string
+		isHidden
+		lineageTag: a934ca2a-0a50-48a2-8fd2-73786e0a2531
+		summarizeBy: none
+		sourceColumn: Answer_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_ID
+		dataType: string
+		isHidden
+		lineageTag: 7ed1c99e-ce40-417c-9a32-c206315981e6
+		summarizeBy: none
+		sourceColumn: Portal_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area_Of_Use_ID
+		dataType: string
+		isHidden
+		lineageTag: 5eb12926-4416-49f0-8ecc-72cdb1533111
+		summarizeBy: none
+		sourceColumn: Area_Of_Use_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_User_ID
+		dataType: string
+		isHidden
+		lineageTag: 8c77003a-7c58-4c90-aa9b-c3b7207a77e8
+		summarizeBy: none
+		sourceColumn: Portal_User_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Survey_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c20aa924-0d6d-41cb-956f-60e34f85eac3
+		summarizeBy: none
+		sourceColumn: Survey_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Content_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 38408da3-0844-45c1-97e6-0349b8d6ece6
+		summarizeBy: none
+		sourceColumn: Content_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Alternative_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9bc04fa2-7924-4d4e-aa71-81289d365dc8
+		summarizeBy: count
+		sourceColumn: Alternative_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: eee43e1a-07fd-45c3-8e20-4b284df0fd45
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2e132759-ccd6-4149-91e5-02d1523654f2
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID_Survey_Created
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 353605a0-815f-4fa2-bca0-433109804e1b
+		summarizeBy: sum
+		sourceColumn: Date_ID_Survey_Created
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID_Survey_Closed
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2bcbe7a7-1c57-4138-943f-b50bf1a2b9fb
+		summarizeBy: sum
+		sourceColumn: Date_ID_Survey_Closed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Survey_Created
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 4abd0e90-1de4-4e51-b277-834ad3607aea
+		summarizeBy: none
+		sourceColumn: Date_Survey_Created
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Survey_Closed
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: ebe4931a-bd6c-4b36-a7ef-4afc9297e003
+		summarizeBy: none
+		sourceColumn: Date_Survey_Closed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Created
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: bb828420-c8b0-453e-8e44-a73f3c63a261
+		summarizeBy: none
+		sourceColumn: Date_Created
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Changed
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 92638bda-4917-408c-9956-a2e8ce9a62c7
+		summarizeBy: none
+		sourceColumn: Date_Changed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Answer_Changes
+		dataType: string
+		isHidden
+		lineageTag: 52b9b9be-bc23-4966-90aa-4fcc1f662802
+		summarizeBy: none
+		sourceColumn: Answer_Changes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Answer_Score
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 67e7f999-60db-4728-900d-2554adb41800
+		summarizeBy: sum
+		sourceColumn: Answer_Score
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Answered_With_Score
+		dataType: string
+		isHidden
+		lineageTag: 4543c771-6d4f-4f02-8994-ad8d1cbe2862
+		summarizeBy: none
+		sourceColumn: Answered_With_Score
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_Answer_Exception_Alternative
+		dataType: string
+		isHidden
+		lineageTag: 602e01fb-1068-435a-aa13-62d73f69af37
+		summarizeBy: none
+		sourceColumn: IS_Answer_Exception_Alternative
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Survey_Deleted
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0f7313f0-8355-4a1b-a709-50db7062489b
+		summarizeBy: sum
+		sourceColumn: Survey_Deleted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Survey_Completed
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 60162640-0869-46ec-850b-c49838115393
+		summarizeBy: sum
+		sourceColumn: Survey_Completed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Survey_OpenForResponse
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 31a927c4-4dc6-4ced-b7a0-f109396d9df4
+		summarizeBy: sum
+		sourceColumn: Survey_OpenForResponse
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Respondent_Completed_Survey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: dc601cca-a509-4e45-8da0-71183b8a4573
+		summarizeBy: sum
+		sourceColumn: Respondent_Completed_Survey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Respondent_Status_Description
+		dataType: string
+		isHidden
+		lineageTag: 2e282190-abc2-4294-97ec-5c46e773a868
+		summarizeBy: none
+		sourceColumn: Respondent_Status_Description
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_User_Reminded_Hours
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d8d89f29-667f-4c63-9edf-a231333d9b36
+		summarizeBy: sum
+		sourceColumn: Portal_User_Reminded_Hours
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Account_Signed_BE_Addendum
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1f314166-9c18-4949-904d-e89b49d5c760
+		summarizeBy: none
+		sourceColumn: Account_Signed_BE_Addendum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: af83636e-b2a0-4642-860e-279946748618
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Survey_Answer = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_Survey_Answer_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_Survey_Answer",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_Survey_Answer_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

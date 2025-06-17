@@ -1,0 +1,97 @@
+table Fact_UserRoles
+	lineageTag: dc0f73db-211e-4c25-a1b9-9f254f9549f8
+
+	column SK_Admct_UserRole
+		dataType: string
+		lineageTag: f0dba6f8-a3dd-4f7c-9f79-53c342667fcb
+		summarizeBy: none
+		sourceColumn: SK_Admct_UserRole
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Role
+		dataType: int64
+		formatString: 0
+		lineageTag: adf98ab7-610a-4347-9148-b617566ac574
+		summarizeBy: none
+		sourceColumn: SK_Role
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c366254-a384-4464-9df1-0b7b542f41ae
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Admct_Portal
+		dataType: string
+		lineageTag: 5337bad1-7764-40d1-ae24-bba5734d2234
+		summarizeBy: none
+		sourceColumn: SK_Admct_Portal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Accessible_Folders
+		dataType: int64
+		formatString: 0
+		lineageTag: 18d9ee55-827a-48ae-9669-748f6e7b1afd
+		summarizeBy: sum
+		sourceColumn: Accessible_Folders
+
+		annotation SummarizationSetBy = Automatic
+
+	column Role_Users
+		dataType: int64
+		formatString: 0
+		lineageTag: 15009eed-d6c8-4b9c-b10c-9327c6e49ea2
+		summarizeBy: sum
+		sourceColumn: Role_Users
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_File_Size_KB
+		dataType: int64
+		formatString: 0
+		lineageTag: d7068418-49d4-4074-9e4a-de05f3860828
+		summarizeBy: sum
+		sourceColumn: Sum_File_Size_KB
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_Doc_Pages
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a574e95-cd7e-4462-915f-9138fbd109ae
+		summarizeBy: sum
+		sourceColumn: Sum_Doc_Pages
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sum_Files
+		dataType: int64
+		formatString: 0
+		lineageTag: c9923b90-6e5c-44f8-9968-ce0175d53c85
+		summarizeBy: sum
+		sourceColumn: Sum_Files
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_UserRoles = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=#"BigQueryProject"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_UserRoles_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_UserRoles",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_UserRoles_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

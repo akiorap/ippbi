@@ -1,0 +1,139 @@
+table Boardbook
+	lineageTag: acab3ce3-47af-4e5b-adcf-19cdd1990843
+
+	column SK_Boardbook
+		dataType: int64
+		formatString: 0
+		lineageTag: 9899eb95-cd93-4687-83b8-85797a20112f
+		summarizeBy: none
+		sourceColumn: SK_Boardbook
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Numbering_Type
+		dataType: int64
+		formatString: 0
+		lineageTag: 85d223ee-186e-4577-a22a-0f1396786f84
+		summarizeBy: none
+		sourceColumn: Numbering_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_Format
+		dataType: int64
+		formatString: 0
+		lineageTag: f67635cb-0034-41f7-bdba-54543b88bc5a
+		summarizeBy: none
+		sourceColumn: Time_Format
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Display_Item_Time_Settings
+		dataType: int64
+		formatString: 0
+		lineageTag: 14905d42-072d-4307-948b-af723db8a2da
+		summarizeBy: none
+		sourceColumn: Display_Item_Time_Settings
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Enabled_Watermark
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5a1e865b-56a8-4157-a189-260e5b74124f
+		summarizeBy: none
+		sourceColumn: Enabled_Watermark
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Enabled_Page_Numbering
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 088eea4e-0a10-4773-8c18-23ded5a07385
+		summarizeBy: none
+		sourceColumn: Enabled_Page_Numbering
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Enabled_Custom_ID
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7410108d-c9c1-42f0-b986-b020d3fa67d7
+		summarizeBy: none
+		sourceColumn: Enabled_Custom_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Logo_Type
+		dataType: string
+		lineageTag: 14edd5b5-2749-4f64-98dc-3ab51982907a
+		summarizeBy: none
+		sourceColumn: Logo_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Has_Attachments
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b634fb5f-f1db-4cef-8caa-41147d4ce846
+		summarizeBy: none
+		sourceColumn: Has_Attachments
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 42fe9118-bae6-4b7e-85e5-e7203152761a
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item_Event_Status
+		dataType: int64
+		formatString: 0
+		lineageTag: 8471a3f7-0b01-4a4a-aa30-9c4c967f7183
+		summarizeBy: none
+		sourceColumn: Item_Event_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column BoardBook_Status
+		dataType: string
+		lineageTag: 450cd4c1-b241-4417-9064-37a77463126b
+		summarizeBy: none
+		sourceColumn: BoardBook_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Boardbook-08c433bc-874c-45f5-8daa-8fd4dedd7d67 = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Dimension_Boardbook_View = Datamarts_Schema{[Name="Reporting_Admct_Dimension_Boardbook",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Dimension_Boardbook_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

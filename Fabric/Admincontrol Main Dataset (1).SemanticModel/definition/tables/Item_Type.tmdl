@@ -1,0 +1,38 @@
+table Item_Type
+	lineageTag: 2153ef34-13d4-490d-a271-177ca632f256
+
+	column Item_System_Type
+		dataType: string
+		lineageTag: f8428220-2dbc-4251-be29-1e8043717d86
+		summarizeBy: none
+		sourceColumn: Item_System_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column System_Type_Name
+		dataType: string
+		lineageTag: 9a394661-75bc-414a-a790-8758f1926be7
+		summarizeBy: none
+		sourceColumn: System_Type_Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Item_Type-d17a2632-5c24-402f-be1b-f335f00cfc18 = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Dimension_Item_Type_View = Datamarts_Schema{[Name="Reporting_Admct_Dimension_Item_Type",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Dimension_Item_Type_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

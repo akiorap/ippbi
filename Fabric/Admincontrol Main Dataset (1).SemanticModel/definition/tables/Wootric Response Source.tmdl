@@ -1,0 +1,46 @@
+table 'Wootric Response Source'
+	lineageTag: f4aa0e73-c9f3-46c6-ab52-d2ab42789020
+
+	column SK_Source
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fda0e1c8-b830-4dec-84b8-f4842ec0429f
+		summarizeBy: none
+		sourceColumn: SK_Source
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		lineageTag: 0d73c4a4-4ae8-47b2-a657-023273e0a307
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column Platform
+		dataType: string
+		lineageTag: 298c126c-8ca5-4d55-bbc4-93ba3e4f0e35
+		summarizeBy: none
+		sourceColumn: Platform
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Wootric Response Source' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Dimension_Source_View = Datamarts_Schema{[Name="Reporting_Dimension_Source",Kind="View"]}[Data]
+				in
+				    Reporting_Dimension_Source_View
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

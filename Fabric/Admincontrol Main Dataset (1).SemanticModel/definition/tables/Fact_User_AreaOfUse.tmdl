@@ -1,0 +1,78 @@
+table Fact_User_AreaOfUse
+	isHidden
+	lineageTag: 003d0e8b-4601-4c50-8967-02ddec0da547
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a1017eb5-eafd-47c4-a217-635d80d92151
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_GUID
+		dataType: string
+		isHidden
+		lineageTag: f16bb5c9-bd1a-41c6-8fbd-5f715febea94
+		summarizeBy: none
+		sourceColumn: PortalUser_GUID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Admct_Portal
+		dataType: string
+		isHidden
+		lineageTag: 8f381a38-e51a-4a32-9ae5-87341412563a
+		summarizeBy: none
+		sourceColumn: SK_Admct_Portal
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e4ac8f30-cc86-4d79-b9da-17a4e1aa2fd2
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Category
+		dataType: string
+		isHidden
+		lineageTag: 7952c495-909c-46f2-bef4-032ac703665c
+		summarizeBy: none
+		sourceColumn: SK_Category
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_User_AreaOfUse = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=#"BigQueryProject"]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_User_AreaOfUse_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_User_AreaOfUse",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_User_AreaOfUse_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

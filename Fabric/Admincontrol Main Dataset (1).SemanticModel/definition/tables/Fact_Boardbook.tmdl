@@ -1,0 +1,155 @@
+table Fact_Boardbook
+	isHidden
+	lineageTag: 4974ceb9-a384-4805-b3d1-f02448304c81
+
+	column Boardbook_ID
+		dataType: string
+		isHidden
+		lineageTag: 6b1d8077-fe5c-490e-b0e3-4c4e36b16fc9
+		summarizeBy: none
+		sourceColumn: Boardbook_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SK_Boardbook
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e5e2c817-4359-4112-8f6f-5a63d5031e01
+		summarizeBy: none
+		sourceColumn: SK_Boardbook
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 467db2a4-5d3f-4213-964e-91a50349a99a
+		summarizeBy: none
+		sourceColumn: Date_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time_ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a530f8da-695b-49d5-ad96-3ebde84c5feb
+		summarizeBy: none
+		sourceColumn: Time_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PortalUser_ID
+		dataType: string
+		isHidden
+		lineageTag: e5dc6622-5f58-49ef-a7ee-0959416dbc33
+		summarizeBy: none
+		sourceColumn: PortalUser_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_Deleted
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 180ea7d3-4ea3-4228-befa-7210063bb1aa
+		summarizeBy: none
+		sourceColumn: IS_Deleted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Portal_ID
+		dataType: string
+		isHidden
+		lineageTag: 5a1cbb15-8adb-40c1-ae01-37b1771fbb8d
+		summarizeBy: none
+		sourceColumn: Portal_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category_ID
+		dataType: string
+		lineageTag: d5b411e4-78dc-41f9-9334-74bfa6051309
+		summarizeBy: none
+		sourceColumn: Category_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cloud_Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 03679c2d-e4dc-49a4-9999-1e0cd3d25d8c
+		summarizeBy: none
+		sourceColumn: Cloud_Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BoardBook_Items
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a756f7b-089f-4792-aaf9-d814fbfc887b
+		summarizeBy: sum
+		sourceColumn: BoardBook_Items
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attached_Files
+		dataType: int64
+		formatString: 0
+		lineageTag: ab6237a0-9984-40cd-9561-2e2a48396ff6
+		summarizeBy: sum
+		sourceColumn: Attached_Files
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attached_Document_Pages
+		dataType: int64
+		formatString: 0
+		lineageTag: 5995780a-296e-4ffe-9dd2-50fa0cb570e6
+		summarizeBy: sum
+		sourceColumn: Attached_Document_Pages
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attached_File_Size_KB
+		dataType: int64
+		formatString: 0
+		lineageTag: ea61c7fc-915c-4a9f-9d27-c3bba376b0e5
+		summarizeBy: sum
+		sourceColumn: Attached_File_Size_KB
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Boardbook-3df5b443-24f1-4385-879f-3caddcfdac31 = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database(),
+				    #"admincontrolip-production-eu" = Source{[Name=@BigQueryProject]}[Data],
+				    Datamarts_Schema = #"admincontrolip-production-eu"{[Name="Datamarts",Kind="Schema"]}[Data],
+				    Reporting_Admct_Fact_Boardbook_View = Datamarts_Schema{[Name="Reporting_Admct_Fact_Boardbook",Kind="View"]}[Data]
+				in
+				    Reporting_Admct_Fact_Boardbook_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
