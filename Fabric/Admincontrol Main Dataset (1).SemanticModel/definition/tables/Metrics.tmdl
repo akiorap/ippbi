@@ -1412,6 +1412,11 @@ table Metrics
 		displayFolder: 10 Portal\01 Main Features
 		lineageTag: 4fc7c160-e10f-4c09-9a3a-0746637cac77
 
+	measure TestMeasure = 1
+		formatString: 0
+		displayFolder: 15 Tasks
+		lineageTag: 3e175124-6800-431c-b69f-9b60f6551ba8
+
 	partition Metrics-da07be24-5a23-444c-b3cf-3189eb7b43c0 = m
 		mode: import
 		source =

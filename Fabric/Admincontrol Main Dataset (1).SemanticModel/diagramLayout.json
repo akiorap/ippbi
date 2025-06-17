@@ -1,0 +1,789 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 2996.8187139495444,
+        "y": 1630.4000244140625
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 3681.8187139495444,
+            "y": 2007.5934218929451
+          },
+          "nodeIndex": "Metrics",
+          "nodeLineageTag": "1270e3c4-e81e-46ee-a45c-109f6a414dd3",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1344.8275073600437,
+            "y": 844.94604322646774
+          },
+          "nodeIndex": "01 Date",
+          "nodeLineageTag": "e1d6ed67-c36d-4c65-b45c-f4c2746184c1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1893.0079295257954,
+            "y": 1618.2583282788414
+          },
+          "nodeIndex": "01 Time",
+          "nodeLineageTag": "cb80b620-59df-4d0c-b177-9315fb02a2ba",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4494.2422077486835,
+            "y": 2045.5934218929451
+          },
+          "nodeIndex": "99 AP Price",
+          "nodeLineageTag": "3778091f-5bdc-4be3-94b8-6e36346da422",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4900.4539546482529,
+            "y": 2045.5934218929451
+          },
+          "nodeIndex": "99 BES Price",
+          "nodeLineageTag": "8f8db014-246b-4e01-b475-2b6f22ae7aea",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5306.6657015478222,
+            "y": 2045.5934218929451
+          },
+          "nodeIndex": "99 Num Range 5-50",
+          "nodeLineageTag": "045a7791-5fa8-4019-a67d-e72947877fe1",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1824.1614250365515,
+            "y": 0
+          },
+          "nodeIndex": "Board_Survey",
+          "nodeLineageTag": "9e613019-20a7-416b-8bdf-8f111ce76e60",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3275.6069670499755,
+            "y": 1342.8261171534471
+          },
+          "nodeIndex": "Board_Survey_Content",
+          "nodeLineageTag": "b6d02f23-401e-4817-9205-80e465af5442",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1224.2827752838516,
+            "y": 2657.2016985317878
+          },
+          "nodeIndex": "Boardbook",
+          "nodeLineageTag": "acab3ce3-47af-4e5b-adcf-19cdd1990843",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2953.5528112128122,
+            "y": 1788.9699961539841
+          },
+          "nodeIndex": "Case_Details",
+          "nodeLineageTag": "b7e1d42a-8586-4bc7-b530-084615036231",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4088.0304608491142,
+            "y": 2007.5934218929451
+          },
+          "nodeIndex": "Case_Status",
+          "nodeLineageTag": "6ced8b37-d7b4-42ab-8dc5-683d2ea35c76",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1708.4540842051033,
+            "y": 517.5489083638364
+          },
+          "nodeIndex": "Cloud Location",
+          "nodeLineageTag": "5e1fdd8d-1bc5-411d-a496-9930d385b131",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6119.08919534696,
+            "y": 2081.5934218929451
+          },
+          "nodeIndex": "CST Report Metrics",
+          "nodeLineageTag": "757b9561-9961-4372-857e-c6742ec8233a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2146.4410822872828,
+            "y": 2094.5687437811002
+          },
+          "nodeIndex": "Dim Category",
+          "nodeLineageTag": "c9137a82-3690-445d-a483-e2e6f4cb0f5e",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 273.40635721274884,
+            "y": 1643.5141716346652
+          },
+          "nodeIndex": "Dim_BulkDownload",
+          "nodeLineageTag": "399188cf-65a8-451e-9181-921430d33df3",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1558.1705659173435,
+            "y": 2657.2016985317878
+          },
+          "nodeIndex": "Dim_Meeting",
+          "nodeLineageTag": "9590b76a-955e-42c8-b64e-5b89a49a6eea",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2347.92902845798,
+            "y": 559.01384599561186
+          },
+          "nodeIndex": "Dim_QnA",
+          "nodeLineageTag": "465aeeea-8452-4557-8d4d-e40fbc319387",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 538.69031364520424,
+            "y": 949.71217874324054
+          },
+          "nodeIndex": "Dim_Task",
+          "nodeLineageTag": "34f314e3-3bfd-4bf2-9528-95e4b5874ff6",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 244.52899037737598,
+            "y": 873.90213996427281
+          },
+          "nodeIndex": "Dim_UserRole",
+          "nodeLineageTag": "2d7035fc-466e-4d61-9fe5-4b0156aadd42",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1898.5293586727059,
+            "y": 316.06692369094719
+          },
+          "nodeIndex": "Doc AccessHistory",
+          "nodeLineageTag": "4102a900-9b44-43a3-a1ab-38716b05cae7",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1092.3104881718759
+          },
+          "nodeIndex": "Documents",
+          "nodeLineageTag": "ce2bd24f-fca5-4373-b6b1-d72bdc817171",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 981.706116979286,
+            "y": 1790.1917389228749
+          },
+          "nodeIndex": "Fact_Boardbook",
+          "nodeLineageTag": "4974ceb9-a384-4805-b3d1-f02448304c81",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 818.79426972526289,
+            "y": 1460.1697207192265
+          },
+          "nodeIndex": "Fact_BulkDownload",
+          "nodeLineageTag": "bba91a35-ce15-47c0-8d5a-ef8f28e08c3c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2456.8126973247126,
+            "y": 1619.1716089184692
+          },
+          "nodeIndex": "Fact_Case",
+          "nodeLineageTag": "d5962b0e-f804-402a-8f02-512707c5704e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1907.482765986394,
+            "y": 2467.6892204894848
+          },
+          "nodeIndex": "Fact_DocAccessHistory_Agg_YearMonth",
+          "nodeLineageTag": "8b78b55d-ca3a-4d46-b343-906068216e25",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1090.6972077095706,
+            "y": 369.5489083638364
+          },
+          "nodeIndex": "Fact_Documents",
+          "nodeLineageTag": "2f0c0281-319c-4a0b-a9fc-bc59f01ef156",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1754.2246422226749,
+            "y": 790.48671012135321
+          },
+          "nodeIndex": "Fact_Folders",
+          "nodeLineageTag": "9fea40e4-5141-44a4-8211-6ddfa326c3d4",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 653.92612524000742,
+            "y": 650.03539834963681
+          },
+          "nodeIndex": "Fact_Login",
+          "nodeLineageTag": "e56ef70f-6d9d-46c2-a3ee-51496104e2e6",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1003.5102878319785,
+            "y": 2110.2809334137778
+          },
+          "nodeIndex": "Fact_MeetingMinutes",
+          "nodeLineageTag": "7ef8e273-178c-40c5-a788-6880410c757a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1060.2963169207242,
+            "y": 1470.895574371307
+          },
+          "nodeIndex": "Fact_Meetings",
+          "nodeLineageTag": "10252d70-8b87-472b-8b7f-60a843b95a11",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2148.261035007567,
+            "y": 1034.4109808582432
+          },
+          "nodeIndex": "Fact_ML_Mart_Churn_Prediction_Data",
+          "nodeLineageTag": "4d1d6c90-e8f1-451b-9e40-9b70a0a34ec2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 417.14087247792168,
+            "y": 2091.0121459169413
+          },
+          "nodeIndex": "Fact_Portal",
+          "nodeLineageTag": "4d33140e-3918-418b-a557-496a096c10f2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1737.0439474246514,
+            "y": 1992.2920856268533
+          },
+          "nodeIndex": "Fact_QuesionsAndAnswers",
+          "nodeLineageTag": "6d92d0ee-41f6-41ad-ac54-a8b074786928",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 935.43037249741246,
+            "y": 750.0956167013394
+          },
+          "nodeIndex": "Fact_RedactionHistory",
+          "nodeLineageTag": "c78c24b4-1e32-4044-a879-0f10a6754168",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1738.8639001449355,
+            "y": 1142.86119341621
+          },
+          "nodeIndex": "Fact_SecureMessages",
+          "nodeLineageTag": "ffe5b2b1-82fa-4137-8897-bd08af919797",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7.7437376152902289,
+            "y": 1643.5141716346652
+          },
+          "nodeIndex": "Fact_Signing",
+          "nodeLineageTag": "84b14c78-fcdb-4e65-a6b0-898e85d5598d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1344.8275073600435,
+            "y": 412.9749020379445
+          },
+          "nodeIndex": "Fact_Survey_Answer",
+          "nodeLineageTag": "5f52773a-3222-4655-8e28-7b26ac6974e1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 780.65407556790115,
+            "y": 1121.432533212268
+          },
+          "nodeIndex": "Fact_Tasks",
+          "nodeLineageTag": "5e7fdffa-3a1d-4cea-8eaa-29c2c3a67b43",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1412.9074226946097,
+            "y": 2181.8045636691568
+          },
+          "nodeIndex": "Fact_User",
+          "nodeLineageTag": "5320de89-c156-4613-876c-0fab82a8ac31",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 713.83247908390922,
+            "y": 1946.2927092339382
+          },
+          "nodeIndex": "Fact_User_AreaOfUse",
+          "nodeLineageTag": "003d0e8b-4601-4c50-8967-02ddec0da547",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 734.61031173334777,
+            "y": 278.69848183870795
+          },
+          "nodeIndex": "Fact_UserRoles",
+          "nodeLineageTag": "dc0f73db-211e-4c25-a1b9-9f254f9549f8",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 409.39713486263145,
+            "y": 1168.1170367720338
+          },
+          "nodeIndex": "Fact_Wootric_Responses",
+          "nodeLineageTag": "ad199643-db83-4cbb-9b5a-6dfb06517f40",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6931.5126891460986,
+            "y": 2093.5934218929451
+          },
+          "nodeIndex": "Item_Type",
+          "nodeLineageTag": "2153ef34-13d4-490d-a271-177ca632f256",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2178.0167171628318,
+            "y": 1628.9182893796146
+          },
+          "nodeIndex": "Login",
+          "nodeLineageTag": "0f929461-d2dc-4cd8-93e2-651effd97d25",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1329.4667652823041,
+            "y": 1177.9645571745505
+          },
+          "nodeIndex": "Login_Method",
+          "nodeLineageTag": "94131234-8727-4029-adc2-ab772007ca01",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6525.3009422465293,
+            "y": 2081.5934218929451
+          },
+          "nodeIndex": "Measure Statistic",
+          "nodeLineageTag": "51e75d71-209b-465a-9747-e62f55dc4b5a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2866.2098321873441,
+            "y": 1298.6240004452188
+          },
+          "nodeIndex": "MeetingMinutes",
+          "nodeLineageTag": "ec35eb52-16d5-40af-8680-834eeb591a25",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7337.724436045668,
+            "y": 2093.5934218929451
+          },
+          "nodeIndex": "MetricsTable",
+          "nodeLineageTag": "eba732d8-f49b-427a-95be-4c4c27f23b47",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5712.8774484473906,
+            "y": 2057.5934218929451
+          },
+          "nodeIndex": "MonthIndexTable",
+          "nodeLineageTag": "ff51d50f-08d8-4562-8564-2e721641c8c8",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1329.4667652823041,
+            "y": 1320.3431780890992
+          },
+          "nodeIndex": "Portal",
+          "nodeLineageTag": "d553a0a1-db97-4715-9f58-fc18a33fe930",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2233.5585598991829,
+            "y": 340.06692369094719
+          },
+          "nodeIndex": "Portal Classification",
+          "nodeLineageTag": "f0470848-1b58-42ac-8f8f-b762d3d8ab37",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2092.0807915266705,
+            "y": 667.46405855357852
+          },
+          "nodeIndex": "Salesforce_Account",
+          "nodeLineageTag": "656c05cc-948d-4faf-a639-796bfd601289",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 313.28943179461066,
+            "y": 1817.4688449132505
+          },
+          "nodeIndex": "Signature_Level",
+          "nodeLineageTag": "d00670b4-62f4-4727-8177-674229c2536a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2727.19108821344,
+            "y": 971.22686558258761
+          },
+          "nodeIndex": "Signing_Status",
+          "nodeLineageTag": "341f2ce7-e285-4684-9b44-ea8170d7602c",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2557.6581698701984,
+            "y": 1152.4811570064915
+          },
+          "nodeIndex": "Snapshot_History",
+          "nodeLineageTag": "e1881e70-6239-4ce9-90b6-6c3dec6ddf3e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1967.567700779975,
+            "y": 2846.4837588209512
+          },
+          "nodeIndex": "Support Case Owner",
+          "nodeLineageTag": "eba667c5-790f-4106-8ba0-3caa4f472b49",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1327.64681256202,
+            "y": 1706.4074288065251
+          },
+          "nodeIndex": "User",
+          "nodeLineageTag": "984b57fe-c333-4d98-87d9-45d5fd497eb6",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2134.7585414875493,
+            "y": 1853.6829948310622
+          },
+          "nodeIndex": "Wootric Response Source",
+          "nodeLineageTag": "f4aa0e73-c9f3-46c6-ab52-d2ab42789020",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2544.1556763501808,
+            "y": 2004.3154242422461
+          },
+          "nodeIndex": "Wootric Responses",
+          "nodeLineageTag": "45812512-021d-4de2-9c92-c932563cefb0",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
